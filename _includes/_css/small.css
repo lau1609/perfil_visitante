@@ -1,0 +1,24 @@
+.title-enc h1 {
+    font-size: 1.5rem;
+}
+
+.form-questions h3, .form-questions select, input.but-env {
+    font-size: .95rem;
+}
+
+input.but-env {
+    padding: 9px 25px;
+}
+
+h3.title-conect {
+    font-size: 2rem;
+}
+
+span.spa-title {
+    font-size: 1.2rem;
+}
+
+#section1 img {
+    width: 75px;
+}
+
