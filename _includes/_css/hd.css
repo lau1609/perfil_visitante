@@ -70,7 +70,7 @@ body{
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     position: absolute;
     height: 100%;
@@ -80,8 +80,39 @@ body{
 
   }
 
+  .tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(224, 226, 229, 30%);
+    color: rgb(219, 220, 230, 80%);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 102%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: .75rem;
+    letter-spacing: 1px;
+    font-family: 'PublicSans Italic Extra Light';
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
   #section1 img{
-    filter: drop-shadow(2px 4px 6px black);
+    filter: drop-shadow(3px 3px 3px black);
+    width: 300px;
   }
   
   #arrow {
@@ -116,9 +147,11 @@ body{
   }
 
 .title-conect{
-    font-size: 3.5rem;
+    font-size: 2.9rem;
     color: white;
     font-family: 'PublicSans Bold';
+    text-align: center;
+    margin: 0;
 }
 
 .spa-title{
@@ -126,7 +159,7 @@ body{
     font-size: 1.5rem;
     font-family: 'PublicSans Medium';/* SemiBold */
     font-style: italic;
-    margin-bottom: 45px;
+    margin-bottom: 25px;
 }
 
 .cont-general{
@@ -243,10 +276,12 @@ body{
 
 .text-opts textarea{
   border: none;
-  width: 80%;
+  width: 100%;
   resize: none;
   height: 100px;
   background-color: rgb(84, 88, 89, 15%);
+  font-family: 'PublicSans';
+  font-size: 1rem;
 }
 
 .text-opts textarea:focus-visible{
@@ -301,7 +336,9 @@ body{
 .ali-pop h3{
   font-family: 'PublicSans Bold';
   font-size: 2.5rem;
+  text-align: center;
   color: #6c8454;
+  margin: 0;
 }
 
 .ali-pop p{

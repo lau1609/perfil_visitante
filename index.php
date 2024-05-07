@@ -229,6 +229,27 @@
             top: 100px;
             position: absolute;
         }
+
+        @media (max-width: 600px) {
+            canvas {
+                height: 33vh !important;
+            }
+
+            #filtFec{
+                flex-direction: column;
+            }
+
+            #butFilt{
+                position: absolute;
+                right: 14vh;
+            }
+            #butFilt svg {
+                fill: rgb(150, 158, 165);
+                width: 31px;
+                height: 31px;
+            }
+        }
+
     </style>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 

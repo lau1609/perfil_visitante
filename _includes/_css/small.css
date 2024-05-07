@@ -1,5 +1,6 @@
 .title-enc h1 {
     font-size: 1.5rem;
+    margin-top: 0;
 }
 
 .form-questions h3, .form-questions select, input.but-env {
@@ -11,14 +12,41 @@ input.but-env {
 }
 
 h3.title-conect {
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 span.spa-title {
     font-size: 1.2rem;
 }
 
-#section1 img {
-    width: 75px;
+.sub-tit{
+    font-size: 1.4rem !important;
 }
 
+#section1 img {
+    width: 45% !important;
+    height: 63px !important;
+    margin-bottom: 15px;
+}
+
+.align-enc {
+    width: 90%;
+    margin: 34px 0;
+}
+
+.qs-general label {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+label input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    margin-right: 7px;
+}
+
+.ali-pop h3 {
+    font-size: 1.7rem;
+}

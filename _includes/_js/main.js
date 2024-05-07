@@ -46,7 +46,7 @@ $(document).ready(function() {
 		// en cuento se carga la pagina, se da overflow hidden
 		  window.addEventListener('load', function() {
 			setTimeout(function() {
-				console.log('ghdj');
+				//console.log('ghdj');
 			  window.scroll({
 				top: 0,
 				left: 0,
@@ -78,8 +78,11 @@ $(document).ready(function() {
   		const cant = elementosQsGeneral.length;
 		const valorEnc = $form.find('.parteEncuesta').val();
 		const municipio = $form.find('.municipio').val();
+		const clave = $form.find('#hotel').val();
+		console.log(clave)
 
 
+		//return;
 		 var $inputs = $form.find("input, select, button, textarea, checkbox, number, radio, text, range, label");
 		 $form.find('.required').each(function() {
 			// console.log(this.value);
@@ -97,6 +100,36 @@ $(document).ready(function() {
 
 			}
 		});
+
+		$form.find('.checkRadio').each(function() {
+			const preguntaRadio = $(this);
+			const preguntaID = preguntaRadio.attr('data-id-pregunta');
+			let respuestaSeleccionada = null;
+			console.log(preguntaRadio);
+		
+			// Obtener el input de tipo radio seleccionado dentro del grupo
+			const inputSeleccionado = preguntaRadio.find('input[type="radio"]:checked');
+			console.log(inputSeleccionado);
+		
+			// Verificar si se seleccionó algún radio button
+			if (inputSeleccionado.length > 0) {
+				// Obtener el valor seleccionado
+				respuestaSeleccionada = inputSeleccionado.val();
+				// Eliminar el borde rojo (en caso de haberlo)
+				preguntaRadio.css('border-color', 'transparent');
+			} else {
+				// No se seleccionó ninguna opción, establecer borde rojo
+				preguntaRadio.css('border', '1px solid red');
+			}
+		
+			// Agregar la respuesta al array de respuestas
+			respuestaObj.push({
+				preguntaID: preguntaID,
+				respuesta: respuestaSeleccionada
+			});
+			console.log(respuestaObj);
+		});
+		
 
 		$form.find('.checkbox').each(function() {
 			const preguntaCheckbox = $(this);
@@ -116,22 +149,26 @@ $(document).ready(function() {
 					respuesta: nameArray
 				});
 				//respuestas[preguntaID] = nameArray;
+				
 			}else if (checkboxesSeleccionado == 0) {
 				$(this).css('border', '1px solid red');
 			}
 		  });
 		let countRequiredElements = $form.find('.required').length;
 		let countCheckboxElements = $form.find('.checkbox').length;
+		let countRadio = $form.find('.checkRadio').length;
 		let totalCount = 0;
-		if (countCheckboxElements > 0) {
-			totalCount = countRequiredElements + countCheckboxElements;
+		if (countCheckboxElements > 0 || countRadio > 0) {
+			totalCount = countRequiredElements + countCheckboxElements + countRadio;
 		} else {
 			totalCount = countRequiredElements;
 		}
 		// Sumar los conteos para obtener el número total de elementos con clase "required" o "checkbox"
-		console.log(totalCount);
-		console.log(respuestaObj.length);
+		//console.log(totalCount);
+		//console.log(respuestaObj.length);
+		console.log(respuestaObj);
 		  let g = true;
+		  //return;
 		if (respuestaObj.length == totalCount) {
 			var request;
 			var serializedData = [];
@@ -146,16 +183,18 @@ $(document).ready(function() {
 				// //}
 			  });
 
+			  
 			$inputs.prop("disabled", true);
 			var request;
 			//Abortamos cualquier solicitud actual
 			if (request) { request.abort(); }
-			console.log(respuestaObj);
+			//console.log(respuestaObj);
+			
 			request = $.ajax({
 				dataType: 'text', //json
 				url: '../_includes/_php/querys.php',
 				type: 'POST',
-				data: {respuestaObj, valorEnc, municipio },
+				data: {respuestaObj, valorEnc, municipio, clave },
 				success: function(data) {
 					console.log(data);
 					$inputs.prop("disabled", false);
@@ -165,58 +204,73 @@ $(document).ready(function() {
 						$('.align-enc').addClass('none');
 						$('.cont-pop').addClass('block');
 						$('.cont-pop').removeClass('none');
-						console.log('Formulario enviado');
+						setTimeout(() => {
+							$('#newEnc').trigger('click');
+						}, 8000);
+						//console.log('Formulario enviado');
 					}
 				}
 
 			});
-
-			
-				
-		  
 		}else {
 			alert('Seleccione todas las opciones con *');
 		}
 	});
+});
 
-
-
+$(document).on(clickHandler, 'input[name="cantPerson"]', function(e) {
+	console.log('el onchange');
+	var person = $(this).val();
+	const divWhyPerson = document.getElementById("whyPersonVis");
+	const selPerson = document.getElementById("selPerson");
+	
+	if (person == "Ninguna") {
+		$(selPerson).removeClass('required'); 
+		divWhyPerson.style.display = 'none'; 
+	}else {
+		$(selPerson).addClass('required'); 
+		divWhyPerson.style.display = 'block'; 
+	}
 });
 
 
 // click de nacionalidad
 
+$(document).on(clickHandler, 'input[name="nacionalidad"]', function(e) {
+	console.log('el onchange');
+	var nac = $(this).val();
+	const mex = document.getElementById("mexico");
+	const inter = document.getElementById("inter");
+	const eu = document.getElementById("estEU");
+	const mx = document.getElementById("estMex");
+	eu.style.display = 'none'; 
+	mx.style.display = 'none'; 
+	$('.united').removeClass('required'); 
+	$('.mex').removeClass('required'); 
+
+	if (nac == "Mexico") {
+		mex.style.display = 'block'; 
+		inter.style.display = 'none';
+		$(mex).addClass('required'); 
+		$(inter).removeClass('required'); 
+	}else if (nac == "Internacional") {
+		inter.style.display = 'block'; 
+		mex.style.display = 'none'; 
+		$(inter).addClass('required'); 
+		$(mex).removeClass('required'); 
+	}
+});
+
+
+
 $(document).on(clickHandler, '.qs-general', function(e) {
     if (!touchmoved) {
         $(function() {
-            // console.log(2);
-            $('#nacionalidad').change(function(e) {
-				console.log('el onchange');
-				var nac = document.getElementById("nacionalidad").value;
-				const mex = document.getElementById("mexico");
-				const inter = document.getElementById("inter");
-
-				if (nac == "Mexico") {
-					mex.style.display = 'block'; 
-					inter.style.display = 'none';
-					$(mex).addClass('required'); 
-					$(inter).removeClass('required'); 
-				}else if (nac == "Internacional") {
-					inter.style.display = 'block'; 
-					mex.style.display = 'none'; 
-					$(inter).addClass('required'); 
-					$(mex).removeClass('required'); 
-				}
-            });
-
-
-
 			$('#inter').change(function(e) {
-				console.log('el onchange de eu');
 				var ue = document.getElementById("inter").value;
 				const eu = document.getElementById("estEU");
 
-				if (ue == "Estados-Unidos") {
+				if (ue == "Estados-Unidos" ) {
 					eu.style.display = 'block'; 
 					$('.united').addClass('required'); 
 				}else {
@@ -226,15 +280,28 @@ $(document).on(clickHandler, '.qs-general', function(e) {
             });
 
 
+			$('#mexico').change(function(e) {
+				var me = this.value;
+				const mex = document.getElementById("estMex");
+
+				if (me == "Chihuahua" ) {
+					mex.style.display = 'block'; 
+					$('.mex').addClass('required'); 
+				}else {
+					$('.mex').removeClass('required'); 
+					mex.style.display = 'none'; 
+				}
+            });
+
+
 
 			$('#restAct').change(function(e) {
-				console.log('el onchange restAct');
+				//console.log('el onchange restAct');
 				var nac = document.getElementById("restAct").value;
 				const res = document.getElementById("Restaurante");
 				const resF = $("#Restaurante"); 
 				const actF = $("#Actividades"); 
 				const act = document.getElementById("Actividades");
-
 				if (nac == "Restaurante") {
 					resF.find('.qs-general').each(function() {
 						const selectElement = $(this).find('select');
@@ -243,12 +310,10 @@ $(document).on(clickHandler, '.qs-general', function(e) {
 						if (selectElement.length > 0) {
 							selectElement.addClass('required');
 						  }
-
 						  if (selectText.length > 0) {
-							console.log('textarea');
+							//console.log('textarea');
 							selectText.addClass('required');
 						  }
-
 						  if (inputText.length > 0) {
 							inputText.addClass('required');
 						  }
@@ -262,16 +327,13 @@ $(document).on(clickHandler, '.qs-general', function(e) {
 						if (selectElement.length > 0) {
 							selectElement.removeClass('required');
 						  }
-
 						  if (selectText.length > 0) {
 							selectText.removeClass('required');
 						  }
-
 						  if (inputText.length > 0) {
 							inputText.removeClass('required');
 						  }
 					});
-					
 					res.style.display = 'block'; 
 					act.style.display = 'none'; 
 
@@ -285,11 +347,9 @@ $(document).on(clickHandler, '.qs-general', function(e) {
 						if (selectElement.length > 0) {
 							selectElement.addClass('required');
 						  }
-
 						  if (selectText.length > 0) {
 							selectText.addClass('required');
 						  }
-
 						  if (inputText.length > 0) {
 							inputText.addClass('required');
 						  }
@@ -302,11 +362,9 @@ $(document).on(clickHandler, '.qs-general', function(e) {
 						if (selectElement.length > 0) {
 							selectElement.removeClass('required');
 						  }
-
 						  if (selectText.length > 0) {
 							selectText.removeClass('required');
 						  }
-
 						  if (inputText.length > 0) {
 							inputText.removeClass('required');
 						  }
@@ -322,6 +380,23 @@ $(document).on(clickHandler, '.qs-general', function(e) {
 
 	
 
+	var checkW = document.getElementById('work');
+    var contCheck = document.getElementById('contWork')
+    checkW.addEventListener('change', function() {
+		const element = $(contCheck).find('.qs-general');
+        //console.log('change de checkbooooox');
+        if (checkW.checked) {
+            $(contCheck).removeClass('none');
+			element.find('select').each(function() {
+				$(this).addClass('required');
+			});
+        } else {
+			element.find('select').each(function() {
+				$(this).removeClass('required');
+			});
+            $(contCheck).addClass('none');
+        }
+    });
 
 
 });
@@ -342,26 +417,20 @@ function thisResize() {
 		$(document).on('submit','#form-contact',function(e){
 			"use strict";
 			console.log("Enviando");
-
 			var rootpath = 'https://vhverificaciones.com.mx/';
-					
 					// Definimos el tipo de formulario
 					var loginPath = rootpath+'correo/envio_correo.php';
-					console.log(rootpath);
+					//console.log(rootpath);
 					console.log(loginPath);
 					// Variable que contiene la solicitud
 					var request;
 					// Establecemos la variable del Formulario
 					var $form = $(this);
-				
 					// Seleccionamos todos los posibles inputs
 					var $inputs = $form.find("input, select, button, textarea, checkbox, number, radio, text, range, label");
-				
 					// Serializamos la información del Formulario 
 					var serializedData = $form.serialize();
-					
 					console.log(serializedData);
-					
 					// Deshabilitamos los inputs mientras se ejecuta el Ajax
 					$inputs.prop("disabled", true);
 					// Disparamos la solicitud (request) 
@@ -382,17 +451,13 @@ function thisResize() {
 						if(response != 'fail'){
 							console.log('se envio el correo');
 							$("#content").html("¡Gracias por contactarnos!");
-
 							setTimeout(function() {
 									console.log('close');
 									$('#form-contact').addClass('none');
-							}, 300);
-							
-							
+							}, 300);	
 						}else{
 							i++;
 						}
-						
 					}); 
 				
 					 //Si falla la conexión
@@ -404,10 +469,7 @@ function thisResize() {
 					});			
 					// Habilitamos de nuevo los botones
 					request.always(function () {
-						
 					});
-	 
-				
 				// No enviar el formulario
 				return false; 
 			

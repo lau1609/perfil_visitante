@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "geolib": "^3.3.4",
     "sentiment": "^5.0.2"
   }
 }
