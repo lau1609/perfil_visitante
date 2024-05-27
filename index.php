@@ -16,13 +16,25 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <!-- <script src="_includes/_js/main.js"></script> -->
-    <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
     <script src="_includes/_js/d3-tip.js"></script>
     <link rel="stylesheet" type="text/css" href="_includes/_css/hd.css">
-<link rel="stylesheet" type="text/css" media="only screen and (max-width:2000px)"  href="_includes/_css/large.css">
-<link rel="stylesheet" type="text/css" media="only screen and (max-width:1600px)"  href="_includes/_css/regular.css">
-<link rel="stylesheet" type="text/css" media="only screen and (max-width:1024px)"  href="_includes/_css/medium.css">
-<link rel="stylesheet" type="text/css" media="only screen and (max-width:600px)"   href="_includes/_css/small.css">
+    
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet"/>
+    <!-- <script src="https://kit.fontawesome.com/my id.js"crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-jkihXtPklFJy8q3rnoEMBstczhBwFwO48lEQ7EDKlA5JX7xu5Q0NVg7lLeK/cHhV7hly0iygDRNyo6N88U6B9g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+
+
+    
+    <script
+  src="https://example.com/fontawesome/v6.5.2/js/all.js"
+  data-auto-replace-svg="nest"
+></script>
+    <link rel="stylesheet" type="text/css" media="only screen and (max-width:2000px)"  href="_includes/_css/large.css">
+    <link rel="stylesheet" type="text/css" media="only screen and (max-width:1600px)"  href="_includes/_css/regular.css">
+    <link rel="stylesheet" type="text/css" media="only screen and (max-width:1024px)"  href="_includes/_css/medium.css">
+    <link rel="stylesheet" type="text/css" media="only screen and (max-width:600px)"   href="_includes/_css/small.css">
     
     <!-- <script src="_libreries/d3-tip-master/index.js"></script> -->
 
@@ -264,7 +276,6 @@
                 <option value="2">Chihuahua</option>
                 <option value="3">Guachochi</option>
                 <option value="4">Parral</option>
-                <option value="5">PABC</option>
             </select>
         </div>
     </div>
@@ -361,6 +372,60 @@
             <canvas id="myChart2"></canvas>
             
         </div>
+    </div>
+
+
+    <div class="contInfografia none">
+        <div class="contCloseInfo"><img id="closeInfo" src="_images/cerrar.png" alt=""></div>
+        <div class="aliInfografia">
+            <h1>Seleccione una platilla</h1>
+            <div class="contPlant">
+                <div class="contImagePlant" id="contenedorPlantilla">
+                    <?php 
+                    // Ruta de la carpeta que contiene las imágenes
+                    $rutaCarpeta = '_images/infografias/';
+                    // Obtener una lista de todos los archivos en la carpeta
+                    $archivos = scandir($rutaCarpeta);
+
+                    // Filtrar los archivos para incluir solo imágenes
+                    $imagenes = array_filter($archivos, function($archivo) {
+                        $extension = strtolower(pathinfo($archivo, PATHINFO_EXTENSION));
+                        return in_array($extension, ['jpg', 'jpeg', 'png', 'gif']);
+                    });
+
+                    // Imprimir las etiquetas de imagen HTML para cada imagen
+                    foreach ($imagenes as $imagen) {
+                        $id = pathinfo($imagen, PATHINFO_FILENAME); // Obtener el nombre del archivo sin extensión como ID
+                        echo "<label id='labelInfografia'><input class='inpInfo' style='visibility: hidden;width: 0;' name='imageInfo' type='radio' value='$id'><img  class='imageInfo' id='$id' src='$rutaCarpeta$imagen' alt='$imagen'></label>";
+                    }
+                    ?>
+                </div>
+            </div>
+
+            <div class="timeInfo">
+                <h3>Desde</h3>
+                <input type="date" name="iniInfo" id="iniInfo">
+                <h3 style="margin-left:8px;">Hasta</h3>
+                <input type="date" name="finInfo" id="finInfo">
+            </div>
+
+            <div class="contButInfo">
+                <button  class="genInfografia">Generar</button>
+                <div class="load-wrapp none">
+                    <div class="load-3">
+                        <p>Generando</p>
+                        <div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <canvas  id="canvaIMG" style="z-index: 2;display: none;"></canvas>
     </div>
 </body>
 

@@ -38,9 +38,12 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 		}
 
 
+		let municipio;
+
 $(document).ready(function() {
     "use strict";
 
+	//cronometro();
 	
 
 		// en cuento se carga la pagina, se da overflow hidden
@@ -67,7 +70,7 @@ $(document).ready(function() {
 	});
 
 	// Envio de encuesta
-
+	
 	$(document).on('submit', '.form-questions', function(e) {
 		e.preventDefault(); // Evita el envío del formulario por defecto
 		var $form = $(this);
@@ -77,7 +80,7 @@ $(document).ready(function() {
 		const elementosQsGeneral = $(this).find('.qs-general');
   		const cant = elementosQsGeneral.length;
 		const valorEnc = $form.find('.parteEncuesta').val();
-		const municipio = $form.find('.municipio').val();
+		municipio = $form.find('.municipio').val();
 		const clave = $form.find('#hotel').val();
 		console.log(clave)
 
@@ -200,14 +203,19 @@ $(document).ready(function() {
 					$inputs.prop("disabled", false);
 					if(data == 'success'){
 						var bodyElement = document.querySelector('body');
-						const section2 = document.getElementById('section2');;
+						const section2 = document.getElementById('section2');
 						$('.align-enc').addClass('none');
 						$('.cont-pop').addClass('block');
 						$('.cont-pop').removeClass('none');
-						setTimeout(() => {
+						cronometro().then(() => {
 							$('#newEnc').trigger('click');
-						}, 8000);
-						//console.log('Formulario enviado');
+							// Aquí puedes poner cualquier código que necesite ejecutarse después de que el cronómetro haya terminado
+						});
+						
+						// setTimeout(() => {
+						// 	$('#newEnc').trigger('click');
+						// }, 30000);
+						// console.log('Formulario enviado');
 					}
 				}
 
@@ -226,7 +234,8 @@ $(document).on(clickHandler, 'input[name="cantPerson"]', function(e) {
 	
 	if (person == "Ninguna") {
 		$(selPerson).removeClass('required'); 
-		divWhyPerson.style.display = 'none'; 
+		divWhyPerson.style.display = 'none'; CSS
+		
 	}else {
 		$(selPerson).addClass('required'); 
 		divWhyPerson.style.display = 'block'; 
@@ -259,6 +268,17 @@ $(document).on(clickHandler, 'input[name="nacionalidad"]', function(e) {
 		$(inter).addClass('required'); 
 		$(mex).removeClass('required'); 
 	}
+});
+
+$(document).on(clickHandler, '#openQR', function(e) {
+	console.log(municipio);
+	let muniQR
+	if (municipio == 1) {
+		muniQR == 'Juarez'
+	}else if (municipio == 2) {
+		muniQR = 'Chihuahua';
+	}
+	window.open("https://sichitur.org/generateQR/?loc="+muniQR);
 });
 
 
@@ -381,15 +401,26 @@ $(document).on(clickHandler, '.qs-general', function(e) {
 	
 
 	var checkW = document.getElementById('work');
-    var contCheck = document.getElementById('contWork')
-    checkW.addEventListener('change', function() {
+	var clicDiv = document.getElementsByClassName('clickOpDiv');
+    var contCheck = document.getElementById('contWork');
+	var estudio = document.getElementById('Estudios');
+	var contCheck2 = document.getElementById('contWork2');
+    $(document).on(clickHandler, clicDiv, function(e) {
 		const element = $(contCheck).find('.qs-general');
         //console.log('change de checkbooooox');
-        if (checkW.checked) {
-            $(contCheck).removeClass('none');
-			element.find('select').each(function() {
-				$(this).addClass('required');
-			});
+        if (checkW.checked || estudio.checked) {
+			if (estudio.checked && checkW.checked || checkW.checked) {
+				$(contCheck).removeClass('none');
+				$(contCheck2).removeClass('none');
+				element.find('select').each(function() {
+					$(this).addClass('required');
+				});
+			}else if (estudio.checked) {
+				$(contCheck).removeClass('none');
+				$('.giroEcon').addClass('required');
+				$(contCheck2).addClass('none');
+				$('.viaticos').removeClass('required');
+			}
         } else {
 			element.find('select').each(function() {
 				$(this).removeClass('required');
@@ -399,11 +430,62 @@ $(document).on(clickHandler, '.qs-general', function(e) {
     });
 
 
+
+	
+    // estudio.addEventListener('change', function() {
+	// 	console.log('click estudio');
+	// 	const element = $(contCheck).find('.qs-general');
+    //     //console.log('change de checkbooooox');
+    //     if (estudio.checked || checkW.checked) {
+	// 		if (estudio.checked) {
+	// 			$(contCheck).removeClass('none');
+	// 			$('.giroEcon').addClass('required');
+	// 		}else{
+	// 			$(contCheck).removeClass('none');
+	// 			$(contCheck2).removeClass('none');
+	// 			element.find('select').each(function() {
+	// 				$(this).addClass('required');
+	// 			});
+	// 		}
+    //     } else {
+	// 		element.find('select').each(function() {
+	// 			$(this).removeClass('required');
+	// 		});
+    //         $(contCheck).addClass('none');
+    //     }
+    // });
+
+
 });
 
 
-
+let end;
+console.log(end);
+	function cronometro() {
+		end  = Date.now() + 30*1000;
+		console.log('cronometro');
+		return new Promise((resolve, reject) => {
+			cronometro2(resolve);
+		});	}
 	
+	function cronometro2(resolve) {
+		
+		let caja = document.querySelector('.caja');
+		let tiempoTranscurrido = Math.floor((end - Date.now()) / 1000);
+		//console.log(tiempoTranscurrido);
+		if(tiempoTranscurrido > 0)
+		{
+		   console.log(`Han transcurrido ${tiempoTranscurrido} segundos`);
+		   caja.innerHTML = tiempoTranscurrido;
+		   //Programamos para que se revise de nuevo el tiempo transcurrido en 500ms
+		   setTimeout(() => {
+            cronometro2(resolve);
+        }, 500);
+		} else{
+			resolve();
+		}
+	  
+	}
 
 //Cambio de tamaño en la vetana
 function thisResize() {

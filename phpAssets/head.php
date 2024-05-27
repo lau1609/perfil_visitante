@@ -1,9 +1,6 @@
 <!-- METAS GENERALES -->
 
-<meta name="keywords" content="Ley de Infraestructura en hidrocarburos, sistemas de medición de bombas de gasolina
-Sistema de medición para hidrocarburos, Almacenamiento de hidrocarburos, Verificación de bombas para hidrocarburos,
-certificados de hidrocarburos, Certificaciones para la operación de gasolinera, controles petrolíferos,
-Controles hidrocarburos, certificados para gasolineras, hidrocarburo, Verificacion de hidrocarburos">
+<meta name="keywords" content="">
 <meta name="description" content="Inspección de controles volumétricos acorde anexo 30 y 31 de la RMF 2022.">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1" >
@@ -12,7 +9,7 @@ Controles hidrocarburos, certificados para gasolineras, hidrocarburo, Verificaci
 <meta name="copyright" content="2014">
 
 <!-- FAVICON -->
-<link rel="shortcut icon" type="image/x-icon" href="_images/favicon.ico"> 
+<!-- <link rel="shortcut icon" type="image/x-icon" href="_images/favicon.ico">  -->
 
 <!-- FONT ASTIC -->
 <!-- <link href="_includes/_fontastic/styles.css" rel="stylesheet" type="text/css"/>  -->

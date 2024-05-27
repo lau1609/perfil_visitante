@@ -1,0 +1,112 @@
+{
+    "23": 
+      {
+        "mujer": "_images/infografias/iconos/femenino.png",
+        "hombre": "_images/infografias/iconos/masculino.png"
+      },
+    "25": {},
+    "27": {
+        "Primaria": "_images/infografias/iconos/primaria.png",
+        "Secundaria": "_images/infografias/iconos/secundaria.png",
+        "Preparatoria": "_images/infografias/iconos/preparatoria.png",
+        "Carrera técnica": "_images/infografias/iconos/tecnico.png",
+        "Carrera universitaria": "_images/infografias/iconos/universitario.png",
+        "Posgrado": "_images/infografias/iconos/posgrado.png"
+        },
+    "28": {
+          "Colegas de trabajo": "_images/infografias/iconos/workers.png",
+          "Auto empleado": "_images/infografias/iconos/emprendedor.png",
+          "Pareja": "_images/infografias/iconos/pareja.png",
+          "Amigos o parientes": "_images/infografias/iconos/amigos.png",
+          "Familia": "_images/infografias/iconos/familia.png",
+          "Tour de viaje": "_images/infografias/iconos/turistico.png"
+        },
+    "29": {
+        "Estudiante": "_images/infografias/iconos/estudiante.png",
+        "Empleado": "_images/infografias/iconos/empleado.png",
+        "Empresario": "_images/infografias/iconos/empresario.png",
+        "Jubilado": "_images/infografias/iconos/jubilado.png",
+        "Servidor Publico": "_images/infografias/iconos/servidor.png",
+        "Otros": ""
+        },
+    "30": {
+        "Ninguna": "_images/infografias/iconos/solo.png",
+        "1 persona": "_images/infografias/iconos/personas.png",
+        "2 a 3 personas": "_images/infografias/iconos/personas.png",
+        "3 a 4 personas": "_images/infografias/iconos/personas.png",
+        "4 o mas": "_images/infografias/iconos/personas.png",
+        "Otros": ""
+        },
+      "31": {
+          "Redes Sociales": "_images/infografias/iconos/redes-sociales.png",
+          "Recomendacion": "_images/infografias/iconos/recomendacion.png",
+          "Internet": "_images/infografias/iconos/wifi.png",
+          "Visita previa": "_images/infografias/iconos/solo.png",
+          "Ferias/exposiciones": "_images/infografias/iconos/feria.png",
+          "Agencia de viajes": "_images/infografias/iconos/agencia.png",
+          "Medios impresos": "_images/infografias/iconos/periodico.png",
+          "Radio": "_images/infografias/iconos/radio.png",
+          "Televisión": "_images/infografias/iconos/television.png"
+        },
+      "33": {
+          "Trabajo/negocios": "_images/infografias/iconos/trabajonegocios.png",
+          "Trabajo/estudio/negocios": "_images/infografias/iconos/trabajonegocios.png",
+          "Estudios": "_images/infografias/iconos/estudios.png",
+          "Evento deportivo": "_images/infografias/iconos/deportes.png",
+          "Visita a familiares/ amigos": "_images/infografias/iconos/visitafamilia.png",
+          "Turismo cultural gastronomico": "_images/infografias/iconos/turismo.png",
+          "Boda o evento social": "_images/infografias/iconos/boda.png",
+          "Turismo naturaleza ecoturismo": "_images/infografias/iconos/naturaleza.png",
+          "Espiritual o religioso": "_images/infografias/iconos/religion.png"
+        },
+      "34": {
+          "Industria manufacturera": "_images/infografias/iconos/manufactura.png",
+          "Agropecuario": "_images/infografias/iconos/agropecuario.png",
+          "Minero": "_images/infografias/iconos/minero.png",
+          "Turismo": "_images/infografias/iconos/turismo.png",
+          "Comercial": "_images/infografias/iconos/comercial.png",
+          "Educación": "_images/infografias/iconos/estudios.png",
+          "Construcción": "_images/infografias/iconos/construccion.png",
+          "Servicios financieros": "_images/infografias/iconos/financiero.png",
+          "Generación de energia": "_images/infografias/iconos/generacion-de-energia.png"
+        },
+     "36": {
+            "Autobus": "_images/infografias/iconos/autobus.png",
+            "Renta de auto": "_images/infografias/iconos/rentacarro.png",
+            "Automovil particular": "_images/infografias/iconos/coche.png",
+            "Avión": "_images/infografias/iconos/avion.png",
+            "Vehículo de agencia de viajes": "_images/infografias/iconos/transporte.png",
+            "Tren Chepe": "_images/infografias/iconos/tren.png"
+          },
+      "38": {
+            "Paseos teatrales": "_images/infografias/iconos/teatro.png",
+            "Recorridos de catas y vino ": "_images/infografias/iconos/cata-de-vinos.png",
+            "Recorridos o talleres de vino o Sotol": "_images/infografias/iconos/cata-de-vinos.png",
+            "Muestras gastronomicas": "_images/infografias/iconos/gastronomico.png",
+            "Conciertos y festivales de música": "_images/infografias/iconos/concierto.png",
+            "Talleres artesanales": "_images/infografias/iconos/artesanias.png",
+            "Senderismo": "_images/infografias/iconos/senderismo.png",
+            "Espectáculo de luz y sonido": "_images/infografias/iconos/luzsonido.png",
+            "Actividades acuáticas": "_images/infografias/iconos/acuaticas.png",
+            "Experiencias temáticas": "_images/infografias/iconos/experienciatematica.png",
+            "Atracciones para niños": "_images/infografias/iconos/atraccionesniños.png"
+          },
+     "41": {
+            "Paseos teatreales": "_images/infografias/iconos/teatro.png",
+            "Muestras o talleres gastronómicos": "_images/infografias/iconos/gastronomico.png",
+            "Recorridos y catas de vino o sotol": "_images/infografias/iconos/cata-de-vinos.png",
+            "Actividades acuáticas": "_images/infografias/iconos/acuaticas.png",
+            "Conciertos y festivales de música": "_images/infografias/iconos/concierto.png",
+            "Atracciones para niños": "_images/infografias/iconos/atraccionesniños.png",
+            "Callejoneadas": "_images/infografias/iconos/callejon.png",
+            "Comida-típica": "_images/infografias/iconos/comidatipica.png",
+            "Talleres artesanales": "_images/infografias/iconos/artesanias.png",
+            "Senderismo": "_images/infografias/iconos/senderismo.png",
+            "Observacion de flora": "_images/infografias/iconos/flora.png",
+            "Observacion sideral": "_images/infografias/iconos/sideral.png",
+            "Visita a museos": "_images/infografias/iconos/sideral.png",
+            "Otros": "_images/infografias/iconos/otros.png"
+          }
+
+  }
+  

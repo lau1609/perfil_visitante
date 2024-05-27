@@ -3,10 +3,11 @@
     <head>
         <meta property="og:url" content="" >
         <meta property="og:type" content="website" >
-        <meta property="og:title" content="Verificación de Hidrocarburos" >
-        <meta property="og:description" content="Bienvenidos a Verificación de hidrocarburos, estamos a tus órdenes." >
-        <meta property="og:image" content="_images/OG.jpg" >
+        <meta property="og:title" content="Perfil del visitante" >
+        <meta property="og:description" content="Encuesta destinada a crear un perfil de nuestra visitantes de ciudad Chihuahua" >
+        <meta property="og:image" content="" >
 
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
         <script src="../node_modules/geolib/lib/index.js"></script>
         
         <?php include_once("../phpAssets/head.php"); ?>
@@ -22,7 +23,7 @@
             <img style="" src="../_images/_svg/asocHotel.svg" alt="">
             <img src="../_images/logo-st.png" alt="">
         </div>
-        
+        <!-- <div class="caja">30</div> -->
         <div class="contTit">
             <h3 class="title-conect">¡Gracias por visitar Chihuahua!</h3>
             <h3 class="title-conect sub-tit" style="font-size: 2rem;">Thank you for visiting Chihuahua!</h3>
@@ -44,7 +45,7 @@
     <div id="section2" class="cont-general" style="">
         <div  class="align-enc" >
             <div class="title-enc"> 
-                <h1>Encuesta del visitante / Visitor profile survey</h1>
+                <h1>Encuesta del visitante / Visitor survey</h1>
             </div>    
 
             <div class="cont-questions">
@@ -61,7 +62,7 @@
                                 <h3>1.- Género <span style="color:red;">*</span> <br> (Gender)</h3>
                                 <label for=""><input type="radio" id="" name="genero" value="mujer" class=""  />Mujer (Woman)</label>
                                 <label for=""><input type="radio" id="" name="genero" value="hombre"  />Hombre (Man)</label>
-                                <label for=""><input type="radio" id="" name="genero" value="None"  />Prefiero no decirlo (I prefer not to say)</label>
+                                <label for=""><input type="radio" id="" name="genero" value="None"  />Prefiero no decirlo (I'd rather not disclose)</label>
     
                                 <!-- <select name="genero" class="options required" data-id-pregunta="23">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
@@ -73,68 +74,68 @@
                             </div>
 
                             <div class="qs-general checkbox" data-id-pregunta="36">
-                                <h3>2.- ¿Qué tipo de transporte  utilizó? <span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span>  <br>(What type of transportation did you use?<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> You can check more than one option </span>)</h3>
+                                <h3>2.- ¿Qué transporte usaste para llegar? <span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span>  <br>(What type of transportation did you use to arrive?<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> Check all that apply </span>)</h3>
                                 <label for=""><input type="checkbox" name="transporte" value="Autobus" id="">Autobús (Bus)</label>
+                                <label for=""><input type="checkbox" name="transporte" value="Renta-de-auto " id="">Renta de auto (Car Rental)</label>
                                 <label for=""><input type="checkbox" name="transporte" value="Automovil-particular" id="">Automovil particular (Private car)</label>
                                 <label for=""><input type="checkbox" name="transporte" value="Avión" id="">Avión (Airplane)</label>
                                 <label for=""><input type="checkbox" name="transporte" value="Vehículo-de-agencia-de-viajes" id="">Vehículo de la agencia de viajes (Travel agency vehicle)</label>
-                                <label for=""><input type="checkbox" name="transporte" value="Tren-Chepe" id="">Tren CHEPE (CHEPE train)</label>
+                                <label for=""><input type="checkbox" name="transporte" value="Tren-Chepe" id="">Tren Chepe (Chepe train)</label>
                             </div>
                             
                             <div class="qs-general">
-                                <h3>3.- ¿Cuántos días se va a quedar en la ciudad?  <span style="color:red;">*</span><br> (How long are you staying in the region?)</h3>
+                                <h3>3.- ¿Cuántos días se quedará en la ciudad?  <span style="color:red;">*</span><br> (How long are you staying in the town?)</h3>
                                 <select name="" class="options required" data-id-pregunta="32">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="1-dia">1 día (Day)</option>
-                                    <option value="2-a-3-dias">2 a 3 días (Days)</option>
-                                    <option value="4-a-6-dias">4 a 6 días (Days)</option>
+                                    <option value="2-a-3-dias">2 - 3 días (Days)</option>
+                                    <option value="4-a-6-dias">4 - 6 días (Days)</option>
                                     <option value="7-o-mas-dias">7 o más días (Days or more)</option>
                                 </select>
                             </div>
 
                             <div class="qs-general checkbox" data-id-pregunta="33">
-                                <h3>4.- ¿Cúal es el motivo de tu viaje? <span style="color:red;">*  </span> <span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span>  <br>(What is the trip´s porpose?<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> You can check more than one option </span>)</h3>
-                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Boda-o-evento-social" id="">Boda o evento social (Wedding or social event)</label>
-                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Turismo-cultural-gastronomio" id="">Turismo cultural, rural, gastronómico, etnoturismo (Cultural, rural, gastronomic tourism, ethnotourism)</label>
-                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Turismo-naturaleza-ecoturismo" id="">Turismo de naturaleza, de aventura, ecoturismo (Nature tourism, adventure tourism, ecotourism)</label>
-                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Trabajo/estudio/negocios" id="work">Trabajo, estudio o negocios (Work, educational or business)</label>
-                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Radio/TV" id="">Evento deportivo (Sport events)</label>
+                                <h3>4.- ¿Cúal es el motivo de tu viaje? <span style="color:red;">*  </span> <span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span>  <br>(What is the trip's purpose?<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> Check all that apply </span>)</h3>
+                                <label for=""><input type="checkbox" class="clickOpDiv" name="motivo-del-viaje" value="Trabajo/negocios" id="work">Trabajo o negocios (Work or business)</label>
+                                <label for=""><input type="checkbox" class="clickOpDiv" name="motivo-del-viaje" value="Estudios" id="Estudios">Estudios (Educational)</label>
                                 <label for=""><input type="checkbox" name="motivo-del-viaje" value="Tratamiento-médico" id="">Tratamiento médico y de bienestar (Medical and wellness treatment)</label>
+                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Evento-deportivo" id="">Evento deportivo (Sport events)</label>
+                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Visita-a-familiares/-amigos" id="">Visita a familiares y amigos (Family or friends visit)</label>
+                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Turismo-cultural-gastronomico" id="">Turismo cultural, rural, gastronómico, etnoturismo (Cultural, rural, gastronomic tourism, ethnotourism)</label>
+                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Boda-o-evento-social" id="">Boda o evento social (Wedding or social event)</label>
+                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Turismo-naturaleza-ecoturismo" id="">Turismo de naturaleza, de aventura, ecoturismo (Nature tourism, adventure tourism, ecotourism)</label>
                                 <label for=""><input type="checkbox" name="motivo-del-viaje" value="Espiritual-o-religioso" id="">Espiritual o religioso (Spiritual or religious)</label>
-                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Visita-a-familiares/-amigos" id="">Visita a familiares y amigos (family or friends visit)</label>
+                                
                             </div>
 
                             <div id="contWork" class="none">
                                 <div class="qs-general">
-                                    <h3>5.- ¿Que giro económico motiva el viaje?  <span style="color:red;">*</span><br> (What economic sector motivates the trip?)</h3>
-                                    <select name="" class="options" data-id-pregunta="34">
+                                    <h3>5.- ¿Que giro económico es la razón de tu viaje?  <span style="color:red;">*</span><br> (What is the economic reason for this trip?)</h3>
+                                    <select name="" class="options giroEcon" data-id-pregunta="34">
                                         <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                         <option value="Industria-manufacturera">Industria manufacturera (Manufacturing industry)</option>
-                                        <option value="Agropecuario">Agropecuario (Agricultural)</option>
+                                        <option value="Agropecuario">Agropecuario (Agriculture)</option>
                                         <option value="Minero">Minero (Mining)</option>
                                         <option value="Turismo">Turismo (Tourism)</option>
-                                        <option value="Comercial">Comercial (commercial)</option>
+                                        <option value="Comercial">Comercial (Commercial)</option>
                                         <option value="Educación">Educación (Education)</option>
                                         <option value="Construcción">Construcción (Construction)</option>
-                                        <option value="Generación-de-energia">Generación de energía (Energy generation)</option>
+                                        <option value="Generación-de-energia">Generación de energía (Energy development)</option>
                                         <option value="Servicios-financieros">Servicios financieros (Financial services)</option>
                                     </select>
                                 </div>
 
-                                <div class="qs-general">
-                                    <h3>6.- Viáticos por día  <span style="color:red;">*</span><br> (How much were you given in per diem to spend in a day?)</h3>
-                                    <select name="" class="options" data-id-pregunta="35">
+                                <div class="qs-general none" id="contWork2">
+                                    <h3>6.- Viáticos por día  <span style="color:red;">*</span><br> (How much is your per diem?)</h3>
+                                    <select name="" class="options viaticos" data-id-pregunta="35">
                                         <option hidden="" value="">Seleciona un opción (Select an option)</option>
-                                        <option value="$500">$500 (less than $500 pesos)</option>
-                                        <option value="$501-$1.000">$501 - $1.000</option>
-                                        <option value="$1,001-$2,000">$1,001 - $2,000</option>
-                                        <option value="Mas-de-$2,001">Más de $2,001 (more than $2,001 pesos)</option>
+                                        <option value="$500">Hasta $500 pesos ($30 USD or less)</option>
+                                        <option value="$501-$1.000">$501 - $1000 pesos ($31 - $60 USD)</option>
+                                        <option value="$1,001-$2,000">$1,001 - $2,000 pesos ($61 - $120 USD)</option>
+                                        <option value="Mas-de-$2,001">$2,001 pesos o más ($121 USD or more)</option>
                                     </select>
                                 </div>
                             </div>
-
-
-                            
                             <!-- <div class="qs-general checkRadio" data-id-pregunta="23">
                                 <h3>1.- Género <span style="color:red;">*</span> <br> (Gender)</h3>
                                 <label for=""><input type="radio" id="" name="genero" value="mujer" class=""  />Mujer (Woman)</label>
@@ -176,20 +177,20 @@
                                 <h3>1.- Edad  <span style="color:red;">*</span> <br> (Age)</h3>
                                 <select name="edad" class="options required" data-id-pregunta="24">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
-                                    <option value="18-25">18 a 25</option>
-                                    <option value="26-35">26 a 35</option>
-                                    <option value="36-45">36 a 45</option>
-                                    <option value="46-55">46 a 55</option>
-                                    <option value="56-65">56 a 65</option>
+                                    <option value="18-25">18 - 25</option>
+                                    <option value="26-35">26 - 35</option>
+                                    <option value="36-45">36 - 45</option>
+                                    <option value="46-55">46 - 55</option>
+                                    <option value="56-65">56 - 65</option>
                                     <option value="56-65">66 o mas (or more)</option>
-                                    <option value="Prefiero-no-decirlo">Prefiero no decirlo (I prefer not to say)</option>
+                                    <option value="Prefiero-no-decirlo">Prefiero no decirlo (I'd rather not disclose)</option>
                                 </select>
                             </div>
 
                             <div class="qs-general checkRadio" data-id-pregunta="37">
-                                <h3>2.- ¿Realizó o va a realizar alguna actividad recreativa en este viaje? <span style="color:red;">*</span><br>(Did you do or are you going to do any recreational activities on this trip?)</h3>
-                                <label for=""><input type="radio" id="" name="MakeAct" value="Si"/>Si (yes)</label>
-                                <label for=""><input type="radio" id="" name="MakeAct" value="No"  />No</label>
+                                <h3>2.- ¿Realizó o planea realizar alguna actividad en este viaje? <span style="color:red;">*</span><br>(Did you perform or are you planning during this trip?)</h3>
+                                <label for=""><input type="radio" id="" name="MakeAct" value="Si"/>Si (Yes)</label>
+                                <label for=""><input type="radio" id="" name="MakeAct" value="No" />No</label>
                                 <!-- <select name="MakeAct" class="options required" data-id-pregunta="37">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="Si">Si (yes)</option>
@@ -214,9 +215,9 @@
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="Estudiante">Estudiante (Student)</option>
                                     <option value="Empleado">Empleado (Employee)</option>
-                                    <option value="Empresario">Empresario (Entrepreneur)</option>
+                                    <option value="Empresario">Empresario (CEO/Manager)</option>
                                     <option value="Jubilado">Jubilado (Retired)</option>
-                                    <option value="Servidor-Publico">Servidor público (Government employee)</option>
+                                    <option value="Servidor-Publico">Servidor público (Public servant)</option>
                                     <option value="Otros">Otros (Other)</option>
                                 </select>
                             </div>
@@ -228,23 +229,23 @@
                                     <option value="Primaria">Primaria (Elementary school)</option>
                                     <option value="Secundaria">Secundaria (Middle school)</option>
                                     <option value="Preparatoria">Preparatoria (High school)</option>
-                                    <option value="Carrera-técnica">Carrera técnica (Technical career)</option>
-                                    <option value="Carrera-universitaria">Carrera universitaria (Collage career)</option>
+                                    <option value="Carrera-técnica">Carrera técnica (Technical degree)</option>
+                                    <option value="Carrera-universitaria">Carrera universitaria (College degree)</option>
                                     <option value="Posgrado">Posgrado (MBA or PhD)</option>
                                 </select>
                             </div>
 
                             <div class="qs-general checkbox" data-id-pregunta="31">
-                                <h3>6.- ¿Cómo se enteró del destino? <span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span>  <br>(How did you find out about the location<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> You can check more than one option </span>)</h3>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Recomendacion" id="">Recomendación (Through word-of-mouth)</label>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Internet" id="">Internet (Internet)</label>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Medios-impresos" id="">Medios impresos (Printed media)</label>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Radio" id="">Radio (Radio)</label>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Televisión" id="">Televisión (TV)</label>
+                                <h3>6.- ¿Cómo se enteró del destino? <span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span>  <br>(How did you find out about the location<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> Check all that apply </span>)</h3>
                                 <label for=""><input type="checkbox" name="como-se-entero" value="Redes-Sociales" id="">Redes Sociales (Social media)</label>
+                                <label for=""><input type="checkbox" name="como-se-entero" value="Recomendacion" id="">Recomendación (Word of mouth)</label>
+                                <label for=""><input type="checkbox" name="como-se-entero" value="Internet" id="">Internet</label>
+                                <label for=""><input type="checkbox" name="como-se-entero" value="Visita-previa" id="">Visita previa (Previous visit)</label>
                                 <label for=""><input type="checkbox" name="como-se-entero" value="Ferias/exposiciones" id="">Ferias y exposiciones (Expos & trade shows)</label>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Visita-previa" id="">Visita previa (Already visited)</label>
                                 <label for=""><input type="checkbox" name="como-se-entero" value="Agencia-de-viajes" id="">Agencia de viajes (Travel agency)</label>
+                                <label for=""><input type="checkbox" name="como-se-entero" value="Medios-impresos" id="">Medios impresos (Printed media)</label>
+                                <label for=""><input type="checkbox" name="como-se-entero" value="Radio" id="">Radio</label>
+                                <label for=""><input type="checkbox" name="como-se-entero" value="Televisión" id="">Televisión (TV)</label>
                             </div>
 
                             
@@ -263,7 +264,7 @@
 
                             <div class="qs-general checkRadio" data-id-pregunta="25">
                                 <h3>1.- Nacionalidad <span style="color:red;">*</span> <br> (Nationality)</h3>
-                                <label for=""><input type="radio" id="" name="nacionalidad" value="Internacional"  />Internacional (International)</label>
+                                <label for=""><input type="radio" id="" name="nacionalidad" value="Internacional"  />Internacional (External)</label>
                                 <label for=""><input type="radio" id="" name="nacionalidad" value="Mexico"  />México (Mexico)</label>
 
                                 <!-- <select name="nacionalidad" id="nacionalidad" class="options required" >
@@ -274,15 +275,15 @@
                             </div>
 
                             <div class="qs-general">
-                                <h3>2.- Lugar de Residencia  <span style="color:red;">*</span> <br> (Residence)</h3>
+                                <h3>2.- Lugar de Residencia  <span style="color:red;">*</span> <br> (Place of residence)</h3>
                                 <select id="inter" name="pais" class="options required" style="display:none;" data-id-pregunta="26">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
+                                    <option value="Estados-Unidos">Estados Unidos (United States)</option>
                                     <option value="Alemania">Alemania (Germany)</option>
                                     <option value="Brasil">Brasil (Brazil)</option>
                                     <option value="Canadá">Canadá (Canada)</option>
                                     <option value="China">China (China)</option>
                                     <option value="Colombia">Colombia (Colombia)</option>
-                                    <option value="Estados-Unidos">Estados Unidos (United States)</option>
                                     <option value="Francia">Francia (France)</option>
                                     <option value="Italia">Italia (Italy)</option>
                                     <option value="Panamá">Panamá (Panama)</option>
@@ -456,12 +457,12 @@
                                     <option value="Portugal">Portugal (Portugal)</option>
                                     <option value="Qatar">Qatar (Qatar)</option>
                                     <option value="Reino-Unido">Reino Unido (United Kingdom)</option>
-                                    <option value="República-Centroafricana">República Centroafricana (Central African Republic)</option>
-                                    <option value="República-Checa">República Checa (Czech Republic)</option>
-                                    <option value="República-del-Congo">República del Congo (Congo, Republic of (Brazzaville))</option>
-                                    <option value="República-Democrática-del-Congo">República Democrática del Congo (Democratic Republic of the Congo)</option>
+                                    <option value="Rep.-Centroafricana">República Centroafricana (Central African Republic)</option>
+                                    <option value="Rep.-Checa">República Checa (Czech Republic)</option>
+                                    <option value="Rep.-del-Congo">República del Congo (Congo, Republic of (Brazzaville))</option>
+                                    <option value="Rep.-Democrática-del-Congo">República Democrática del Congo (Democratic Republic of the Congo)</option>
                                     <option value="Congo">Congo (Kinshasa)</option>
-                                    <option value="República-Dominicana">República Dominicana (Dominican Republic)</option>
+                                    <option value="Rep.-Dominicana">República Dominicana (Dominican Republic)</option>
                                     <option value="Reunión">Reunión (Réunion)</option>
                                     <option value="Ruanda">Ruanda (Rwanda)</option>
                                     <option value="Rumanía">Rumanía (Romania)</option>
@@ -471,8 +472,8 @@
                                     <option value="San-Cristóbal-y-Nieves">San Cristóbal y Nieves (Saint Kitts and Nevis)</option>
                                     <option value="San-Marino">San Marino (San Marino)</option>
                                     <option value="San-Vicente-y-las-Granadinas">San Vicente y las Granadinas (Saint Vincent and the Grenadines)</option>
-                                    <option value="Santa-Lucía">Santa Lucía (Saint Lucia)</option>
-                                    <option value="Santo-Tomé-y-Príncipe">Santo Tomé y Príncipe (Sao Tome and Principe)</option>
+                                    <option value="Sta.-Lucía">Santa Lucía (Saint Lucia)</option>
+                                    <option value="Sto-Tomé-y-Príncipe">Santo Tomé y Príncipe (Sao Tome and Principe)</option>
                                     <option value="Senegal">Senegal (Senegal)</option>
                                     <option value="Serbia">Serbia (Serbia)</option>
                                     <option value="Seychelles">Seychelles (Seychelles)</option>
@@ -516,40 +517,39 @@
                                     <option value="Zimbabwe">Zimbabwe (Zimbabwe)</option>
                                 </select>
 
-                                <select class="mexico" name="pais" class="options required" id="mexico" style="display:none;" data-id-pregunta="26">
+                                <select class="mexico" name="pais" class="options required" id="mexico" style="display:none;" data-id-pregunta="45">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="Aguascalientes">Aguascalientes</option>
-                                    <option value="Albania">Albania</option>
-                                    <option value="Baja-California">Baja California</option>
-                                    <option value="Baja-California-Sur">Baja California Sur</option>
+                                    <option value="B. C.">Baja California</option>
+                                    <option value="B. C. Sur">Baja California Sur</option>
                                     <option value="Campeche">Campeche</option>
                                     <option value="CDMX">CDMX</option>
                                     <option value="Chiapas">Chiapas</option>
                                     <option value="Chihuahua">Chihuahua</option>
-                                    <option value="Coahuila-de-Zaragoza">Coahuila de Zaragoza</option>
+                                    <option value="Coahuila">Coahuila de Zaragoza</option>
                                     <option value="Colima">Colima</option>
                                     <option value="Durango">Durango</option>
                                     <option value="Guanajuato">Guanajuato</option>
                                     <option value="Guerrero">Guerrero</option>
-                                    <option value="Estado-de-Hidalgo">Estado de Hidalgo</option>
+                                    <option value="Hidalgo">Estado de Hidalgo</option>
                                     <option value="Jalisco">Jalisco</option>
-                                    <option value="Estado-de-Mexico">Estado de México</option>
-                                    <option value="Michoacan-de-Ocampo">Michoacán de Ocampo</option>
+                                    <option value="Edo-de-Mexico">Estado de México</option>
+                                    <option value="Michoacan">Michoacán de Ocampo</option>
                                     <option value="Morelos">Morelos</option>
                                     <option value="Nayarit">Nayarit</option>
-                                    <option value="Nuevo-Leon">Nuevo León</option>
+                                    <option value="Nvo-Leon">Nuevo León</option>
                                     <option value="Oaxaca">Oaxaca</option>
                                     <option value="Puebla">Puebla</option>
                                     <option value="Queretaro">Querétaro</option>
                                     <option value="Quintana-Roo">Quintana Roo</option>
-                                    <option value="San-Luis-Potosi">San Luis Potosí</option>
+                                    <option value="SLP">San Luis Potosí</option>
                                     <option value="Sinaloa">Sinaloa</option>
                                     <option value="Sonora">Sonora</option>
                                     <option value="Tabasco">Tabasco</option>
                                     <option value="Tamaulipas">Tamaulipas</option>
                                     <option value="Tlaxcala">Tlaxcala</option>
-                                    <option value="Veracruz-de-Ignacio-de-la-Llave">Veracruz de Ignacio de la Llave</option>
-                                    <option value="Yukatan">Yukatán</option>
+                                    <option value="Veracruz">Veracruz</option>
+                                    <option value="Yukatan">Yucatán</option>
                                     <option value="Zacatecas">Zacatecas</option>
                                 </select>
                             </div>
@@ -581,15 +581,15 @@
                                     <option value="Massachusetts ">Massachusetts  (Massachusetts )</option>
                                     <option value="Michigan">Michigan (Michigan)</option>
                                     <option value="Minnesota">Minnesota (Minesota)</option>
-                                    <option value="Indiana">Misispi (Mississippi)</option>
+                                    <option value="Misispi">Misispi (Mississippi)</option>
                                     <option value="Misuri">Misuri (MISSOURI)</option>
                                     <option value="Montana">Montana (Montana)</option>
                                     <option value="Nebraska">Nebraska (Nebraska)</option>
                                     <option value="Nevada">Nevada (Nevada)</option>
-                                    <option value="Nueva-Jersey">Nueva Jersey (New jersey)</option>
-                                    <option value="Nueva-York">Nueva York (New York)</option>
-                                    <option value="Nuevo-Hampshire ">Nuevo Hampshire (New Hampshire)</option>
-                                    <option value="Nuevo-Mexico">Nuevo Mexico (New Mexico)</option>
+                                    <option value="Nva-Jersey">Nueva Jersey (New jersey)</option>
+                                    <option value="Nva-York">Nueva York (New York)</option>
+                                    <option value="Nvo-Hampshire ">Nuevo Hampshire (New Hampshire)</option>
+                                    <option value="Nvo-Mexico">Nuevo Mexico (New Mexico)</option>
                                     <option value="Ohio">Ohio (Ohio)</option>
                                     <option value="Oklahoma">Oklahoma (Oklahoma)</option>
                                     <option value="Oregon">Oregón (Oregon)</option>
@@ -609,7 +609,7 @@
 
                             <div class="qs-general" id="estMex" style="display:none">
                                 <h3>3.- Dentro de Chihuahua <span style="color:red;">*</span> <br> (Chihuahua)</h3>
-                                <select name="" class="options mex"  data-id-pregunta="44">
+                                <select name="" style="width: 100%;" class="options mex"  data-id-pregunta="44">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="Ahumada">Ahumada</option>
                                     <option value="Aldama">Aldama</option>
@@ -665,9 +665,9 @@
                                     <option value="Riva-Palacio">Riva Palacio</option>
                                     <option value="Rosales">Rosales</option>
                                     <option value="Rosario">Rosario</option>
-                                    <option value="San-Francisco-de-Borja">San Francisco de Borja</option>
-                                    <option value="San-Francisco-de-Conchos">San Francisco de Conchos</option>
-                                    <option value="San-Francisco-del-Oro">San Francisco del Oro</option>
+                                    <option value="San-Fco-de-Borja">San Francisco de Borja</option>
+                                    <option value="San-Fco-de-Conchos">San Francisco de Conchos</option>
+                                    <option value="San-Fco-del-Oro">San Francisco del Oro</option>
                                     <option value="Santa-Bárbara">Santa Bárbara</option>
                                     <option value="Satevó">Satevó</option>
                                     <option value="Saucillo">Saucillo</option>
@@ -680,18 +680,18 @@
                             </div>
 
                             <div class="qs-general checkbox" data-id-pregunta="41">
-                                <h3>4.- ¿Qué otras actividades le hubiese gustado encontrar? <span style="color:red;">*  </span>  <span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span> <br>(What other activities would you have liked to experience?<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> You can check more than one option </span>)</h3>
+                                <h3>4.- ¿Qué otras actividades le hubiese gustado encontrar? <span style="color:red;">*  </span>  <span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span> <br>(What other activities would you have liked to experience?<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> Check all that apply </span>)</h3>
                                 <label for=""><input type="checkbox" name="add-actividades" value="Paseos-teatreales" id="">Paseos teatreales (Theatrical tours)</label>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Paseos-teatreales" id="">Muestras o talleres gastronómicos (Gastronomic samples or workshops)</label>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Recorridos-y-catas-de-vino-o-sotol" id="">Recorridos y catas de vino o sotol (Tasting and wine tours)</label>
+                                <label for=""><input type="checkbox" name="add-actividades" value="Muestras-o-talleres-gastronómicos" id="">Muestras o talleres gastronómicos (Workshops or gastronomic tasting )</label>
+                                <label for=""><input type="checkbox" name="add-actividades" value="Recorridos-y-catas-de-vino-o-sotol" id="">Recorridos y catas de vino o sotol (Wine tasting & tours)</label>
                                 <label for=""><input type="checkbox" name="actividades" value="Actividades-acuáticas" id="">Actividades acuáticas (Water activities)</label>
-                                <label for=""><input type="checkbox" name="actividades" value="Experiencias-temáticas" id="">Experiencias temáticas (Thematic experiences)</label>
+                                <!-- <label for=""><input type="checkbox" name="actividades" value="Experiencias-temáticas" id="">Experiencias temáticas (Thematic experiences)</label> -->
                                 <label for=""><input type="checkbox" name="add-actividades" value="Conciertos-y-festivales-de-música" id="">Conciertos y festivales de música (Concerts & musical festivals)</label>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Paseo-en-vehículo" id="">Atracciones para niños (Childen´s attractions)</label>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Visita-a-museos" id="">Visita a museos (Visit to museums)</label>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Visita-a-museos" id="">Callejoneadas (Roll alleys)</label>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Visita-a-museos" id="">Comida típica chihuahuense (Regional chihuahua food)</label>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Visita-a-museos" id="">Senderismo (Hiking)</label>
+                                <label for=""><input type="checkbox" name="add-actividades" value="Atracciones-para-niños" id="">Atracciones para niños (Children's attractions)</label>
+                                <label for=""><input type="checkbox" name="add-actividades" value="Callejoneadas" id="">Callejoneadas (Street parties)</label>
+                                <label for=""><input type="checkbox" name="add-actividades" value="Comida-típica" id="">Comida típica chihuahuense (Chihuahua's regional food)</label>
+                                <label for=""><input type="checkbox" name="add-actividades" value="Senderismo" id="">Senderismo (Hiking)</label>
+                                <label for=""><input type="checkbox" name="add-actividades" value="Otros" id="">Otros (Other)</label>
                                 <!-- <label for=""><input type="checkbox" name="add-actividades" value="Otros" id="">Otros <input class="other" type="text" name="" id=""></label> -->
                             </div>
                             
@@ -700,8 +700,8 @@
                                 <h3>5.- ¿Con cuántas personas viaja?  <span style="color:red;">*</span> <br>(How many people are you traveling with?)</h3>
                                 <label for=""><input type="radio" id="" name="cantPerson" value="Ninguna"/>Ninguna (None)</label>
                                 <label for=""><input type="radio" id="" name="cantPerson" value="1-persona"/>1 persona (Person)</label>
-                                <label for=""><input type="radio" id="" name="cantPerson" value="2-a-3-personas"/>2 a 3 personas (2-3 person)</label>
-                                <label for=""><input type="radio" id="" name="cantPerson" value="3-a-4 personas"/>3 a 4 personas (3-4 person)</label>
+                                <label for=""><input type="radio" id="" name="cantPerson" value="2-a-3-personas"/>2 - 3 personas (2 - 3 persons)</label>
+                                <label for=""><input type="radio" id="" name="cantPerson" value="3-a-4 personas"/>3 - 4 personas (3 - 4 persons)</label>
                                 <label for=""><input type="radio" id="" name="cantPerson" value="4-o-mas"/>4 o mas (4 or more)</label>
                                 <!-- <select name="" class="options required" data-id-pregunta="30">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
@@ -713,12 +713,13 @@
 
                             <div class="qs-general" style="display:none" id="whyPersonVis">
                                 <h3>6.- ¿Quiénes conforman el grupo de viaje? <span style="color:red;">*</span><br> (Who makes up the travel group?) </h3>
-                                <select name="" class="options" id="selPerson" data-id-pregunta="28">
+                                <select name=""  style="width: 100%;" class="options" id="selPerson" data-id-pregunta="28">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
-                                    <option value="Auto-empleado">Pareja (Spouse/partner)</option>
+                                    <option value="Pareja">Pareja (Spouse/couple)</option>
                                     <option value="Amigos-o-parientes">Amigos o parientes (Friends or relatives)</option>
-                                    <option value="Colegas-de-trabajo">Colegas de trabajo (Coworkers)</option>
+                                    <option value="Colegas-de-trabajo">Colegas de trabajo (Co-workers)</option>
                                     <option value="Familia">Familia (Family)</option>
+                                    <option value="Tour-de-viaje">Tour de viaje (Travel tour)</option>
                                 </select>
                             </div>
 
@@ -756,9 +757,22 @@
 
         <div class="cont-pop none">
             <div class="ali-pop">
-                <h3>¡Gracias por contestar nuestra encuesta!</h3>
-                <h3 style="font-size: 1.7rem;margin-bottom: 8vh;">¡Thank you for responding to our survey!</h3>
-                <p id="newEnc">Nueva encuesta / New survey</p>
+                <h3 class="ind">¡Gracias por contestar nuestra encuesta!</h3>
+                <h3 class="ind engPop" style="font-size: 1.7rem;margin-bottom: 8vh;">¡Thank you for answering the survey!</h3>
+                <p class="ind" id="newEnc">Nueva encuesta / New survey</p>
+                <p class="ind" id="openQR">Obtener entrada a museo / Get museum ticket</p>
+                <span class="ind" style="font-family: 'PublicSans Italic Extra Light';
+                    color: white;
+                    font-size: 1rem;
+                    margin-bottom: 15px;
+                    font-weight: 600;
+                    background: rgb(206, 15, 105, .5);
+                    text-align:center;
+                    padding: 2px 20px;
+                    margin-top: 20px;
+                    letter-spacing: 1.4px;">Esta ventana se recargara en 30 seg. / <br> This window will reload in 30 sec. </span>
+
+                <div class="caja ind">30</div>
             </div>
         </div>
         
@@ -779,16 +793,17 @@
                 // Verificar el valor del input radio seleccionado
                 if (this.value === "Si") {
                     $(yesWhat).html('');
-                    $(yesWhat).html('<h3>3.- ¿Qué actividades realizó o realizará en este viaje? <span style="color:red;">*  </span>  <span style="font-family: "PublicSans Italic Extra Light"; color: #545859;">Se puede marcar mas de una opción </span> <br>(What activities did you do or will you do on this trip?<span style="color:red;">*  </span><span style="font-family: "PublicSans Italic Extra Light"; color: #545859;"> You can check more than one option </span>)</h3>'+
+                    $(yesWhat).html('<h3>3.- ¿Qué actividades realizó o realizará en este viaje?  <span style="color:red;">*  </span>  <span style="font-family: PublicSans Italic Extra Light; color: #545859;">Se puede marcar mas de una opción </span> <br>(What activities did you do or will you do on this trip?<span style="color:red;">*  </span><span style="font-family: PublicSans Italic Extra Light; color: #545859;"> Check all that apply </span>)</h3>'+
                                     '<label for=""><input type="checkbox" name="actividades" value="Paseos-teatrales" id="">Paseos teatreales (Theatrical tours)</label>'+
-                                    '<label for=""><input type="checkbox" name="actividades" value="Recorridos-de-catas-y-vino " id="">Recorridos de catas y vino  (Tasting and wine tours)</label>'+
-                                    '<label for=""><input type="checkbox" name="actividades" value="Muestras-gastronomicas" id="">Muestras o talleres gastronómicos (Gastronomic samples or workshops)</label>'+
+                                    '<label for=""><input type="checkbox" name="actividades" value="Recorridos-de-catas-y-vino " id="">Recorridos de catas y vino  (Wine tasting & tours)</label>'+
+                                    '<label for=""><input type="checkbox" name="actividades" value="Muestras-gastronomicas" id="">Muestras o talleres gastronómicos (Workshops or gastronomic tasting)</label>'+
                                     '<label for=""><input type="checkbox" name="actividades" value="Conciertos-y-festivales-de-música" id="">Conciertos y festivales de música (Concert and music festivals)</label>'+
                                     '<label for=""><input type="checkbox" name="actividades" value="Talleres-artesanales" id="">Talleres artesanales (Craft workshops)</label>'+
-                                    '<label for=""><input type="checkbox" name="actividades" value="Espectáculo-de-luz-y-sonido" id="">Espectáculo de luz y sonido (Sound and lighting shows)</label>'+
+                                    '<label for=""><input type="checkbox" name="actividades" value="Espectáculo-de-luz-y-sonido" id="">Espectáculo de luz y sonido (Lighting and sound shows)</label>'+
                                     '<label for=""><input type="checkbox" name="actividades" value="Actividades-acuáticas" id="">Actividades acuáticas (Water activities)</label>'+
                                     '<label for=""><input type="checkbox" name="actividades" value="Experiencias-temáticas" id="">Experiencias temáticas (Thematic experiences)</label>'+
-                                    '<label for=""><input type="checkbox" name="actividades" value="Atracciones-para-niños" id="">Atracciones para niños (Children´s attractions)</label>');
+                                    '<label for=""><input type="checkbox" name="actividades" value="Atracciones-para-niños" id="">Atracciones para niños (Children\'s attractions)</label>'+
+                                    '<label for=""><input type="checkbox" name="actividades" value="Senderismo" id="">Senderismo (Hiking)</label>');
                     yesWhat.setAttribute('data-id-pregunta', '38');
                     $(yesWhat).addClass('checkbox');
                     $(yesWhat).removeClass('required');
@@ -799,8 +814,8 @@
                                     '<select name="" class="options required" data-id-pregunta="39">'+
                                         '<option hidden="" value="">Seleciona un opcion (Select an option)</option>'+
                                         '<option value="Falta-de-tiempo">Por falta de tiempo (Lack of time)</option>'+
-                                        '<option value="No-me-interesa">No me interesa (I´m not interested on it)</option>'+
-                                        '<option value="No-encontré-nada">No encontré nada (I didn´t find anything to do)</option>'+
+                                        '<option value="No-me-interesa">No me interesa (I am not interested on it)</option>'+
+                                        '<option value="No-encontré-nada">No encontré nada (I did not find anything to do)</option>'+
                                     '</select>');
                     yesWhat.setAttribute('data-id-pregunta', '39');
                 }

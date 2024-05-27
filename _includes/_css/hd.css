@@ -66,6 +66,10 @@ body{
   display: none !important;
 }
 
+.ind{
+  z-index: 2;
+}
+
 #section1{
     width: 100%;
     display: flex;
@@ -317,12 +321,25 @@ body{
   justify-content: center;
   align-items: center;
   height: 60%;
-  background-color: white;
+  background-image: url('../../_images/catedral.jpg');
+  background-size: cover; /* Ajusta el tamaño de la imagen para que cubra todo el div */
+  position: relative; /* Necesario para el posicionamiento del pseudo-elemento */
   border-radius: 8px;
-  padding: 15vh 0;
-  margin: 24vh 0;
+  padding: 10vh 0;
+  margin: 6vh 0;
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 2);
   flex-direction: column;
+}
+
+.ali-pop::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 78, 120, 0.8); /* Ajusta la opacidad del color blanco */
+  z-index: 1; /* Asegúrate de que el color blanco esté por encima de la imagen de fondo */
 }
 
 .cont-pop{
@@ -337,7 +354,7 @@ body{
   font-family: 'PublicSans Bold';
   font-size: 2.5rem;
   text-align: center;
-  color: #6c8454;
+  color: white;
   margin: 0;
 }
 
@@ -346,7 +363,8 @@ body{
   text-decoration: underline;
   font-size: 1rem;
   cursor: pointer;
-  color: #545859;
+  color: white;
+  text-align: center;
 }
 
 #divCreGraph{
@@ -445,4 +463,231 @@ tr.titTabSent {
 }
 .pregTabSent{
   width: 40%;
+}
+
+
+/* ------------------  cronometro de reversa ---------------------------  */
+
+.caja {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.caja {
+  font-family: 'PublicSans Medium';
+  background-color: rgb(206, 15, 105, 50%);
+  color: white;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  padding: 10px 20px;
+}
+
+#openQR {
+  animation: blink 1.3s linear infinite;
+}
+@keyframes blink{
+0%{transform: scale(1.03);}
+50%{transform: scale(1.05);}
+100%{transform: scale(1.07);}
+}
+
+/* ------------------------ Generar infografias ------------------------------- */
+.inpInfo:checked ~ .imageInfo{
+  border: 1px solid rgb(0, 45, 114, .7);
+}
+.contInfografia {
+  display: flex;
+  /* background-image: url('../../_images/chih.jpg') !important; */
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  flex-direction: column;
+}
+.contInfografia::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(207, 220, 240, 0.9);
+  z-index: 1;
+}
+.contImagePlant img {
+  display: block; /* Elimina el espacio en línea que puede causar problemas de diseño */
+  transition: transform 0.2s; /* Mueve la transición aquí para que se aplique siempre */
+}
+.contImagePlant img:hover {
+  transform: scale(1.4);
+}
+
+.aliInfografia h1 {
+  font-family: 'PublicSans Bold';
+  font-size: 1.7rem;
+  color: rgb(0, 45, 114, .8);
+}
+#labelInfografia{
+  display: inline-block; 
+  overflow: visible; 
+  position: relative; 
+}
+.contImagePlant{
+  width: auto;
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px 16px;
+  background-color: rgb(255, 255, 255, .5);
+  border-radius: 5px;
+  border: 1px solid rgb(0, 45, 114, .3);
+  /* display: inline-block;  */
+  /* overflow: visible; 
+  position: relative;  */
+}
+.contImagePlant label {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  /* height: 300px; */
+  align-items: center;
+}
+
+.contImagePlant img{
+  box-shadow: 1px 0px 5px rgb(0, 0, 0, 50%);
+  width: 90%;
+}
+
+.aliInfografia {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 7vh;
+  position: relative;
+  z-index: 2;
+}
+.timeInfo{
+  display: flex;
+  justify-content: center;
+}
+.timeInfo {
+  display: flex;
+  justify-content: start;
+  margin-top: 4vh;
+}
+.timeInfo h3{
+  margin: 0;
+  font-family: 'PublicSans SemiBold';
+  color: rgb(0, 45, 114, .8);
+  margin-right: 8px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+ color: rgb(0, 45, 114, .7);
+}
+.timeInfo input{
+  border-style: none;
+  background: rgb(255, 255, 255, .5);
+  color: rgb(0, 45, 114, .7);
+}
+.contButInfo{
+  width: 100%;
+  justify-content: end;
+  display: flex;
+  margin-top: 20px;
+}
+button.genInfografia {
+  border-style: none;
+  padding: 7px 16px;
+  font-size: 1rem;
+  border: 1px solid rgb(0, 45, 114, .4);
+  color: rgb(0, 45, 114, .8);
+  border-radius: 5px;
+}
+button.genInfografia:hover {
+  background: rgb(0, 45, 114, .4);
+  color: white;
+  border: white;
+  transition: .3s;
+}
+
+button#genInfog {
+  padding: 8px 10px;
+  background: rgb(0, 45, 114, .4);
+  color: white;
+  border-radius: 5px;
+}
+
+.contCloseInfo{
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-top: -5vh;
+  cursor: pointer;
+}
+
+.contCloseInfo img{
+  width: 5vh;
+  margin-right: 5vh;
+}
+/* ------ CARGANDO DE INFOGRAFIAS ------- */
+.line {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  background-color: rgb(0, 45, 114, .8);
+}
+
+.load-wrapp:last-child {
+  margin-right: 0;
+}
+
+.load-wrapp {
+  float: left;
+    padding: 20px 20px 20px;
+    border-radius: 5px;
+    padding: 7px 16px 18px;
+    border: 1px solid rgb(0, 45, 114, .4);
+    color: rgb(0, 45, 114, .8);
+    border-radius: 5px;
+}
+.load-3{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.load-3 p{
+  font-family: 'PublicSans Italic Extra Light';
+  font-weight: 1000;
+}
+
+.load-3 .line:nth-last-child(1) {
+  animation: loadingC 0.6s 0.1s linear infinite;
+}
+.load-3 .line:nth-last-child(2) {
+  animation: loadingC 0.6s 0.2s linear infinite;
+}
+.load-3 .line:nth-last-child(3) {
+  animation: loadingC 0.6s 0.3s linear infinite;
+}
+
+
+@keyframes loadingC {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 15px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }

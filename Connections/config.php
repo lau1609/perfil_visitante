@@ -10,7 +10,7 @@ $database_connectMySql = "perfil_visitante";
 $username_connectMySql = "admin";
 $password_connectMySql = "2bw5y0gd";
 else:
-$database_connectMySql = "if0_34488716_perfil_visitante";
+$database_connectMySql = "u960560109_perfil_visitan";
 $username_connectMySql = "if0_34488716";
 $password_connectMySql = "2bw5y0gd";
 endif;

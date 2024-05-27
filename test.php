@@ -1,0 +1,51 @@
+html:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Infografías</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+  <h1>Generador de Infografías</h1>
+  <button onclick="generarInfografia()">Generar Infografía</button>
+  <br>
+  <img id="infografia" src="_images/infografias/infografia.jpg" alt="Plantilla de Infografía" style="display:none;">
+</body>
+</html>
+
+
+<script>
+
+
+function generarInfografia() {
+  // Cargar la imagen de la plantilla
+  var infografia = document.getElementById('infografia');
+
+  // Crear un elemento canvas del mismo tamaño que la imagen
+  var canvas = document.createElement('canvas');
+  canvas.width = infografia.width;
+  canvas.height = infografia.height;
+  var ctx = canvas.getContext('2d');
+
+  // Dibujar la imagen en el canvas
+  ctx.drawImage(infografia, 0, 0);
+
+  // Reemplazar los marcadores de posición con los datos estadísticos
+  ctx.font = '70px Arial'; // Establecer el tamaño y la fuente del texto
+  ctx.fillStyle = 'red'; // Establecer el color del texto
+  ctx.fillText('Dato estadístico 1', 100, 100); // Posición del primer marcador de posición
+  ctx.fillText('Dato estadístico 2', 100, 150); // Posición del segundo marcador de posición
+
+  // Convertir el canvas en una imagen
+  var imagenInfografia = canvas.toDataURL('image/jpeg');
+
+  // Crear un enlace para descargar la imagen
+  var enlaceDescarga = document.createElement('a');
+  enlaceDescarga.href = imagenInfografia;
+  enlaceDescarga.download = 'infografia.jpg';
+  enlaceDescarga.click();
+}
+</script>
