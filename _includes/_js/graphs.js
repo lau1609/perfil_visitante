@@ -452,7 +452,7 @@ $(document).ready(function() {
 				title: {
 					display: true,
 					text: datos[0]['preg_name'],
-					color: 'Black' // Cambiar el color del título a rojo
+					color: 'Black' 
 				}
 			 }
 			}
@@ -596,7 +596,7 @@ $(document).ready(function() {
 				title: {
 					display: true,
 					text: datos[0]['preg_name'],
-					color: 'Black' // Cambiar el color del título a rojo
+					color: 'Black' 
 				}
 			}
 		  }
@@ -646,7 +646,7 @@ $(document).ready(function() {
 					title: {
 						display: true,
 						text: datos[0]['preg_name'],
-						color: 'Black' // Cambiar el color del título a rojo
+						color: 'Black' 
 					}
 				}
 			}
@@ -696,7 +696,7 @@ $(document).ready(function() {
 					title: {
 						display: true,
 						text: datos[0]['preg_name'],
-						color: 'Black' // Cambiar el color del título a rojo
+						color: 'Black'
 					}
 				}
 			}
@@ -709,7 +709,6 @@ $(document).ready(function() {
 		if (!filename) filename = 'excel_data.xls';
 		let dataType = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 	
-		// Origen de los datos
 		let tableSelect = document.getElementById(tableID);
 		let tableHTML = tableSelect.outerHTML;
 	
@@ -717,13 +716,11 @@ $(document).ready(function() {
 		let header = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="UTF-8"></head><body>';
 		let footer = '</body></html>';
 	
-		// Combinar encabezado, contenido de la tabla y pie de página
 		let html = header + tableHTML + footer;
 	
-		// Crea el archivo descargable
+		// archivo descargable
 		let blob = new Blob([html], { type: dataType });
 	
-		// Crea un enlace de descarga en el navegador
 		if (window.navigator && window.navigator.msSaveOrOpenBlob) { // Descargar para IExplorer
 			window.navigator.msSaveOrOpenBlob(blob, filename);
 		} else { // Descargar para Chrome, Firefox, etc.
@@ -752,10 +749,8 @@ $(document).ready(function() {
 		let dataset= Array();
 		let palabrasUnicas = Array();
 	
-		// Frases clave que indican sentimientos positivos
 		const frasesPositivas = ['feliz','bonito', 'divertirte', 'amables','amabilidad', 'alegre', 'bien', 'positivo','positiva', 'bueno', 'encantador','encantadora','encantadores','encantadoras','recomendado', 'recomendadídisimo', 'recomendadidisimo', 'recomendable', 'satisfactorio', 'padrisimo', 'padrísimo', 'satisfecho', 'satisfecha', 'satisfechos', 'satisfechas', 'maravilloso','maravillosa','maravillosos','maravillosas', 'excelente', 'increíble', 'increible', 'agradable', 'divertido','divertida','divertidos','divertidas', 'genial', 'fantástico', 'fantastico', 'fantástica', 'fantastica', 'fantásticos', 'fantasticos', 'fantásticas', 'fantasticas','perfecto','perfecta','perfectas','perfectos', 'extraordinario', 'único', 'unico', 'hermoso', 'estupendo', 'fabuloso', 'bien organizado', 'me gusta', 'buen servicio','recomiendo este lugar'];
-	
-		// Frases clave que indican sentimientos negativos
+
 		const frasesNegativas = ['triste', 'no funciona','mejorar', 'frustar', 'desilusionado', 'desiluciono', 'desiluciona', 'desilucionarse', 'frustrante', 'sucia', 'sucios', 'sucio', 'sucias', 'insatisfecho', 'enojado', 'mal', 'malo', 'mala', 'horrible', 'negativo', 'terrible', 'caducado', 'caducados', 'decepcionante', 'desagradable', 'pesima', 'aburrido', 'estresante', 'frustrante', 'malísimo', 'malísimo', 'caro', 'caros', 'carisímo', 'carisímos', 'carisimo', 'carisimos', 'carisima', 'carisimas', 'carísima', 'carísimas', 'lamentable', 'pésimo', 'pesimo', 'desastroso', 'desastrosa', 'robo', 'grosero', 'groseros', 'grosera', 'groseras', 'mala organización', 'no funciona', 'no me gusta', 'decepcionante experiencia', 'terrible servicio', 'mejorar la hospitalidad',];
 	
 		$('#sentimentTable').append('<tr class="titTabSent"><td class="pregTabSent">Comentario'+
@@ -766,7 +761,6 @@ $(document).ready(function() {
 			let texto = datos[i]['name']
 			texto = texto.toLowerCase();
 	
-			// Verificar frases clave para determinar el sentimiento
 			let positivas = 0;
 			let negativas = 0;
 	
@@ -881,10 +875,10 @@ $(document).ready(function() {
 
             
 			if (inicioDate.getFullYear() === finDate.getFullYear() && inicioDate.getMonth() === finDate.getMonth()) {
-				// Mismo mes
+				// mismo mes
 				resultado = monthNames[inicioDate.getMonth()];
 			} else {
-				// Rango de meses
+				// rango de meses
 				const inicioMes = monthNames[inicioDate.getMonth()];
 				const finMes = monthNames[finDate.getMonth()];
 				if (inicioDate.getDate() === 1 && finDate.getDate() === new Date(finDate.getFullYear(), finDate.getMonth() + 1, 0).getDate()) {
@@ -895,7 +889,6 @@ $(document).ready(function() {
 			}
 
             // console.log(resultado);
-            // Aquí puedes definir la variable y usar el valor de 'resultado' como necesites
         
 		
 
@@ -907,7 +900,7 @@ $(document).ready(function() {
 			let infografia;
 			if (infografiaInp) {
 				infografia = infografiaInp.nextElementSibling;
-				// console.log(infografia); // Aquí puedes hacer lo que necesites con la URL de la imagen seleccionada
+				// console.log(infografia); 
 			}
 			let textInfografia = infografiaInp.value;
 			// console.log(textInfografia);
@@ -1018,9 +1011,8 @@ $(document).ready(function() {
 		canvas.height = infografia.naturalHeight;
 		
 
-		// Ajusta el ancho máximo y la altura de la línea según sea necesario
-		let maxWidth = 600; // Ajusta este valor según sea necesario
-		let lineHeight = 100; // Ajusta este valor según sea necesario
+		let maxWidth = 600;
+		let lineHeight = 100; 
 		let y1;let y2; let y3;
 		var ctx = canvas.getContext('2d');
 		ctx.drawImage(infografia, 0, 0);
@@ -1033,7 +1025,7 @@ $(document).ready(function() {
 		// 	ctx.font = 'bold 110px Arial black';
 		// 	ctx.fillText('porcentaje %', 300, 1200);
 		// 	var imagenInfografia = canvas.toDataURL('image/jpg');
-		// 	//Crear un enlace para descargar la imagen
+		// 	//enlace para descargar la imagen
 		// 	console.log(imagenInfografia);
 		// 	var enlaceDescarga = document.createElement('a');
 		// 	enlaceDescarga.href = imagenInfografia;
@@ -1060,21 +1052,21 @@ $(document).ready(function() {
 				ctx.font = 'bold 110px Arial black';
 				//ctx.textAlign = 'center';
 				ctx.fillText(parseFloat(respuestas[idRespuesta][0]['porcentaje'].toFixed(0))+'%', 300, 1200);
-				ctx.font = '85px Arial'; // Establecer el tamaño y la fuente del texto
-				ctx.fillStyle = 'black'; // Establecer el color del texto
+				ctx.font = '85px Arial'; 
+				ctx.fillStyle = 'black'; 
 				ctx.fillText(capitalizeFirstLetter(respuestas[idRespuesta][0]['respuesta'])+' de ', 280, 1300); // Posición del primer marcador de posición
 				ctx.fillText(respuestas[24][0]['respuesta'].replace(/ /g, " a ") + ' años', 220, 1400); 
 				// ------------ EN QUE TRABAJA -------------
 				ctx.font = 'bold 110px Arial';
 				ctx.fillText(parseFloat(respuestas[29][0]['porcentaje'].toFixed(0))+'%', 950, 1200);
-				ctx.font = '85px Arial'; // Establecer el tamaño y la fuente del texto
-				ctx.fillStyle = 'black'; // Establecer el color del texto
+				ctx.font = '85px Arial';
+				ctx.fillStyle = 'black'; 
 				ctx.fillText(capitalizeFirstLetter(respuestas[29][0]['respuesta']), 870, 1300);
 				// ---------------- NIVEL DE ESTUDIOS -------------------
 				ctx.font = 'bold 110px Arial';
 				ctx.fillText(parseFloat(respuestas[27][0]['porcentaje'].toFixed(0))+'%', 1600, 1200);
-				ctx.font = '85px Arial'; // Establecer el tamaño y la fuente del texto
-				ctx.fillStyle = 'black'; // Establecer el color del texto
+				ctx.font = '85px Arial'; 
+				ctx.fillStyle = 'black'; 
 				ctx.fillText(capitalizeFirstLetter(respuestas[27][0]['respuesta']), 1500, 1300);
 
 			
@@ -1135,7 +1127,7 @@ $(document).ready(function() {
 						for (let i = 0; i < respuestas[26].length; i++) {
 							ctx.font = '70px Arial'; 
 							ctx.fillStyle = 'black'; 
-							ctx.fillText(capitalizeFirstLetter(respuestas[26][i]['respuesta']), iniciox, inicioy); // Posición del primer marcador de posición
+							ctx.fillText(capitalizeFirstLetter(respuestas[26][i]['respuesta']), iniciox, inicioy);
 							ctx.font = 'bold 80px Arial';
 							ctx.fillText(parseFloat(respuestas[26][i]['porcentaje'].toFixed(0))+'%', iniporx, inipory); 
 							inicioy = inicioy + 100;
@@ -1150,7 +1142,7 @@ $(document).ready(function() {
 						for (let i = 0; i < respuestas[45].length; i++) {
 							ctx.font = '70px Arial'; 
 							ctx.fillStyle = 'black'; 
-							ctx.fillText(capitalizeFirstLetter(respuestas[45][i]['respuesta']), iniciox, inicioy); // Posición del primer marcador de posición
+							ctx.fillText(capitalizeFirstLetter(respuestas[45][i]['respuesta']), iniciox, inicioy);
 							ctx.font = 'bold 80px Arial';
 							ctx.fillText(parseFloat(respuestas[45][i]['porcentaje'].toFixed(0))+'%', iniporx, inipory); 
 							inicioy = inicioy + 100;
@@ -1160,9 +1152,9 @@ $(document).ready(function() {
 					break;
 				case 28:
 					// ------------- CON QUIENES VIAJA ------------------
-					ctx.font = '85px Arial'; // Establecer el tamaño y la fuente del texto
-					ctx.fillStyle = 'black'; // Establecer el color del texto
-					ctx.fillText(capitalizeFirstLetter(respuestas[idRespuesta][0]['respuesta']), 1250, 3050); // Posición del primer marcador de posición
+					ctx.font = '85px Arial'; 
+					ctx.fillStyle = 'black';
+					ctx.fillText(capitalizeFirstLetter(respuestas[idRespuesta][0]['respuesta']), 1250, 3050); 
 					ctx.font = 'bold 110px Arial';
 					ctx.fillText(parseFloat(respuestas[idRespuesta][0]['porcentaje'].toFixed(0))+'%', 1500, 3180);
 					urlsIconos.push(respuestas[idRespuesta][0]['icons']);
@@ -1172,9 +1164,9 @@ $(document).ready(function() {
 					// ---------------- N° DE PERSONAS ---------------------
 					ctx.font = 'bold 110px Arial';
 					ctx.fillText(parseFloat(respuestas[idRespuesta][0]['porcentaje'].toFixed(0))+'%', 400, 3100);
-					ctx.font = '85px Arial'; // Establecer el tamaño y la fuente del texto
-					ctx.fillStyle = 'black'; // Establecer el color del texto
-					ctx.fillText(capitalizeFirstLetter(respuestas[idRespuesta][0]['respuesta']), 300, 3200); // Posición del primer marcador de posición
+					ctx.font = '85px Arial'; 
+					ctx.fillStyle = 'black'; 
+					ctx.fillText(capitalizeFirstLetter(respuestas[idRespuesta][0]['respuesta']), 300, 3200);
 					urlsIconos.push(respuestas[idRespuesta][0]['icons']);
 				    coordenadasIconos.push({ x: 350, y: 3250, w: 280, h: 280 });
 					break;
@@ -1219,16 +1211,15 @@ $(document).ready(function() {
 						respuestasArray.forEach((respuesta, index) => {
 								if (contador <= 3) {
 									// console.log(contador);
-									let xPos = 2500 + (index * 550); // Ajusta la posición x según el índice
-								// Si es el elemento con "1 dia", lo dibujamos en el centro
+									let xPos = 2500 + (index * 550);
+								
 								if (respuesta.respuesta === "1 dia") {
 									ctx.fillText(respuesta.respuesta, 3050, 1150); // Posición del centro
 								} else {
-									// Calcula la posición dependiendo del índice y la posición de "1 dia"
 									if (index < indice1Dia) {
-										ctx.fillText(respuesta.respuesta, 2500 + (index * 550), 1150); // Antes del centro
+										ctx.fillText(respuesta.respuesta, 2500 + (index * 550), 1150); // antes del centro
 									} else {
-										ctx.fillText(respuesta.respuesta, 3050 + ((index - 1) * 400), 1150); // Después del centro
+										ctx.fillText(respuesta.respuesta, 3050 + ((index - 1) * 400), 1150); // después del centro
 									}
 								}
 								contador ++;
@@ -1385,9 +1376,9 @@ $(document).ready(function() {
 
 				case 37:
 					// ---------------- REALIZO O REALIZARA ALGUNA ACTIVIDAD ---------------------
-					ctx.font = '85px Arial'; // Establecer el tamaño y la fuente del texto
-					ctx.fillStyle = 'black'; // Establecer el color del texto
-					ctx.fillText(capitalizeFirstLetter(respuestas[idRespuesta][0]['respuesta']), 4850, 2550); // Posición del primer marcador de posición
+					ctx.font = '85px Arial'; 
+					ctx.fillStyle = 'black'; 
+					ctx.fillText(capitalizeFirstLetter(respuestas[idRespuesta][0]['respuesta']), 4850, 2550); 
 					ctx.fillText(capitalizeFirstLetter(respuestas[idRespuesta][1]['respuesta']), 5300, 2550); 
 					ctx.font = 'bold 110px Arial';
 					ctx.fillText(parseFloat(respuestas[idRespuesta][0]['porcentaje'].toFixed(0))+'%', 4800, 2700);
@@ -1498,7 +1489,7 @@ $(document).ready(function() {
 
 		let iconosCargados = 0;
 
-		// Función para dibujar un icono en el canvas
+		// dibujar un icono en el canvas
 		function dibujarIcono(icono, coordenadas) {
 			// console.log(icono, coordenadas);
 			console.log('el drawimage');
@@ -1520,7 +1511,7 @@ $(document).ready(function() {
 				icono.onerror = function() {
 					console.log(`No se pudo cargar el icono: ${icono.src}. Cargando icono por defecto.`);
 					
-					// Cargar y dibujar el icono por defecto
+					// cargar y dibujar el icono 
 					const iconoFallback = new Image();
 					iconoFallback.src = iconoDefault;
 					iconoFallback.onload = function() {
@@ -1548,11 +1539,11 @@ $(document).ready(function() {
 
 		
 		
-		// Llama a la función para cargar los iconos
+	
 		
 		//ctx.drawImage(icono, 1222, 1164.91); 
 // 		icono.onload = function() {
-// 			// Dibujar el icono en el canvas después de que se haya cargado
+// 			// dibujar el icono en el canvas después de que se haya cargado
 // 			ctx.drawImage(icono, 250, 790, 250, 250); // Cambia las coordenadas según sea necesario
 // 			console.log('entro al onload');
 // 			var imagenInfografia = canvas.toDataURL('image/jpg');
@@ -1573,7 +1564,6 @@ $(document).ready(function() {
 		// canvas.height = infografia.naturalHeight;
 		// var ctx = canvas.getContext('2d');
 		// ctx.drawImage(infografia, 0, 0);
-		// // Reemplazar los marcadores de posición con los datos estadísticos
 		// ctx.font = '30px Arial'; // Establecer el tamaño y la fuente del texto
 		// ctx.fillStyle = 'red'; // Establecer el color del texto
 		// ctx.fillText('Dato estadístico 1', 121, 421); // Posición del primer marcador de posición
@@ -1611,26 +1601,23 @@ $(document).ready(function() {
 					return;
 				}
 				const idPregunta = respuesta[0].id_preg;
-				const conteoRespuestasPregunta = {}; // Usamos un objeto para llevar el recuento de cada respuesta
+				const conteoRespuestasPregunta = {}; 
 				respuesta.forEach(resp => {
 					const nombreRespuesta = resp.name;
 					if (!conteoRespuestasPregunta[nombreRespuesta]) {
-						conteoRespuestasPregunta[nombreRespuesta] = 1; // Inicializamos el contador en 1 si es la primera vez que vemos esta respuesta
+						conteoRespuestasPregunta[nombreRespuesta] = 1;
 					} else {
-						conteoRespuestasPregunta[nombreRespuesta]++; // Incrementamos el contador si ya hemos visto esta respuesta antes
+						conteoRespuestasPregunta[nombreRespuesta]++; 
 					}
 				});
-				// Convertimos el objeto en un array de objetos
 				const conteoArray = Object.keys(conteoRespuestasPregunta).map(nombreRespuesta => ({
 					respuesta: nombreRespuesta,
 					conteo: conteoRespuestasPregunta[nombreRespuesta]
 				}));
-				// Ahora puedes calcular los porcentajes y almacenar los resultados como desees
 				const totalRespuestas = respuesta.length;
 				conteoArray.forEach(item => {
 					item.porcentaje = (item.conteo / totalRespuestas) * 100;
 				});
-				// Almacenar los resultados para esta pregunta
 				resultados.push([idPregunta, conteoArray]);
 			});
 			//console.log(resultados);
