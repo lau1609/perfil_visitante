@@ -178,13 +178,42 @@
        //return;
         // var infografia = document.getElementById('infografia');
         // Crear un elemento canvas del mismo tamaño que la imagen
+        let array = {
+            20: {
+                id: 1,
+                name: 'Nombre',
+                genero: 'Mujer'
+            },
+
+            31: {
+                id: 2,
+                name: 'Nombre 2',
+                genero: 'Hombre'
+            }
+        }
         var canvas = document.createElement('canvas');
-        canvas.width = infografia.width;
-        canvas.height = infografia.height;
+        canvas.width = infografia.naturalWidth;
+		canvas.height = infografia.naturalHeight;
         var ctx = canvas.getContext('2d');
         // Dibujar la imagen en el canvas
         console.log(infografia);
         ctx.drawImage(infografia, 0, 0);
+        for (let idRespuesta in array) {
+            
+            switch (idRespuesta) {
+                case 20:
+                    tx.fillText(array[idRespuesta][1], 121, 421); // Posición del primer marcador de posición
+                    ctx.fillText(array[idRespuesta][0], 651, 434); 
+                    break;
+                case 31:
+                    tx.fillText(array[idRespuesta][2], 821, 421); // Posición del primer marcador de posición
+                    ctx.fillText(array[idRespuesta][0], 1151, 434); 
+                    break;
+                default:
+                    break;
+            }
+            
+        }
         // Reemplazar los marcadores de posición con los datos estadísticos
         ctx.font = '30px Arial'; // Establecer el tamaño y la fuente del texto
         ctx.fillStyle = 'red'; // Establecer el color del texto

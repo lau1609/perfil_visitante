@@ -48,7 +48,7 @@ label input[type="checkbox"] {
 }
 
 .ali-pop h3 {
-    font-size: 1.45rem !important;
+    font-size: 1.40rem !important;
 }
 
 .engPop{
@@ -64,4 +64,8 @@ label input[type="checkbox"] {
 .ali-pop p {
     margin: 8px 0;
     font-size: .95rem;
+}
+
+.ali-pop span {
+    font-size: .9rem;
 }

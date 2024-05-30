@@ -273,9 +273,9 @@ $(document).on(clickHandler, 'input[name="nacionalidad"]', function(e) {
 $(document).on(clickHandler, '#openQR', function(e) {
 	console.log(municipio);
 	let muniQR
-	if (municipio == 1) {
+	if (municipio == 2) {
 		muniQR == 'Juarez'
-	}else if (municipio == 2) {
+	}else if (municipio == 1) {
 		muniQR = 'Chihuahua';
 	}
 	window.open("https://sichitur.org/generateQR/?loc="+muniQR);
@@ -287,10 +287,12 @@ $(document).on(clickHandler, '.qs-general', function(e) {
     if (!touchmoved) {
         $(function() {
 			$('#inter').change(function(e) {
+				console.log('inernacional');
 				var ue = document.getElementById("inter").value;
 				const eu = document.getElementById("estEU");
 
 				if (ue == "Estados-Unidos" ) {
+					console.log('el display de eu');
 					eu.style.display = 'block'; 
 					$('.united').addClass('required'); 
 				}else {
@@ -301,10 +303,12 @@ $(document).on(clickHandler, '.qs-general', function(e) {
 
 
 			$('#mexico').change(function(e) {
+				console.log('mexico');
 				var me = this.value;
 				const mex = document.getElementById("estMex");
 
 				if (me == "Chihuahua" ) {
+					console.log('el display de eu');
 					mex.style.display = 'block'; 
 					$('.mex').addClass('required'); 
 				}else {

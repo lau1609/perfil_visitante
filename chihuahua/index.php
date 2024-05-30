@@ -760,8 +760,9 @@
                 <h3 class="ind">¡Gracias por contestar nuestra encuesta!</h3>
                 <h3 class="ind engPop" style="font-size: 1.7rem;margin-bottom: 8vh;">¡Thank you for answering the survey!</h3>
                 <p class="ind" id="newEnc">Nueva encuesta / New survey</p>
-                <p class="ind" id="openQR">Obtener entrada a museo / Get museum ticket</p>
-                <span class="ind" style="font-family: 'PublicSans Italic Extra Light';
+                <p class="ind" style="text-decoration: none;">Click para obtener entrada a museo / Click to get the museum ticket</p>
+                <div><img class="ind"  width="125px" style="cursor: pointer;position:relative;" id="openQR" src="../_images/clickQR.png" alt=""></div>
+                <!-- <span class="ind" style="font-family: 'PublicSans Italic Extra Light';
                     color: white;
                     font-size: 1rem;
                     margin-bottom: 15px;
@@ -770,7 +771,7 @@
                     text-align:center;
                     padding: 2px 20px;
                     margin-top: 20px;
-                    letter-spacing: 1.4px;">Esta ventana se recargara en 30 seg. / <br> This window will reload in 30 sec. </span>
+                    letter-spacing: 1.4px;">Esta ventana se recargara en 30 seg. / <br> This window will reload in 30 sec. </span> -->
 
                 <div class="caja ind">30</div>
             </div>

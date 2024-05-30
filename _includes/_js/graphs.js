@@ -1026,9 +1026,22 @@ $(document).ready(function() {
 		ctx.drawImage(infografia, 0, 0);
 		let coordenadasIconos = Array();
 		let urlsIconos = Array();
-		var icono = new Image();
+		var icono = new Image(); 
+    
 
-		
+		// setTimeout(() => {
+		// 	ctx.font = 'bold 110px Arial black';
+		// 	ctx.fillText('porcentaje %', 300, 1200);
+		// 	var imagenInfografia = canvas.toDataURL('image/jpg');
+		// 	//Crear un enlace para descargar la imagen
+		// 	console.log(imagenInfografia);
+		// 	var enlaceDescarga = document.createElement('a');
+		// 	enlaceDescarga.href = imagenInfografia;
+		// 	enlaceDescarga.download = 'infografia.jpg';
+		// 	enlaceDescarga.click();
+		// return;
+		// }, 1000);
+		//return;
 		for (let idRespuesta in respuestas) {
 			console.log('el for del switch');
 			let lineCount3;
@@ -1038,6 +1051,7 @@ $(document).ready(function() {
 			let centerX2;
 			let centerX3;
 			let respuestasArray = respuestas[idRespuesta];
+
 			
 			switch (parseInt(idRespuesta)) {
 				case 23:
@@ -1062,6 +1076,9 @@ $(document).ready(function() {
 				ctx.font = '85px Arial'; // Establecer el tamaño y la fuente del texto
 				ctx.fillStyle = 'black'; // Establecer el color del texto
 				ctx.fillText(capitalizeFirstLetter(respuestas[27][0]['respuesta']), 1500, 1300);
+
+			
+				
 				
 				urlsIconos.push(respuestas[idRespuesta][0]['icons']);
 				urlsIconos.push(respuestas[29][0]['icons']);
@@ -1338,26 +1355,6 @@ $(document).ready(function() {
 						alinePorY = alinePorY + 250;
 					}
 
-
-
-					// if (respuestas[35].length === 3) {
-					// 	lineCount1 = wrapText(ctx, capitalizeFirstLetter(respuestasArray[0]['respuesta']), centerX1, 3400, maxWidth, lineHeight);
-					// 	lineCount2 = wrapText(ctx, capitalizeFirstLetter(respuestasArray[1]['respuesta']), centerX2, 3650, maxWidth, lineHeight);
-					// 	lineCount2 = wrapText(ctx, capitalizeFirstLetter(respuestasArray[2]['respuesta']), centerX2, 3900, maxWidth, lineHeight);
-					// 	ctx.font = 'bold 110px Arial';
-					// 	ctx.fillText(parseFloat(respuestasArray[0]['porcentaje'].toFixed(0)) + '%', 3400, 3420 + lineHeight * (lineCount1 + 1));
-					// 	ctx.fillText(parseFloat(respuestasArray[1]['porcentaje'].toFixed(0)) + '%', 3400, 3670 + lineHeight * (lineCount2 + 1));
-					// 	ctx.fillText(parseFloat(respuestasArray[2]['porcentaje'].toFixed(0))+ '%', 3400, 3920 + lineHeight * (lineCount2 + 1));
-					// }
-					// if (respuestas[35].length === 2) {
-					// 	lineCount1 = wrapText(ctx, capitalizeFirstLetter(respuestasArray[0]['respuesta']), centerX1, 3400, maxWidth, lineHeight);
-					// 	lineCount2 = wrapText(ctx, capitalizeFirstLetter(respuestasArray[1]['respuesta']), centerX2, 3650, maxWidth, lineHeight);
-					// 	lineCount2 = wrapText(ctx, capitalizeFirstLetter(respuestasArray[2]['respuesta']), centerX2, 3900, maxWidth, lineHeight);
-					// 	ctx.font = 'bold 110px Arial';
-					// 	ctx.fillText(parseFloat(respuestasArray[0]['porcentaje'].toFixed(0)) + '%', 3400, 3420 + lineHeight * (lineCount1 + 1));
-					// 	ctx.fillText(parseFloat(respuestasArray[1]['porcentaje'].toFixed(0)) + '%', 3400, 3670 + lineHeight * (lineCount2 + 1));
-					// 	ctx.fillText(parseFloat(respuestasArray[2]['porcentaje'].toFixed(0))+ '%', 3400, 3920 + lineHeight * (lineCount2 + 1));
-					// }
 					
 					maxWidth = 600;
 					break;
@@ -1489,12 +1486,14 @@ $(document).ready(function() {
 					break;
 			}
 		}
-		//console.log(resultado);
 		ctx.font = 'bold 135px Arial'; 
-		ctx.fillStyle = 'white'; 
-		//cargarIconos();
-		// parseFloat(objeto.porcentaje.toFixed(1));
-		cargarIconos();
+		ctx.fillStyle = 'white';
+		console.log(ctx);
+		
+		setTimeout(() => {
+			cargarIconos();
+		}, 1000);
+		
 		
 
 		let iconosCargados = 0;
@@ -1541,6 +1540,7 @@ $(document).ready(function() {
 						enlaceDescarga.click();
 						$('.genInfografia').removeClass('none');
 						$('.load-wrapp').addClass('none');
+						console.log('temino el proceso');
 					}
 				}
 			});
