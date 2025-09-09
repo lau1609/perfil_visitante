@@ -11,42 +11,92 @@
         <script src="../node_modules/geolib/lib/index.js"></script>
         
         <?php include_once("../phpAssets/head.php"); ?>
-        
+        <style>
+            .contLogosImg,  .contLogosImg2{
+                background-image: url(../_images/catedral2.jpg);
+            }
+        </style>
         <title>Inicio</title>
     </head>
 
     <body>
     <?php include_once("../phpAssets/analytics.php"); ?>
     <?php include_once("../phpAssets/header.php"); ?>
-    <div id="section1">
-        <div class="logos" style="display:flex; justify-content:space-around;width:100%;align-items:center;">
+
+    <!-- <div class="logos" style="display:flex; justify-content:space-around;width:100%;align-items:center;">
             <img style="" src="../_images/_svg/asocHotel.svg" alt="">
             <img src="../_images/logo-st.png" alt="">
         </div>
-        <!-- <div class="caja">30</div> -->
         <div class="contTit">
             <h3 class="title-conect">¡Gracias por visitar Chihuahua!</h3>
             <h3 class="title-conect sub-tit" style="font-size: 2rem;">Thank you for visiting Chihuahua!</h3>
-            <!-- <h3 style="font-size: 2rem; color: white; margin: 0; text-align:center;font-family: 'PublicSans Bold';">¡Thanks for visiting Chihuahua!</h3> -->
         </div>
             
-            <!-- <span class="spa-title">'Vivelo para amarlo / Live it to love it'</span> -->
 
-            <div class="contImgConect tooltip">
-                <!-- <img src="" alt="http://www.w3.org/2000/svg"> -->
-                <svg  id="arrow" xmlns="http://www.w3.org/2000/svg" width="74" height="74" viewBox="0 0 24 24">
-                <path alt="Contestar encuesta" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="white"/>
-                </svg>
-                <span class="tooltiptext">Contestar encuesta</span>
-            </div>
+        <div class="contImgConect tooltip">
+            <svg  id="arrow" xmlns="http://www.w3.org/2000/svg" width="74" height="74" viewBox="0 0 24 24">
+            <path alt="Contestar encuesta" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="white"/>
+            </svg>
+            <span class="tooltiptext">Contestar encuesta</span>
+        </div> -->
+    <!-- <div id="section1"> -->
+        <!-- <div class="contLogos">
+            <img style="margin-left:6%;margin-right:30px;" src="../_images/logo-st.png" alt="">
+            <img src="../_images/asocHotels.png" alt="">
         </div>
+        <div class="contSec">
+            <div class="filrDeg">
+
+            </div>
+            <div class="boxWhite">
+                <div class="contBuilding">
+                    <div class="textoPort">
+                        <h2>¡Gracias por visitar Chihuahua!</h2>
+                        <h4>Thank you for visiting Chihuahua!</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="contImg1">
+                <img style="margin-bottom: 10px;" src="../_images/circle.png" alt="">
+                <img src="../_images/circle.png" alt="">
+            </div>
+
+            <div class="contImg2">
+                <img src="../_images/circle.png" alt="">
+            </div>
+        </div> -->
+        
+        <!-- <div class="contImgConect tooltip">
+            <svg  id="arrow" xmlns="http://www.w3.org/2000/svg" width="114" height="114" viewBox="0 0 24 24">
+            <path alt="Contestar encuesta" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="white"/>
+            </svg>
+            <span class="tooltiptext">Contestar encuesta</span>
+        </div> 
+    </div> -->
             <!-- ------ seccion 2 de la encusta --------- -->
+             <div id="sectionPort">
+                <div class="degradadoPort"></div>
+                <div class="contLogosImg">
+                    <div class="contLogosPor">
+                        <img style="width:15vh" src="../_images/logo-st.png" alt="">
+                        <img style="width:7.5vh" src="../_images/logoSichitur.png" alt="">
+                        <img style="width:13vh" src="../_images/_svg/asocHotel.svg" alt="">
+                        
+                    </div>
+                </div>
+
+                <div class="contTextTitle">
+                    <h3>Encuesta del visitante</h3>
+                    <h4>Visitor survey</h4>
+                    <p>Por favor responde las siguientes preguntas / <span>Please answer the following questions:</span></p>
+                </div>
+             </div>
     
     <div id="section2" class="cont-general" style="">
         <div  class="align-enc" >
-            <div class="title-enc"> 
-                <h1>Encuesta del visitante / Visitor survey</h1>
-            </div>    
+           <!-- <div class="title-enc"> 
+                 <h1>Encuesta del visitante / Visitor survey</h1> 
+            </div>    -->
 
             <div class="cont-questions">
                 
@@ -56,13 +106,13 @@
                         <form class="form-questions">
                         <input type="hidden" name="part-enc" class="parteEncuesta" value="1">
                             <input type="hidden" name="municipio" class="municipio" value="2">
-                            <input type="hidden" name="hotel" id="hotel" value="">
+                            <!-- <input type="hidden" name="hotel" id="hotel" class="" value=""> -->
                             
                             <div class="qs-general checkRadio" data-id-pregunta="23">
-                                <h3>1.- Género <span style="color:red;">*</span> <br> (Gender)</h3>
-                                <label for=""><input type="radio" id="" name="genero" value="mujer" class=""  />Mujer (Woman)</label>
-                                <label for=""><input type="radio" id="" name="genero" value="hombre"  />Hombre (Man)</label>
-                                <label for=""><input type="radio" id="" name="genero" value="None"  />Prefiero no decirlo (I'd rather not disclose)</label>
+                                <h3><span class="number" style="padding: 7px 15px;">1</span> Género <span style="color:red;">*</span> <br> (Gender)</h3>
+                                <label ><input type="radio" id="" name="genero" value="mujer" class=""  />Mujer (Woman)</label>
+                                <label ><input type="radio" id="" name="genero" value="hombre"  />Hombre (Man)</label>
+                                <label ><input type="radio" id="" name="genero" value="None"  />Prefiero no decirlo (I'd rather not disclose)</label>
     
                                 <!-- <select name="genero" class="options required" data-id-pregunta="23">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
@@ -74,17 +124,17 @@
                             </div>
 
                             <div class="qs-general checkbox" data-id-pregunta="36">
-                                <h3>2.- ¿Qué transporte usaste para llegar? <span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span>  <br>(What type of transportation did you use to arrive?<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> Check all that apply </span>)</h3>
-                                <label for=""><input type="checkbox" name="transporte" value="Autobus" id="">Autobús (Bus)</label>
-                                <label for=""><input type="checkbox" name="transporte" value="Renta-de-auto " id="">Renta de auto (Car Rental)</label>
-                                <label for=""><input type="checkbox" name="transporte" value="Automovil-particular" id="">Automovil particular (Private car)</label>
-                                <label for=""><input type="checkbox" name="transporte" value="Avión" id="">Avión (Airplane)</label>
-                                <label for=""><input type="checkbox" name="transporte" value="Vehículo-de-agencia-de-viajes" id="">Vehículo de la agencia de viajes (Travel agency vehicle)</label>
-                                <label for=""><input type="checkbox" name="transporte" value="Tren-Chepe" id="">Tren Chepe (Chepe train)</label>
+                                <h3><span class="number">2</span> ¿Qué transporte usaste para llegar? <span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span>  <br>(What type of transportation did you use to arrive?<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> Check all that apply </span>)</h3>
+                                <label ><input type="checkbox" name="transporte" value="Autobus" id="">Autobús (Bus)</label>
+                                <label ><input type="checkbox" name="transporte" value="Renta-de-auto " id="">Renta de auto (Car Rental)</label>
+                                <label ><input type="checkbox" name="transporte" value="Automovil-particular" id="">Automovil particular (Private car)</label>
+                                <label ><input type="checkbox" name="transporte" value="Avión" id="">Avión (Airplane)</label>
+                                <label ><input type="checkbox" name="transporte" value="Vehículo-de-agencia-de-viajes" id="">Vehículo de la agencia de viajes (Travel agency vehicle)</label>
+                                <label ><input type="checkbox" name="transporte" value="Tren-Chepe" id="">Tren Chepe (Chepe train)</label>
                             </div>
                             
                             <div class="qs-general">
-                                <h3>3.- ¿Cuántos días se quedará en la ciudad?  <span style="color:red;">*</span><br> (How long are you staying in the town?)</h3>
+                                <h3><span class="number">3</span> ¿Cuántos días se quedará en la ciudad?  <span style="color:red;">*</span><br> (How long are you staying in the town?)</h3>
                                 <select name="" class="options required" data-id-pregunta="32">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="1-dia">1 día (Day)</option>
@@ -95,22 +145,22 @@
                             </div>
 
                             <div class="qs-general checkbox" data-id-pregunta="33">
-                                <h3>4.- ¿Cúal es el motivo de tu viaje? <span style="color:red;">*  </span> <span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span>  <br>(What is the trip's purpose?<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> Check all that apply </span>)</h3>
-                                <label for=""><input type="checkbox" class="clickOpDiv" name="motivo-del-viaje" value="Trabajo/negocios" id="work">Trabajo o negocios (Work or business)</label>
-                                <label for=""><input type="checkbox" class="clickOpDiv" name="motivo-del-viaje" value="Estudios" id="Estudios">Estudios (Educational)</label>
-                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Tratamiento-médico" id="">Tratamiento médico y de bienestar (Medical and wellness treatment)</label>
-                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Evento-deportivo" id="">Evento deportivo (Sport events)</label>
-                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Visita-a-familiares/-amigos" id="">Visita a familiares y amigos (Family or friends visit)</label>
-                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Turismo-cultural-gastronomico" id="">Turismo cultural, rural, gastronómico, etnoturismo (Cultural, rural, gastronomic tourism, ethnotourism)</label>
-                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Boda-o-evento-social" id="">Boda o evento social (Wedding or social event)</label>
-                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Turismo-naturaleza-ecoturismo" id="">Turismo de naturaleza, de aventura, ecoturismo (Nature tourism, adventure tourism, ecotourism)</label>
-                                <label for=""><input type="checkbox" name="motivo-del-viaje" value="Espiritual-o-religioso" id="">Espiritual o religioso (Spiritual or religious)</label>
+                                <h3><span class="number">4</span> ¿Cúal es el motivo de tu viaje? <span style="color:red;">*  </span> <span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span>  <br>(What is the trip's purpose?<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> Check all that apply </span>)</h3>
+                                <label ><input type="checkbox" class="clickOpDiv" name="motivo-del-viaje" value="Trabajo/negocios" id="work">Trabajo o negocios (Work or business)</label>
+                                <label ><input type="checkbox" class="clickOpDiv" name="motivo-del-viaje" value="Estudios" id="Estudios">Estudios (Educational)</label>
+                                <label ><input type="checkbox" name="motivo-del-viaje" value="Tratamiento-médico" id="">Tratamiento médico y de bienestar (Medical and wellness treatment)</label>
+                                <label ><input type="checkbox" name="motivo-del-viaje" value="Evento-deportivo" id="">Evento deportivo (Sport events)</label>
+                                <label ><input type="checkbox" name="motivo-del-viaje" value="Visita-a-familiares/-amigos" id="">Visita a familiares y amigos (Family or friends visit)</label>
+                                <label ><input type="checkbox" name="motivo-del-viaje" value="Turismo-cultural-gastronomico" id="">Turismo cultural, rural, gastronómico, enoturismo (Cultural, rural, gastronomic tourism, wine tourism)</label>
+                                <label ><input type="checkbox" name="motivo-del-viaje" value="Boda-o-evento-social" id="">Boda o evento social (Wedding or social event)</label>
+                                <label ><input type="checkbox" name="motivo-del-viaje" value="Turismo-naturaleza-ecoturismo" id="">Turismo de naturaleza, de aventura, ecoturismo (Nature tourism, adventure tourism, ecotourism)</label>
+                                <label ><input type="checkbox" name="motivo-del-viaje" value="Espiritual-o-religioso" id="">Espiritual o religioso (Spiritual or religious)</label>
                                 
                             </div>
 
                             <div id="contWork" class="none">
                                 <div class="qs-general">
-                                    <h3>5.- ¿Que giro económico es la razón de tu viaje?  <span style="color:red;">*</span><br> (What is the economic reason for this trip?)</h3>
+                                    <h3><span class="number2">+</span> ¿Que giro económico es la razón de tu viaje?  <span style="color:red;">*</span><br> (What is the economic reason for this trip?)</h3>
                                     <select name="" class="options giroEcon" data-id-pregunta="34">
                                         <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                         <option value="Industria-manufacturera">Industria manufacturera (Manufacturing industry)</option>
@@ -126,7 +176,7 @@
                                 </div>
 
                                 <div class="qs-general none" id="contWork2">
-                                    <h3>6.- Viáticos por día  <span style="color:red;">*</span><br> (How much is your per diem?)</h3>
+                                    <h3><span class="number2">+</span> Viáticos por día  <span style="color:red;">*</span><br> (How much is your per diem?)</h3>
                                     <select name="" class="options viaticos" data-id-pregunta="35">
                                         <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                         <option value="$500">Hasta $500 pesos ($30 USD or less)</option>
@@ -138,9 +188,9 @@
                             </div>
                             <!-- <div class="qs-general checkRadio" data-id-pregunta="23">
                                 <h3>1.- Género <span style="color:red;">*</span> <br> (Gender)</h3>
-                                <label for=""><input type="radio" id="" name="genero" value="mujer" class=""  />Mujer (Woman)</label>
-                                <label for=""><input type="radio" id="" name="genero" value="hombre"  />Hombre (Man)</label>
-                                <label for=""><input type="radio" id="" name="genero" value="None"  />Prefiero no decirlo (I prefer not to say)</label>-->
+                                <label ><input type="radio" id="" name="genero" value="mujer" class=""  />Mujer (Woman)</label>
+                                <label ><input type="radio" id="" name="genero" value="hombre"  />Hombre (Man)</label>
+                                <label ><input type="radio" id="" name="genero" value="None"  />Prefiero no decirlo (I prefer not to say)</label>-->
 
 
                             <!-- <div class="qs-general">
@@ -156,6 +206,9 @@
                                 </select>
                             </div> -->
 
+                            <div class="avisoPriv">
+                                <p>Al enviar esta encuesta, confirmas haber leído y entendido nuestro <a target="_blank" href="../_pdf/Aviso de privacidad.pdf">Aviso de Privacidad</a></p>
+                            </div>
 
                             <div class="cont-butt-env"> 
                                 <input class="but-env" type="submit" value="Enviar">
@@ -172,9 +225,10 @@
                         <form class="form-questions" >
                             <input type="hidden" name="part-enc" class="parteEncuesta" value="2">
                             <input type="hidden" name="municipio" class="municipio" value="2">
+                            <!-- <input type="hidden" name="hotel" id="hotel" value=""> -->
                         
                             <div class="qs-general">
-                                <h3>1.- Edad  <span style="color:red;">*</span> <br> (Age)</h3>
+                                <h3><span class="number" style="padding: 7px 15px;">1</span> Edad  <span style="color:red;">*</span> <br> (Age)</h3>
                                 <select name="edad" class="options required" data-id-pregunta="24">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="18-25">18 - 25</option>
@@ -188,9 +242,9 @@
                             </div>
 
                             <div class="qs-general checkRadio" data-id-pregunta="37">
-                                <h3>2.- ¿Realizó o planea realizar alguna actividad en este viaje? <span style="color:red;">*</span><br>(Did you perform or are you planning during this trip?)</h3>
-                                <label for=""><input type="radio" id="" name="MakeAct" value="Si"/>Si (Yes)</label>
-                                <label for=""><input type="radio" id="" name="MakeAct" value="No" />No</label>
+                                <h3><span class="number">2</span> ¿Realizó o planea realizar alguna actividad en este viaje? <span style="color:red;">*</span><br>(Did you perform or are you planning during this trip?)</h3>
+                                <label ><input type="radio" id="" name="MakeAct" value="Si"/>Si (Yes)</label>
+                                <label ><input type="radio" id="" name="MakeAct" value="No" />No</label>
                                 <!-- <select name="MakeAct" class="options required" data-id-pregunta="37">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="Si">Si (yes)</option>
@@ -200,17 +254,17 @@
 
                             <div class="qs-general yesWhat" data-id-pregunta="">
                                 <!-- <h3>3.- ¿Que actividades realizo o realizará en este viaje? <span style="color:red;">*  </span>  <span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción</span> <br>(What activities did or will you do in this trip?) </h3>
-                                <label for=""><input type="checkbox" name="actividades" value="Paseos-teatreales" id="">Paseos teatreales (Theatrical tours)</label>
-                                <label for=""><input type="checkbox" name="actividades" value="Recorridos-o-talleres-de-vino-o-Sotol" id="">Recorridos o talleres de vino o Sotol (Theatrical tours)</label>
-                                <label for=""><input type="checkbox" name="actividades" value="Muestras-gastronomicas" id="">Muestras gastronómicas (Food tastings or cooking workshops)</label>
-                                <label for=""><input type="checkbox" name="actividades" value="Conciertos-y-festivales-de-música" id="">Conciertos y festivales de música (Concerts & musical festivals)</label>
-                                <label for=""><input type="checkbox" name="actividades" value="Paseo-en-vehículo " id="">Paseo en vehículo (Vehicle ride)</label>
-                                <label for=""><input type="checkbox" name="actividades" value="Ninguna" id="">Ninguna (None)</label> -->
+                                <label ><input type="checkbox" name="actividades" value="Paseos-teatreales" id="">Paseos teatreales (Theatrical tours)</label>
+                                <label ><input type="checkbox" name="actividades" value="Recorridos-o-talleres-de-vino-o-Sotol" id="">Recorridos o talleres de vino o Sotol (Theatrical tours)</label>
+                                <label ><input type="checkbox" name="actividades" value="Muestras-gastronomicas" id="">Muestras gastronómicas (Food tastings or cooking workshops)</label>
+                                <label ><input type="checkbox" name="actividades" value="Conciertos-y-festivales-de-música" id="">Conciertos y festivales de música (Concerts & musical festivals)</label>
+                                <label ><input type="checkbox" name="actividades" value="Paseo-en-vehículo " id="">Paseo en vehículo (Vehicle ride)</label>
+                                <label ><input type="checkbox" name="actividades" value="Ninguna" id="">Ninguna (None)</label> -->
                             </div>
 
                             
                             <div class="qs-general">
-                                <h3>4.- ¿A qué se dedica? <span style="color:red;">*</span> <br> (What do you do for a living?)</h3>
+                                <h3><span class="number">3</span> ¿A qué se dedica? <span style="color:red;">*</span> <br> (What do you do for a living?)</h3>
                                 <select name="" class="options required" data-id-pregunta="29">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="Estudiante">Estudiante (Student)</option>
@@ -223,7 +277,7 @@
                             </div>
 
                             <div class="qs-general">
-                                <h3>5.- Nivel académico <span style="color:red;">*</span> <br> (Educational level)</h3>
+                                <h3><span class="number">4</span> Nivel académico <span style="color:red;">*</span> <br> (Educational level)</h3>
                                 <select name="" class="options required" data-id-pregunta="27">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="Primaria">Primaria (Elementary school)</option>
@@ -236,18 +290,21 @@
                             </div>
 
                             <div class="qs-general checkbox" data-id-pregunta="31">
-                                <h3>6.- ¿Cómo se enteró del destino? <span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span>  <br>(How did you find out about the location<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> Check all that apply </span>)</h3>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Redes-Sociales" id="">Redes Sociales (Social media)</label>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Recomendacion" id="">Recomendación (Word of mouth)</label>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Internet" id="">Internet</label>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Visita-previa" id="">Visita previa (Previous visit)</label>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Ferias/exposiciones" id="">Ferias y exposiciones (Expos & trade shows)</label>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Agencia-de-viajes" id="">Agencia de viajes (Travel agency)</label>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Medios-impresos" id="">Medios impresos (Printed media)</label>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Radio" id="">Radio</label>
-                                <label for=""><input type="checkbox" name="como-se-entero" value="Televisión" id="">Televisión (TV)</label>
+                                <h3><span class="number">5</span> ¿Cómo se enteró del destino? <span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span>  <br>(How did you find out about the location<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> Check all that apply </span>)</h3>
+                                <label ><input type="checkbox" name="como-se-entero" value="Redes-Sociales" id="">Redes Sociales (Social media)</label>
+                                <label ><input type="checkbox" name="como-se-entero" value="Recomendacion" id="">Recomendación (Word of mouth)</label>
+                                <label ><input type="checkbox" name="como-se-entero" value="Internet" id="">Internet</label>
+                                <label ><input type="checkbox" name="como-se-entero" value="Visita-previa" id="">Visita previa (Previous visit)</label>
+                                <label ><input type="checkbox" name="como-se-entero" value="Ferias/exposiciones" id="">Ferias y exposiciones (Expos & trade shows)</label>
+                                <label ><input type="checkbox" name="como-se-entero" value="Agencia-de-viajes" id="">Agencia de viajes (Travel agency)</label>
+                                <label ><input type="checkbox" name="como-se-entero" value="Medios-impresos" id="">Medios impresos (Printed media)</label>
+                                <label ><input type="checkbox" name="como-se-entero" value="Radio" id="">Radio</label>
+                                <label ><input type="checkbox" name="como-se-entero" value="Televisión" id="">Televisión (TV)</label>
                             </div>
 
+                            <div class="avisoPriv">
+                                <p>Al enviar esta encuesta, confirmas haber leído y entendido nuestro <a target="_blank" href="../_pdf/Aviso de privacidad.pdf">Aviso de Privacidad</a></p>
+                            </div>
                             
                             <div class="cont-butt-env">
                                 <input class="but-env" type="submit" value="Enviar">
@@ -258,14 +315,24 @@
 
                     <!-- ------------------------------------------------------- -->
                     <div class="part3" style="display:none;">
-                        <form class="form-questions" >
+                    <!-- <div class="steps">
+                        <div class="step active" id="step-1">1</div>
+                        <div class="step"        id="step-2">2</div>
+                        <div class="step"        id="step-3">3</div>
+                        <div class="step"        id="step-4">4</div>
+                        <div class="step"        id="step-5">5</div>
+                        <div class="step"        id="step-6">6</div>
+                        <div class="step"        id="step-7">7</div>
+                    </div> -->
+                        <form class="form-questions preguntas" >
                             <input type="hidden" name="part-enc" class="parteEncuesta" value="3">
                             <input type="hidden" name="municipio" class="municipio" value="2">
+                            <!-- <input type="hidden" name="hotel" id="hotel" value=""> -->
 
-                            <div class="qs-general checkRadio" data-id-pregunta="25">
-                                <h3>1.- Nacionalidad <span style="color:red;">*</span> <br> (Nationality)</h3>
-                                <label for=""><input type="radio" id="" name="nacionalidad" value="Internacional"  />Internacional (External)</label>
-                                <label for=""><input type="radio" id="" name="nacionalidad" value="Mexico"  />México (Mexico)</label>
+                            <div class="qs-general checkRadio pregunta pregunta-activa" data-preg="1" data-id-pregunta="25">
+                                <h3><span class="number" style="padding: 7px 15px;">1</span> Nacionalidad <span style="color:red;">*</span> <br> (Nationality)</h3>
+                                <label ><input type="radio" id="" name="nacionalidad" value="Internacional" />Internacional (External)</label>
+                                <label ><input type="radio" id="" name="nacionalidad" value="Mexico" />México (Mexico)</label>
 
                                 <!-- <select name="nacionalidad" id="nacionalidad" class="options required" >
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
@@ -275,7 +342,7 @@
                             </div>
 
                             <div class="qs-general">
-                                <h3>2.- Lugar de Residencia  <span style="color:red;">*</span> <br> (Place of residence)</h3>
+                                <h3><span class="number">2</span> Lugar de Residencia  <span style="color:red;">*</span> <br> (Place of residence)</h3>
                                 <select id="inter" name="pais" class="options required" style="display:none;" data-id-pregunta="26">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="Estados-Unidos">Estados Unidos (United States)</option>
@@ -517,7 +584,7 @@
                                     <option value="Zimbabwe">Zimbabwe (Zimbabwe)</option>
                                 </select>
 
-                                <select class="mexico" name="pais" class="options required" id="mexico" style="display:none;" data-id-pregunta="45">
+                                <select  class="mexico" name="pais" class="options required" id="mexico" style="display:none;" data-id-pregunta="45">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="Aguascalientes">Aguascalientes</option>
                                     <option value="B. C.">Baja California</option>
@@ -555,7 +622,7 @@
                             </div>
 
                             <div class="qs-general" id="estEU" style="display:none">
-                                <h3>3.- Dentro de EUA <span style="color:red;">*</span> <br> (USA)</h3>
+                                <h3><span class="number2">+</span> Dentro de EUA <span style="color:red;">*</span> <br> (USA)</h3>
                                 <select name="" class="options united"  data-id-pregunta="43">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="Alabama">Alabama (Alebama)</option>
@@ -608,7 +675,7 @@
                             </div>
 
                             <div class="qs-general" id="estMex" style="display:none">
-                                <h3>3.- Dentro de Chihuahua <span style="color:red;">*</span> <br> (Chihuahua)</h3>
+                                <h3><span class="number2">+</span> Dentro de Chihuahua <span style="color:red;">*</span> <br> (Chihuahua)</h3>
                                 <select name="" style="width: 100%;" class="options mex"  data-id-pregunta="44">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="Ahumada">Ahumada</option>
@@ -680,29 +747,30 @@
                             </div>
 
                             <div class="qs-general checkbox" data-id-pregunta="41">
-                                <h3>4.- ¿Qué otras actividades le hubiese gustado encontrar? <span style="color:red;">*  </span>  <span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span> <br>(What other activities would you have liked to experience?<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> Check all that apply </span>)</h3>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Paseos-teatreales" id="">Paseos teatreales (Theatrical tours)</label>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Muestras-o-talleres-gastronómicos" id="">Muestras o talleres gastronómicos (Workshops or gastronomic tasting )</label>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Recorridos-y-catas-de-vino-o-sotol" id="">Recorridos y catas de vino o sotol (Wine tasting & tours)</label>
-                                <label for=""><input type="checkbox" name="actividades" value="Actividades-acuáticas" id="">Actividades acuáticas (Water activities)</label>
-                                <!-- <label for=""><input type="checkbox" name="actividades" value="Experiencias-temáticas" id="">Experiencias temáticas (Thematic experiences)</label> -->
-                                <label for=""><input type="checkbox" name="add-actividades" value="Conciertos-y-festivales-de-música" id="">Conciertos y festivales de música (Concerts & musical festivals)</label>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Atracciones-para-niños" id="">Atracciones para niños (Children's attractions)</label>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Callejoneadas" id="">Callejoneadas (Street parties)</label>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Comida-típica" id="">Comida típica chihuahuense (Chihuahua's regional food)</label>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Senderismo" id="">Senderismo (Hiking)</label>
-                                <label for=""><input type="checkbox" name="add-actividades" value="Otros" id="">Otros (Other)</label>
-                                <!-- <label for=""><input type="checkbox" name="add-actividades" value="Otros" id="">Otros <input class="other" type="text" name="" id=""></label> -->
+                                <h3><span class="number">3</span> ¿Qué otras actividades le hubiese gustado encontrar? <span style="color:red;">*  </span>  <span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span> <br>(What other activities would you have liked to experience?<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> Check all that apply </span>)</h3>
+                                <label ><input type="checkbox" name="add-actividades" value="Paseos-teatreales" id="">Paseos teatreales (Theatrical tours)</label>
+                                <label ><input type="checkbox" name="add-actividades" value="Muestras-o-talleres-gastronómicos" id="">Muestras o talleres gastronómicos (Workshops or gastronomic tasting )</label>
+                                <label ><input type="checkbox" name="add-actividades" value="Recorridos-y-catas-de-vino-o-sotol" id="">Recorridos y catas de vino o sotol (Wine tasting & tours)</label>
+                                <label ><input type="checkbox" name="actividades" value="Actividades-acuáticas" id="">Actividades acuáticas (Water activities)</label>
+                                <!-- <label ><input type="checkbox" name="actividades" value="Experiencias-temáticas" id="">Experiencias temáticas (Thematic experiences)</label> -->
+                                <label ><input type="checkbox" name="add-actividades" value="Conciertos-y-festivales-de-música" id="">Conciertos y festivales de música (Concerts & musical festivals)</label>
+                                <label ><input type="checkbox" name="add-actividades" value="Atracciones-para-niños" id="">Atracciones para niños (Children's attractions)</label>
+                                <label ><input type="checkbox" name="add-actividades" value="Callejoneadas" id="">Callejoneadas (Street parties)</label>
+                                <label ><input type="checkbox" name="add-actividades" value="Comida-típica" id="">Comida típica chihuahuense (Chihuahua's regional food)</label>
+                                <label ><input type="checkbox" name="add-actividades" value="Senderismo" id="">Senderismo (Hiking)</label>
+                                <label ><input type="checkbox" name="add-actividades" value="Otros" id="">Otros (Other)</label>
+                                <!-- <label ><input type="checkbox" name="add-actividades" value="Otros" id="">Otros <input class="other" type="text" name="" id=""></label> -->
                             </div>
                             
+                            
 
-                            <div class="qs-general checkRadio" data-id-pregunta="30">
-                                <h3>5.- ¿Con cuántas personas viaja?  <span style="color:red;">*</span> <br>(How many people are you traveling with?)</h3>
-                                <label for=""><input type="radio" id="" name="cantPerson" value="Ninguna"/>Ninguna (None)</label>
-                                <label for=""><input type="radio" id="" name="cantPerson" value="1-persona"/>1 persona (Person)</label>
-                                <label for=""><input type="radio" id="" name="cantPerson" value="2-a-3-personas"/>2 - 3 personas (2 - 3 persons)</label>
-                                <label for=""><input type="radio" id="" name="cantPerson" value="3-a-4 personas"/>3 - 4 personas (3 - 4 persons)</label>
-                                <label for=""><input type="radio" id="" name="cantPerson" value="4-o-mas"/>4 o mas (4 or more)</label>
+                            <div class="qs-general checkRadio pregunta" data-id-pregunta="30" data-preg="5">
+                                <h3><span class="number">4</span> ¿Con cuántas personas viaja?  <span style="color:red;">*</span> <br>(How many people are you traveling with?)</h3>
+                                <label ><input type="radio" id="" name="cantPerson" value="Ninguna"/>Ninguna (None)</label>
+                                <label ><input type="radio" id="" name="cantPerson" value="1-persona"/>1 persona (Person)</label>
+                                <label ><input type="radio" id="" name="cantPerson" value="2-a-3-personas"/>2 - 3 personas (2 - 3 persons)</label>
+                                <label ><input type="radio" id="" name="cantPerson" value="3-a-4 personas"/>3 - 4 personas (3 - 4 persons)</label>
+                                <label ><input type="radio" id="" name="cantPerson" value="4-o-mas"/>4 o mas (4 or more)</label>
                                 <!-- <select name="" class="options required" data-id-pregunta="30">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="Ninguna">Ninguna (None)</option>
@@ -711,8 +779,8 @@
                                 </select> -->
                             </div>
 
-                            <div class="qs-general" style="display:none" id="whyPersonVis">
-                                <h3>6.- ¿Quiénes conforman el grupo de viaje? <span style="color:red;">*</span><br> (Who makes up the travel group?) </h3>
+                            <div class="qs-general pregunta" style="display:none" data-preg="6" id="whyPersonVis">
+                                <h3><span class="number2">+</span> ¿Quiénes conforman el grupo de viaje? <span style="color:red;">*</span><br> (Who makes up the travel group?) </h3>
                                 <select name=""  style="width: 100%;" class="options" id="selPerson" data-id-pregunta="28">
                                     <option hidden="" value="">Seleciona un opción (Select an option)</option>
                                     <option value="Pareja">Pareja (Spouse/couple)</option>
@@ -723,13 +791,10 @@
                                 </select>
                             </div>
 
-                            <div class="qs-general">
-                                <h3>7.- ¿Le gustaría agregar algo? <br>(Would you like to add something else?) </h3>
+                            <div class="qs-general pregunta" data-preg="7">
+                                <h3><span class="number">5</span> ¿Le gustaría agregar algo? <br>(Would you like to add something else?) </h3>
                                 <div class="text-opts" style="width:100%; width: 100%; height: 45px;"><textarea name="" id="" class="" cols="30" rows="10" style="height: 45px;" data-id-pregunta="42"></textarea></div>
                             </div>
-
-
-
 
 
 
@@ -746,6 +811,10 @@
                                     <option value="No-encontré-nada">No encontré nada (I didnt find anything)</option>
                                 </select> 
                             </div>-->
+
+                            <div class="avisoPriv">
+                                <p>Al enviar esta encuesta, confirmas haber leído y entendido nuestro <a target="_blank" href="../_pdf/Aviso de privacidad.pdf">Aviso de Privacidad</a></p>
+                            </div>
                             <div class="cont-butt-env"> 
                                 <input class="but-env" type="submit" value="Enviar">
                             </div>
@@ -756,30 +825,116 @@
         </div>
 
         <div class="cont-pop none">
-            <div class="ali-pop">
-                <h3 class="ind">¡Gracias por contestar nuestra encuesta!</h3>
-                <h3 class="ind engPop" style="font-size: 1.7rem;margin-bottom: 8vh;">¡Thank you for answering the survey!</h3>
-                <p class="ind" id="newEnc">Nueva encuesta / New survey</p>
-                <p class="ind" style="text-decoration: none;">Click para obtener entrada a museo / Click to get the museum ticket</p>
-                <div><img class="ind"  width="125px" style="cursor: pointer;position:relative;" id="openQR" src="../_images/clickQR.png" alt=""></div>
-                <!-- <span class="ind" style="font-family: 'PublicSans Italic Extra Light';
-                    color: white;
-                    font-size: 1rem;
-                    margin-bottom: 15px;
-                    font-weight: 600;
-                    background: rgb(206, 15, 105, .5);
-                    text-align:center;
-                    padding: 2px 20px;
-                    margin-top: 20px;
-                    letter-spacing: 1.4px;">Esta ventana se recargara en 30 seg. / <br> This window will reload in 30 sec. </span> -->
+            <div id="sectionPort">
+                <div class="degradadoPortFin"></div>
+                <div class="contLogosImg2">
+                    <div class="contLogosPor">
+                        <img style="width:15vh" src="../_images/logo-st.png" alt="">
+                        <img style="width:7.5vh" src="../_images/logoSichitur.png" alt="">
+                        <img style="width:13vh" src="../_images/_svg/asocHotel.svg" alt="">
+                        
+                    </div>
+                </div>
 
-                <div class="caja ind">30</div>
+                <div class="contTextTitle fin">
+                    <h3>¡Gracias por contestar nuestra encuesta! </h3>
+                    <h4>Thanks for answering our survey!</h4>
+                    <div class="lineFin"></div>
+                    <h4 style="font-size: 1.1rem;font-weight: 100;">¡Tu beneficio te espera! Solo tienes que elegir y descargar el código qr para poder reclamar tu recompensa. </h4>
+                    <h5>/ Your benefit awaits! Simply select and download the QR code to claim your reward.</h4>
+                    <div class="timer"><span class="zeros">00:</span> <div class="caja ind">30</div><sub class="seg">Seg</sub></div>
+                    <span style="margin-bottom: 20px;">Recompensa / Reward</span>
+                    <button id="openQR" class="ind">Elegir/Choose</button>
+                </div>
+                
             </div>
+            
+            <!-- <div class="contMarco">
+                <div class="ali-pop">
+                    
+                    <h3 class="ind">¡Gracias!</h3>
+                    <h3 class="ind engPop" style="font-size: 1.7rem;">¡Thank you!</h3>
+                    <p class="ind" id="newEnc">Nueva encuesta / New survey</p>
+                    <div class="contTimRecom">
+                       
+                        <div class="contRecom margRight">
+                            <h3>Tienes</h3>
+                            <div class="timer"><span class="zeros">00:</span> <div class="caja ind">30</div><sub class="seg">Seg</sub></div>
+                        </div>
+
+                        <div class="contRecom">
+                            <img class="pc" id="flechas" src="../_images/flechas.png" alt="">
+                            <h3>Para reclamar</h3>
+                            <button id="openQR" class="ind">Recompensa</button>
+                            <img class="respon" id="flechas2" src="../_images/flechas.png" alt="">
+                        </div>
+                    </div>
+                    <img class="elemAbs" id="cicle" src="../_images/circle.png" alt="">
+                </div>
+            </div> -->
+            
         </div>
         
     </div>
 
     <script>
+
+$(document).ready(function() {
+    const section1 = document.getElementById('section1');
+        const section2 = document.getElementById('section2');
+        // const image = document.getElementById('arrow');
+        const container = document.getElementById('big-container');
+        var bodyElement = document.querySelector('body');
+        //console.log(section1);
+    
+    let control = document.getElementById('arrow');
+    console.log('click al arrow');
+   // $('#arrow').trigger('click');
+    setTimeout(() => {
+                    var request;
+                    //Abortamos cualquier solicitud actual
+                    if (request) { request.abort(); }
+                    request = $.ajax({
+                        dataType: 'text',
+                        url: '../_includes/_php/querys.php',
+                        type: 'POST',
+                        data: {partEnc: true, municipio: 2},
+                        success: function(data) {
+                            console.log(data);
+                            var part1 = document.querySelector('.part1');
+                            var part2 = document.querySelector('.part2');
+                            var part3 = document.querySelector('.part3');
+                            // Obtener la query string de la URL actual
+                            const queryString = window.location.search;
+                            // Crear un objeto URLSearchParams para manejar la query string
+                            const urlParams = new URLSearchParams(queryString);
+                            // Obtener el valor de la variable llamada "variable"
+                            const hotelCLV = urlParams.get('hotel');
+                            console.log(hotelCLV); 
+                            console.log('clave de hotel');
+
+                            // var inpHotel = document.getElementById("hotel");
+
+                            // inpHotel.value = hotelCLV;
+                            
+                            if (data == 1) {
+                                part2.style.display = 'block';
+                                $('.part2 form').append('<input type="hidden" name="hotel" id="hotel" value="'+hotelCLV+'">');
+                                //console.log(options);
+                            } else if(data == 2) {
+                                part3.style.display = 'block';
+                                $('.part3 form').append('<input type="hidden" name="hotel" id="hotel" value="'+hotelCLV+'">');
+                                
+                                // divCont = part3;
+                            } else if(data == 3) {
+                                part1.style.display = 'block';
+                                $('.part1 form').append('<input type="hidden" name="hotel" id="hotel" value="'+hotelCLV+'">');
+                                // divCont = part1; 
+                            }
+                        }
+                    });
+                }, 100);
+});
 
         
 
@@ -794,24 +949,24 @@
                 // Verificar el valor del input radio seleccionado
                 if (this.value === "Si") {
                     $(yesWhat).html('');
-                    $(yesWhat).html('<h3>3.- ¿Qué actividades realizó o realizará en este viaje?  <span style="color:red;">*  </span>  <span style="font-family: PublicSans Italic Extra Light; color: #545859;">Se puede marcar mas de una opción </span> <br>(What activities did you do or will you do on this trip?<span style="color:red;">*  </span><span style="font-family: PublicSans Italic Extra Light; color: #545859;"> Check all that apply </span>)</h3>'+
-                                    '<label for=""><input type="checkbox" name="actividades" value="Paseos-teatrales" id="">Paseos teatreales (Theatrical tours)</label>'+
-                                    '<label for=""><input type="checkbox" name="actividades" value="Recorridos-de-catas-y-vino " id="">Recorridos de catas y vino  (Wine tasting & tours)</label>'+
-                                    '<label for=""><input type="checkbox" name="actividades" value="Muestras-gastronomicas" id="">Muestras o talleres gastronómicos (Workshops or gastronomic tasting)</label>'+
-                                    '<label for=""><input type="checkbox" name="actividades" value="Conciertos-y-festivales-de-música" id="">Conciertos y festivales de música (Concert and music festivals)</label>'+
-                                    '<label for=""><input type="checkbox" name="actividades" value="Talleres-artesanales" id="">Talleres artesanales (Craft workshops)</label>'+
-                                    '<label for=""><input type="checkbox" name="actividades" value="Espectáculo-de-luz-y-sonido" id="">Espectáculo de luz y sonido (Lighting and sound shows)</label>'+
-                                    '<label for=""><input type="checkbox" name="actividades" value="Actividades-acuáticas" id="">Actividades acuáticas (Water activities)</label>'+
-                                    '<label for=""><input type="checkbox" name="actividades" value="Experiencias-temáticas" id="">Experiencias temáticas (Thematic experiences)</label>'+
-                                    '<label for=""><input type="checkbox" name="actividades" value="Atracciones-para-niños" id="">Atracciones para niños (Children\'s attractions)</label>'+
-                                    '<label for=""><input type="checkbox" name="actividades" value="Senderismo" id="">Senderismo (Hiking)</label>');
+                    $(yesWhat).html('<h3><span class="number2">+</span> ¿Qué actividades realizó o realizará en este viaje?  <span style="color:red;">*  </span>  <span style="font-family: PublicSans Italic Extra Light; color: #545859;">Se puede marcar mas de una opción </span> <br>(What activities did you do or will you do on this trip?<span style="color:red;">*  </span><span style="font-family: PublicSans Italic Extra Light; color: #545859;"> Check all that apply </span>)</h3>'+
+                                    '<label ><input type="checkbox" name="actividades" value="Paseos-teatrales" id="">Paseos teatreales (Theatrical tours)</label>'+
+                                    '<label ><input type="checkbox" name="actividades" value="Recorridos-de-catas-y-vino " id="">Recorridos de catas y vino  (Wine tasting & tours)</label>'+
+                                    '<label ><input type="checkbox" name="actividades" value="Muestras-gastronomicas" id="">Muestras o talleres gastronómicos (Workshops or gastronomic tasting)</label>'+
+                                    '<label ><input type="checkbox" name="actividades" value="Conciertos-y-festivales-de-música" id="">Conciertos y festivales de música (Concert and music festivals)</label>'+
+                                    '<label ><input type="checkbox" name="actividades" value="Talleres-artesanales" id="">Talleres artesanales (Craft workshops)</label>'+
+                                    '<label ><input type="checkbox" name="actividades" value="Espectáculo-de-luz-y-sonido" id="">Espectáculo de luz y sonido (Lighting and sound shows)</label>'+
+                                    '<label ><input type="checkbox" name="actividades" value="Actividades-acuáticas" id="">Actividades acuáticas (Water activities)</label>'+
+                                    '<label ><input type="checkbox" name="actividades" value="Experiencias-temáticas" id="">Experiencias temáticas (Thematic experiences)</label>'+
+                                    '<label ><input type="checkbox" name="actividades" value="Atracciones-para-niños" id="">Atracciones para niños (Children\'s attractions)</label>'+
+                                    '<label ><input type="checkbox" name="actividades" value="Senderismo" id="">Senderismo (Hiking)</label>');
                     yesWhat.setAttribute('data-id-pregunta', '38');
                     $(yesWhat).addClass('checkbox');
                     $(yesWhat).removeClass('required');
                 } else if (this.value === "No") {
                     $(yesWhat).html('');
                     $(yesWhat).removeClass('checkbox');
-                    $(yesWhat).html('<h3>3.- ¿Porqué?  <span style="color:red;">*</span><br> (Why?)</h3>'+
+                    $(yesWhat).html('<h3><span class="number2">+</span> ¿Porqué?  <span style="color:red;">*</span><br> (Why?)</h3>'+
                                     '<select name="" class="options required" data-id-pregunta="39">'+
                                         '<option hidden="" value="">Seleciona un opcion (Select an option)</option>'+
                                         '<option value="Falta-de-tiempo">Por falta de tiempo (Lack of time)</option>'+
@@ -824,79 +979,34 @@
         });
 
 
-        const section1 = document.getElementById('section1');
-        const section2 = document.getElementById('section2');
-        const image = document.getElementById('arrow');
-        const container = document.getElementById('big-container');
-        var bodyElement = document.querySelector('body');
-        //console.log(section1);
+       
 
-        image.addEventListener('click', () => {
-            //console.log('el click del arroww');
-            $(section1).slideUp(500, "linear");
+        // image.addEventListener('click', () => {
+        //     //console.log('el click del arroww');
+        //     $(section1).slideUp(500, "linear");
             
-            $(section2).slideDown(1000);
-            setTimeout(() => {
-                section2.style.height = 'auto';  
-                bodyElement.style.overflow = 'auto';
-                // section2.style.height = 'auto';
-            }, 500);
+        //     $(section2).slideDown(1000);
+        //     setTimeout(() => {
+        //         section2.style.height = 'auto';  
+        //         bodyElement.style.overflow = 'auto';
+        //         // section2.style.height = 'auto';
+        //     }, 500);
             
              
-        });
-            section1.addEventListener('animationend', () => {
-               //console.log('ncds');
-             section1.style.visibility = 'visible';
-            }); 
-            section2.addEventListener('animationend', () => {
-            section2.style.animation = 'none';
-            });
+        // });
+        //     section1.addEventListener('animationend', () => {
+        //        //console.log('ncds');
+        //      section1.style.visibility = 'visible';
+        //     }); 
+        //     section2.addEventListener('animationend', () => {
+        //     section2.style.animation = 'none';
+        //     });
 
 
 
-            $(document).on('click', '#arrow', function(e) {
-                setTimeout(() => {
-                    var request;
-                    //Abortamos cualquier solicitud actual
-                    if (request) { request.abort(); }
-                    request = $.ajax({
-                        dataType: 'text',
-                        url: '../_includes/_php/querys.php',
-                        type: 'POST',
-                        data: {partEnc: true, municipio: 2},
-                        success: function(data) {
-                            //console.log(data);
-                            var part1 = document.querySelector('.part1');
-                            var part2 = document.querySelector('.part2');
-                            var part3 = document.querySelector('.part3');
-                            // Obtener la query string de la URL actual
-                            const queryString = window.location.search;
-                            // Crear un objeto URLSearchParams para manejar la query string
-                            const urlParams = new URLSearchParams(queryString);
-                            // Obtener el valor de la variable llamada "variable"
-                            const hotelCLV = urlParams.get('hotel');
-                            console.log(hotelCLV); 
-                            console.log('clave de hotel');
-
-                            var inpHotel = document.getElementById("hotel");
-
-                            inpHotel.value = hotelCLV;
-                            
-                            if (data == 1) {
-                            part2.style.display = 'block';
-                            //console.log(options);
-                            } else if(data == 2) {
-                                part3.style.display = 'block';
-                                
-                                divCont = part3;
-                            } else if(data == 3) {
-                                part1.style.display = 'block';
-                                divCont = part1; 
-                            }
-                        }
-                    });
-                }, 100);
-            });
+        //     $(document).on('click', '#arrow', function(e) {
+               
+        //     });
 
 
             

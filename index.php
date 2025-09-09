@@ -114,6 +114,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-top: 30px;
         }
         .aliTit{
             width: 60%;
@@ -157,7 +158,7 @@
             overflow: scroll;
             align-items: center;
             top: 0;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(38, 68, 142, 0.3);
         }
         .preguntas{
             padding: 7px 0;
@@ -167,6 +168,10 @@
             font-weight: unset;
             cursor: pointer;
         }
+        /* .conFec [type="date"]::-webkit-calendar-picker-indicator{
+            background-color: rgb(206, 15, 105);
+            filter: invert(1);
+        } */
         button#butExc {
             border: none;
             background: #DDF3DF;
@@ -269,14 +274,15 @@
 <body style="overflow: auto !important">
     <div class="contTit">
     <h3 style="    font-family: system-ui;
-            color: #627885;">Seleccione la region para visualizar informe</h3>
+            color: #627885;text-align:center;">Generación de estadística Perfil del Visitante</h3>
         <div class="aliTit">
             <select name="region" id="reg">
-                <option value="1">Juarez</option>
+                <option type="hidden" value="">Seleccione una localidad</option>
+                <!-- <option value="1">Juarez</option> -->
                 <option value="2">Chihuahua</option>
-                <option value="3">Guachochi</option>
-                <option value="4">Parral</option>
+                <option value="3">Casas Grandes</option>
             </select>
+            
         </div>
     </div>
     
@@ -295,8 +301,8 @@
     </div>
 
     <div data-id="" class="excel none" style="width: 100%">
-        <div style="display:flex; justify-content:space-between;width: 90%;">
-            <span style="margin-top: 20px; cursor:pointer;font-family: system-ui;font-weight: 600;text-decoration: underline;" id="close">Cerrar</span>
+        <div style="display:flex;justify-content:space-between;width:90%;background-color:white;margin-top: 20px;border-top-right-radius: 10px;border-top-left-radius: 10px;">
+            <span style="margin-top: 20px; cursor:pointer;font-family: system-ui;font-weight: 600;text-decoration: underline; margin-left: 35px;color: rgb(206, 15, 105);" id="close">Cerrar</span>
             <select name="" id="changeGraph">
                 <option hidden="" value="">Cambiar gráfico</option>
                 <option value="1">Gráfico de Barras</option>
@@ -340,11 +346,14 @@
 
     <table id="miTabla" class="none">
             <tr>
-                <th>id de pregunta</th>
+                <th>Id de pregunta</th>
                 <th>Pregunta</th>
+                <th>Usuario</th>
                 <th>Respuesta</th>
                 <th>Municipio</th>
+                <th>Hotel</th>
                 <th>Fecha</th>
+                <th>Hora</th>
             </tr>
         </table>
 

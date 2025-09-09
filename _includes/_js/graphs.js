@@ -6,6 +6,7 @@ var clickHandler = ('ontouchstart' in document.documentElement ? "touchend" : "c
 //import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 let arrDatos= Array();
 $(document).ready(function() {
+	
 	let muni;
 	let myChart = undefined;
 	$('#reg').change(function (e) {
@@ -38,7 +39,7 @@ $(document).ready(function() {
 			type: 'POST',
 			data: { reg },
 			success: function(data) {
-				//console.log(data);
+				console.log(data);
 				arrDatos= data;
 				let width = screen.width-(screen.width/10);
 				
@@ -52,7 +53,7 @@ $(document).ready(function() {
 						muni = 'Chihuahua'
 						break;
 					case 3:
-						muni = 'Guachochi'
+						muni = 'Casas Grandes'
 						break;
 					case 4:
 						muni = 'Parral'
@@ -65,8 +66,6 @@ $(document).ready(function() {
 						'municipio'
 						break;
 				}
-			
-				
 				$('.aliTit').append('<div class="contButExc" id="contButExc"><button id="butExc" data-tab="miTabla" data-nam="'+muni+'.xls")">Exportar a Excel<img style="width: 15px; margin-left: 6px;" src="_images/excel.png"></button></div>'+
 				'<div id="contButInfo"><button id="genInfog">Generar infografía</button></div>');
 
@@ -76,9 +75,12 @@ $(document).ready(function() {
 						
 							$('#miTabla').append('<tr class="tableDate"><td>'+arrDatos[i][a]['id_preg']+'</td>'+
 							'<td>'+arrDatos[i][a]['preg_name']+'</td>'+
+							'<td>'+arrDatos[i][a]['user']+'</td>'+
 							'<td>'+arrDatos[i][a]['name']+'</td>'+
 							'<td>'+muni+'</td>'+
-							'<td>'+arrDatos[i][a]['fecha']+'</td></tr>');
+							'<td>'+arrDatos[i][a]['clave']+'</td>'+
+							'<td>'+arrDatos[i][a]['fecha']+'</td>'+
+							'<td>'+arrDatos[i][a]['hora']+'</td></tr>');
 					}
 				}
 			}
@@ -168,9 +170,6 @@ $(document).ready(function() {
 
 		});
 	});
-
-	
-
 
 
 	$(document).on(clickHandler, '#createNew', function(e) {
@@ -854,14 +853,10 @@ $(document).ready(function() {
 					let a = document.getElementById('finInfo');
 					a.style = "border: 1px solid red";
 				}
-				
 			}
 			
 			event.preventDefault();
 		}else{
-
-
-
 
 			const inicioDate = new Date(fecInicio2);
             const finDate = new Date(fechaFin2);
@@ -889,11 +884,6 @@ $(document).ready(function() {
 			}
 
             // console.log(resultado);
-        
-		
-
-
-
 			$('.genInfografia').addClass('none');
 			$('.load-wrapp').removeClass('none');
 			var infografiaInp = document.querySelector('input[name="imageInfo"]:checked');
@@ -961,55 +951,71 @@ $(document).ready(function() {
 						}
 					}
 				}
+
+				var canvas = document.getElementById('canvaIMG');
+					canvas.width = infografia.naturalWidth;
+					canvas.height = infografia.naturalHeight;
+
+					let maxWidth = 600;
+					let lineHeight = 100; 
+					let y1;let y2; let y3;
+					var ctx = canvas.getContext('2d');
+					ctx.drawImage(infografia, 0, 0);
+					let coordenadasIconos = Array();
+					let urlsIconos = Array();
+					var icono = new Image(); 
+				
+					
 				if (textInfografia == 'infografia') {
 					infografia1(respuestas);
+
+					
 				}
 			}, 500);
 			
 		}
     }
 
-	function infografia1(respuestas){
-		function capitalizeFirstLetter(texto) {
-			// console.log(texto);
-			return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
-		}
-		function wrapText(context, text, x, y, maxWidth, lineHeight) {
-			const words = text.split(' ');
-			let line = '';
-			let lineCount = 0;
-			const lines = [];
-		
-			for (let n = 0; n < words.length; n++) {
-				let testLine = line + words[n] + ' ';
-				let metrics = context.measureText(testLine);
-				let testWidth = metrics.width;
-				if (testWidth > maxWidth && n > 0) {
-					lines.push(line);
-					line = words[n] + ' ';
-					lineCount++;
-				} else {
-					line = testLine;
-				}
+	function capitalizeFirstLetter(texto) {
+		// console.log(texto);
+		return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+	}
+	function wrapText(context, text, x, y, maxWidth, lineHeight) {
+		const words = text.split(' ');
+		let line = '';
+		let lineCount = 0;
+		const lines = [];
+	
+		for (let n = 0; n < words.length; n++) {
+			let testLine = line + words[n] + ' ';
+			let metrics = context.measureText(testLine);
+			let testWidth = metrics.width;
+			if (testWidth > maxWidth && n > 0) {
+				lines.push(line);
+				line = words[n] + ' ';
+				lineCount++;
+			} else {
+				line = testLine;
 			}
-			lines.push(line);
-		
-			for (let i = 0; i < lines.length; i++) {
-				let line = lines[i];
-				let metrics = context.measureText(line);
-				let lineWidth = metrics.width;
-				context.fillText(line, x - lineWidth / 2, y);
-				y += lineHeight;
-			}
-		
-			return lineCount; // Returns the number of lines
 		}
+		lines.push(line);
+	
+		for (let i = 0; i < lines.length; i++) {
+			let line = lines[i];
+			let metrics = context.measureText(line);
+			let lineWidth = metrics.width;
+			context.fillText(line, x - lineWidth / 2, y);
+			y += lineHeight;
+		}
+	
+		return lineCount; // Returns the number of lines
+	}
 
+	function infografia1(respuestas){
 		console.log(respuestas);
 		var canvas = document.getElementById('canvaIMG');
 		canvas.width = infografia.naturalWidth;
 		canvas.height = infografia.naturalHeight;
-		
 
 		let maxWidth = 600;
 		let lineHeight = 100; 
@@ -1019,21 +1025,8 @@ $(document).ready(function() {
 		let coordenadasIconos = Array();
 		let urlsIconos = Array();
 		var icono = new Image(); 
-    
 
-		// setTimeout(() => {
-		// 	ctx.font = 'bold 110px Arial black';
-		// 	ctx.fillText('porcentaje %', 300, 1200);
-		// 	var imagenInfografia = canvas.toDataURL('image/jpg');
-		// 	//enlace para descargar la imagen
-		// 	console.log(imagenInfografia);
-		// 	var enlaceDescarga = document.createElement('a');
-		// 	enlaceDescarga.href = imagenInfografia;
-		// 	enlaceDescarga.download = 'infografia.jpg';
-		// 	enlaceDescarga.click();
-		// return;
-		// }, 1000);
-		//return;
+
 		for (let idRespuesta in respuestas) {
 			console.log('el for del switch');
 			let lineCount3;
@@ -1043,7 +1036,6 @@ $(document).ready(function() {
 			let centerX2;
 			let centerX3;
 			let respuestasArray = respuestas[idRespuesta];
-
 			
 			switch (parseInt(idRespuesta)) {
 				case 23:
@@ -1069,9 +1061,6 @@ $(document).ready(function() {
 				ctx.fillStyle = 'black'; 
 				ctx.fillText(capitalizeFirstLetter(respuestas[27][0]['respuesta']), 1500, 1300);
 
-			
-				
-				
 				urlsIconos.push(respuestas[idRespuesta][0]['icons']);
 				urlsIconos.push(respuestas[29][0]['icons']);
 				urlsIconos.push(respuestas[27][0]['icons']);
@@ -1079,9 +1068,6 @@ $(document).ready(function() {
 				coordenadasIconos.push({ x: 320, y: 900, w: 200, h: 200 });
 				coordenadasIconos.push({ x: 950, y: 900, w: 200, h: 200 });
 				coordenadasIconos.push({ x: 1650, y: 900, w: 200, h: 200 });
-				//icono.src = respuestas[idRespuesta][0]['icons'];
-
-				// return;
 					break;
 				
 				case 25:
@@ -1303,6 +1289,7 @@ $(document).ready(function() {
 				case 35:
 						// ---------------- VIATICOS POR DÍA ---------------------
 						console.log('viaticos por dia');
+						
 						maxWidth = 800;
 					ctx.font = '90px Arial';
 					ctx.fillStyle = 'black';
@@ -1311,6 +1298,7 @@ $(document).ready(function() {
 					centerX3 = 3100 + maxWidth / 2;
 					let cont = respuestas[35];
 					for (let i = 0; i < cont.length; i++) {
+						console.log(respuestas[35][i].respuesta);
 						if (respuestas[35][i].respuesta == "Mas de $2,001") {
 
 						}else{
@@ -1347,6 +1335,7 @@ $(document).ready(function() {
 					}
 
 					
+					console.log('fin de viaticos por día');
 					maxWidth = 600;
 					break;
 				
@@ -1527,7 +1516,7 @@ $(document).ready(function() {
 						const enlaceDescarga = document.createElement('a');
 						enlaceDescarga.href = imagenInfografia;
 						console.log('se descargo la imagen');
-						enlaceDescarga.download = 'infografia.jpg';
+						enlaceDescarga.download = 'infografia '+resultado+'.jpg';
 						enlaceDescarga.click();
 						$('.genInfografia').removeClass('none');
 						$('.load-wrapp').addClass('none');
@@ -1537,7 +1526,7 @@ $(document).ready(function() {
 			});
 		}
 
-		
+	};	
 		
 	
 		
@@ -1553,7 +1542,7 @@ $(document).ready(function() {
 // 			enlaceDescarga.download = 'infografia.jpg';
 // 			enlaceDescarga.click();
 			
-		};
+		
 		
 		
 		// return;

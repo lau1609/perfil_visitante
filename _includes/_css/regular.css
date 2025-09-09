@@ -1,0 +1,18 @@
+.ali-pop h3{
+    font-size: 3rem;
+}
+
+.contRecom h3{
+    font-size: 1.5rem !important;
+}
+.contTimRecom {
+    margin-top: -14%;
+}
+#flechas, #flechas2 {
+    width: 23%;
+}
+@media (max-width: 1300px) {
+    .ali-pop{
+        background-size: 40%;
+    }
+}

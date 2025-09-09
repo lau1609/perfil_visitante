@@ -20,6 +20,7 @@ endif;
 $connectMySql = new mysqli($hostname_connectMySql, $username_connectMySql, $password_connectMySql, $database_connectMySql);
 
 // var_dump($connectMySql);
+// var_dump($connectMySql);
 
 if (mysqli_connect_errno()) {
     printf("Conexi&oacute;n fallida: %s\n", mysqli_connect_error());

@@ -1,9 +1,51 @@
+:root {
+  --prim-widthM: 550px;
+  --med-widthM: 300px;
+  --med-width2M: 250px;
+}
 
-    h3.title-conect {
-        text-align: center;
-        font-size: 3rem;
+@media (max-width: 800px) {
+      .contBarHab{
+            width: var(--med-width2M);
     }
-
-    @media (max-width: 900px) {
-  }
+    .contImgAM, .contCirHab{
+            width: var(--med-widthM);
+    }
+    .contProj, 
+    .contTextAM,
+    .contTitle, 
+    .contHabilidades, 
+    .context,
+    .decorIni {
+        width: var(--prim-widthM);
+    }
+    .form1 {
+        height: 550px;
+        width: 500px;
+    }
+    .decorIni {
+        height: 290px;
+    }
+    .contIni {
+        top: 24vh;
+    }
+    .form2 {
+        height: 400px;
+        width: 300px;
+    }
+    .contFormSend {
+        height: 300px;
+        width: 350px;
+    }
+    div#inicio {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: anchor-center;
+    }
+    .context h1, .context h3 {
+        text-align: center;
+        width: 100%;
+    }
+        
+}
 

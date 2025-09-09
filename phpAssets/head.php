@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1" >
 <meta name="robots" content="follow">
-<meta name="author" content="http://www.upgrade.com.mx">
+<meta name="author" content="">
 <meta name="copyright" content="2014">
 
 <!-- FAVICON -->
@@ -21,6 +21,8 @@
 <link rel="stylesheet" type="text/css" media="only screen and (max-width:1024px)"  href="../_includes/_css/medium.css">
 <link rel="stylesheet" type="text/css" media="only screen and (max-width:600px)"   href="../_includes/_css/small.css">
 
+
+
 <!-- SPRY -->
 <!--<link rel="stylesheet" type="text/css" href="_includes/_css/SpryValidation.css"/>-->
  
@@ -28,9 +30,11 @@
 
 <!-- JS General -->
 <script src="../_includes/_js/jquery-3.3.1.min.js"></script>
-<script src="../_includes/_js/main.js"></script>
+<script src="../_includes/_js/config.js"></script>
+<script src="../_includes/_js/main.js" ></script>
 <script src="../_includes/_js/sentiment.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.5.2/tinycolor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.5.2/tinycolor.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>

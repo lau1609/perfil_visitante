@@ -43,7 +43,44 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 $(document).ready(function() {
     "use strict";
 
-	//cronometro();
+// 	function mostrarPregunta(index, valid) {
+//         $('.pregunta-activa').slideUp(300, function () {
+//           $(this).removeClass('pregunta-activa');
+//           $('[data-preg="' + index + '"]').slideDown(300).addClass('pregunta-activa');
+//         });
+
+//         $('.step').removeClass('active');
+//         $('#step-' + index).addClass('active');
+
+//         console.log('#step-' + index);
+//         if (valid == true) {
+//             console.log('el check');
+//            //$('#step-' + index).data('step','✔'); 
+//            let calc = index - 1;
+//            $('#step-' + calc).html('✔');
+//            $('#step-' + calc).addClass('finish');
+//         }
+        
+
+//       }
+// let vali;
+//       $('.next').on('click', function () {
+//         let actual = $('.pregunta-activa').attr('data-preg');
+// 		console.log(actual);
+//         let siguiente = parseInt(actual) + 1;
+// 		console.log(siguiente);
+//         if ($('[data-preg="' + siguiente + '"]').length) {
+//             vali = true;
+//           mostrarPregunta(siguiente, vali);
+//         }
+//       });
+
+//       $('.step').on('click', function () {
+//         let index = $(this).data('step');
+//         vali = false;
+//         mostrarPregunta(index, vali);
+//       });
+
 	
 
 		// en cuento se carga la pagina, se da overflow hidden
@@ -57,11 +94,11 @@ $(document).ready(function() {
 			  });
 			}, 0);
 		  });
-		 	$('body').css('overflow', 'hidden');
+		 	//s$('body').css('overflow', 'hidden');
 		
 	  
 			
-	/* -------------------------------------- */
+	/* --------------------------------------------------- */
 
 	// click de nueva encuesta (recarga la pagina)
 	
@@ -74,6 +111,7 @@ $(document).ready(function() {
 	$(document).on('submit', '.form-questions', function(e) {
 		e.preventDefault(); // Evita el envío del formulario por defecto
 		var $form = $(this);
+		 let currentForm = event.target;
 		const formData = $(this).serializeArray();
 		var respuestaObj = [];
 		const respuestas = {};
@@ -82,7 +120,7 @@ $(document).ready(function() {
 		const valorEnc = $form.find('.parteEncuesta').val();
 		municipio = $form.find('.municipio').val();
 		const clave = $form.find('#hotel').val();
-		console.log(clave)
+		console.log(clave);
 
 
 		//return;
@@ -132,9 +170,11 @@ $(document).ready(function() {
 			});
 			console.log(respuestaObj);
 		});
-		
+		let other = currentForm.querySelector('input[name="resp_abierta"]');
+		let respuestaObj2 =  [];
 
 		$form.find('.checkbox').each(function() {
+			
 			const preguntaCheckbox = $(this);
 			const preguntaID = preguntaCheckbox.attr('data-id-pregunta');
 			let nameArray = preguntaID;
@@ -167,12 +207,14 @@ $(document).ready(function() {
 			totalCount = countRequiredElements;
 		}
 		// Sumar los conteos para obtener el número total de elementos con clase "required" o "checkbox"
-		//console.log(totalCount);
-		//console.log(respuestaObj.length);
+		console.log(totalCount);
+		console.log(respuestaObj.length);
 		console.log(respuestaObj);
 		  let g = true;
+		//   console.log(respuestaObj.length, totalCount);
 		  //return;
 		if (respuestaObj.length == totalCount) {
+			console.log('entro al if');
 			var request;
 			var serializedData = [];
 			$inputs.each(function() {
@@ -186,18 +228,35 @@ $(document).ready(function() {
 				// //}
 			  });
 
-			  
+			  console.log(other);
+			  if (other && other.value.trim() !== '') {
+				console.log('tiene valor');
+				let idPreg = 0;
+				idPreg = other.dataset.idPreg;
+				respuestaObj2.push({
+					preguntaID: idPreg,
+					respuesta: other.value
+				});
+			  }else{
+				console.log('no tiene valor');
+				respuestaObj2.push({
+					preguntaID: 0
+				});
+			  }
+
+			  console.log(respuestaObj2);
+			  //return;
 			$inputs.prop("disabled", true);
 			var request;
 			//Abortamos cualquier solicitud actual
 			if (request) { request.abort(); }
 			//console.log(respuestaObj);
-			
+			console.log('antes del ajax');
 			request = $.ajax({
 				dataType: 'text', //json
 				url: '../_includes/_php/querys.php',
 				type: 'POST',
-				data: {respuestaObj, valorEnc, municipio, clave },
+				data: {respuestaObj, valorEnc, municipio, clave, respuestaObj2 },
 				success: function(data) {
 					console.log(data);
 					$inputs.prop("disabled", false);
@@ -207,8 +266,9 @@ $(document).ready(function() {
 						$('.align-enc').addClass('none');
 						$('.cont-pop').addClass('block');
 						$('.cont-pop').removeClass('none');
+						$('#sectionPort').remove();
 						cronometro().then(() => {
-							$('#newEnc').trigger('click');
+							window.location.reload();
 							// Aquí puedes poner cualquier código que necesite ejecutarse después de que el cronómetro haya terminado
 						});
 						
@@ -226,7 +286,7 @@ $(document).ready(function() {
 	});
 });
 
-$(document).on(clickHandler, 'input[name="cantPerson"]', function(e) {
+$(document).on('change', 'input[name="cantPerson"]', function(e) {
 	console.log('el onchange');
 	var person = $(this).val();
 	const divWhyPerson = document.getElementById("whyPersonVis");
@@ -245,7 +305,7 @@ $(document).on(clickHandler, 'input[name="cantPerson"]', function(e) {
 
 // click de nacionalidad
 
-$(document).on(clickHandler, 'input[name="nacionalidad"]', function(e) {
+$(document).on('change', 'input[name="nacionalidad"]', function(e) {
 	console.log('el onchange');
 	var nac = $(this).val();
 	const mex = document.getElementById("mexico");
@@ -257,12 +317,12 @@ $(document).on(clickHandler, 'input[name="nacionalidad"]', function(e) {
 	$('.united').removeClass('required'); 
 	$('.mex').removeClass('required'); 
 
-	if (nac == "Mexico") {
+	if (nac === "Mexico") {
 		mex.style.display = 'block'; 
 		inter.style.display = 'none';
 		$(mex).addClass('required'); 
 		$(inter).removeClass('required'); 
-	}else if (nac == "Internacional") {
+	}else if (nac === "Internacional") {
 		inter.style.display = 'block'; 
 		mex.style.display = 'none'; 
 		$(inter).addClass('required'); 
@@ -272,13 +332,43 @@ $(document).on(clickHandler, 'input[name="nacionalidad"]', function(e) {
 
 $(document).on(clickHandler, '#openQR', function(e) {
 	console.log(municipio);
-	let muniQR
-	if (municipio == 2) {
-		muniQR == 'Juarez'
-	}else if (municipio == 1) {
-		muniQR = 'Chihuahua';
+	const queryString = window.location.search; 
+	const urlParams = new URLSearchParams(queryString);
+    const he = urlParams.get('hotel');
+	let muniQR;
+	//conso
+	
+	switch (parseInt(municipio)) {
+		case 1:
+			muniQR = 'Juarez';
+			break;
+		case 2:
+			muniQR = 'Chihuahua';
+			break;
+		case 3:
+			muniQR = 'Casas-Grandes';
+			break;
+		case 4:
+			muniQR = 'Guachochi';
+			break;
+		case 8:
+			muniQR = 'Parral';
+			break;
+		case 6:
+			muniQR = 'Creel';
+			break;
+		case 7:
+			muniQR = 'Batopilas';
+			break;
+	
+		default:
+			break;
 	}
-	window.open("https://sichitur.org/generateQR/?loc="+muniQR);
+	console.log(muniQR);
+	window.open("https://sichitur.org/generateQR/?loc="+muniQR+"&he="+he);
+	setTimeout(() => {
+		window.location.reload(); 
+	}, 500);
 });
 
 
@@ -479,7 +569,7 @@ console.log(end);
 		//console.log(tiempoTranscurrido);
 		if(tiempoTranscurrido > 0)
 		{
-		   console.log(`Han transcurrido ${tiempoTranscurrido} segundos`);
+		 //  console.log(`Han transcurrido ${tiempoTranscurrido} segundos`);
 		   caja.innerHTML = tiempoTranscurrido;
 		   //Programamos para que se revise de nuevo el tiempo transcurrido en 500ms
 		   setTimeout(() => {
