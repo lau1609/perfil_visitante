@@ -352,18 +352,7 @@
                                 </select>
                             </div>
 
-                            <!-- <div class="qs-general">
-                                <h3>5.- Nivel académico <span style="color:red;">*</span> <br> (Educational level)</h3>
-                                <select name="" class="options required" data-id-pregunta="55">
-                                    <option hidden="" value="">Seleciona un opción (Select an option)</option>
-                                    <option value="Primaria">Primaria (Elementary school)</option>
-                                    <option value="Secundaria">Secundaria (Middle school)</option>
-                                    <option value="Preparatoria">Preparatoria (High school)</option>
-                                    <option value="Carrera-técnica">Carrera técnica (Technical degree)</option>
-                                    <option value="Carrera-universitaria">Carrera universitaria (College degree)</option>
-                                    <option value="Posgrado">Posgrado (MBA or PhD)</option>
-                                </select>
-                            </div> -->
+                            
 
                             <div class="qs-general checkbox" data-id-pregunta="57">
                                 <h3><span class="number" style="padding: 7px 15px;">4</span> ¿Cómo se enteró del destino? <span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar más de una opción </span>  <br>(How did you find out about the location<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> Check all that apply </span>)</h3>
@@ -385,6 +374,18 @@
                                     <option value="Primera-vez">Primera vez (First time)</option>
                                     <option value="Dos-veces">Dos veces (Twice)</option>
                                     <option value="Tres-veces-o-mas">Tres veces o mas (three or more)</option>
+                                </select>
+                            </div>
+                            <div class="qs-general">
+                                <h3><span class="number" style="padding: 7px 15px;">6</span> Nivel académico <span style="color:red;">*</span> <br> (Educational level)</h3>
+                                <select name="" class="options required" data-id-pregunta="66">
+                                    <option hidden="" value="">Seleciona un opción (Select an option)</option>
+                                    <option value="Primaria">Primaria (Elementary school)</option>
+                                    <option value="Secundaria">Secundaria (Middle school)</option>
+                                    <option value="Preparatoria">Preparatoria (High school)</option>
+                                    <option value="Carrera-técnica">Carrera técnica (Technical degree)</option>
+                                    <option value="Carrera-universitaria">Carrera universitaria (College degree)</option>
+                                    <option value="Posgrado">Posgrado (MBA or PhD)</option>
                                 </select>
                             </div>
 

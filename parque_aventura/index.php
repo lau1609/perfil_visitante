@@ -691,7 +691,7 @@
     </script>
         
 
-         <?php include_once("../phpAssets/footer.php"); ?>
+         <?php include_once("../phpAssets/footer.php"); ?>   
     
     </body>
 </html>

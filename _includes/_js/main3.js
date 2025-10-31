@@ -223,6 +223,63 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
                     '</div>'+
                 '</div>';
                 
+                // <div class="contDate">
+                        //     <input type="date" name="" id="">
+                        //     <label for="">a</label>
+                        //     <input type="date" name="" id="">
+                        // </div>
+        let html4 = `<div class="contIndTuris">
+                    <div class="contButLoadInf">
+                        <button id="uplInfo">Cargar información</button>
+                    </div>
+                    <div class="contFiltInd">
+                        <select name="" id="selMunisInd">
+                            <option value="" hidden>Municipio</option>
+                        </select>
+                        
+                        <select name="" id="selAnioInd">
+                            <option value="" hidden>Año</option>
+                        </select>
+                    </div>
+
+                    <div class="contTabIndTuris">
+                        <table id="tabIndTuris">
+                            <thead>
+                                <tr>
+                                    <th>Municipio</th>
+                                    <th>Localidad</th>
+                                    <th>Fecha</th>
+                                    <th>T. Noche</th>
+                                    <th>Derrama</th>
+                                    <th>Llegada T.</th>
+                                    <th>Estadía</th>
+                                    <th>Ocupación</th>
+                                    <th>Densidad</th>
+                                    <th>Tot. Hospedados</th>
+                                    <th>Tot. Habitaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>`;
+
+    
+let arrInd = Array();
+// {
+//   munis: [
+//     { id: 1, name: "Chihuahua" },
+//     { id: 2, name: "Creel" }
+//   ],
+//   indTuris: [
+//     { ind_id: 1, name_muni: "Bocoyna", id_muni:1, loc: "creel", fecha: "01/10/2025", tNoche:5639, derr: 1.36, llegT: 895, est:1.3, dens:1.9, totHos: 6598, totHab:5986 },
+//     { ind_id: 1, name_muni: "Urique", id_muni:3, loc: "Areponapuchi", fecha: "01/10/2025", tNoche:5639, derr: 156.36562, llegT: 895, est:1.3, dens:1.9, totHos: 6598, totHab:5986 },
+
+//   ]
+// };
+
 $(document).ready(function() {
 
     // setTimeout(() => {
@@ -236,7 +293,6 @@ $(document).ready(function() {
                     optHotels += '<label><input type="checkbox" value="' + hoteles[i]['clave'] + '"> ' + hoteles[i]['name'] + '</label>';
                 }
                     
-                    // optHotels2 += '<option value="' + hoteles[i]['clave'] + '"> ' + hoteles[i]['name'] + '</option>';
                 }
                 $('.dropdown').html(optHotels);
 
@@ -252,23 +308,16 @@ $(document).ready(function() {
                     optHotels2 += '<option value="' + hoteles[i]['clave'] + '"> ' + hoteles[i]['name'] + '</option>';
                 }
                     
-                    // optHotels2 += '<option value="' + hoteles[i]['clave'] + '"> ' + hoteles[i]['name'] + '</option>';
                 }
                 $('#hotel').html(optHotels2);
 
         });
             $(document).on(clickHandler, 'input[name="filtInfo"]', function(e) {
-                // if (event.target && event.target.matches('input[name="filtInfo"]')) {
                     const selectedValue = $(this).val();
                     let optHotels = '';
                     let optHotels2 = '';
-                    // for (let i = 0; i < hoteles.length; i++) {
-                    //     optHotels += '<label><input type="checkbox" value="' + hoteles[i]['clave'] + '"> ' + hoteles[i]['name'] + '</label>';
-                    //     optHotels2 += '<option value="' + hoteles[i]['clave'] + '"> ' + hoteles[i]['name'] + '</option>';
-                    // }
         
-                    const hoy = new Date(); // Obtener fecha actual
-                    // Formatear la fecha como YYYY-MM-DD
+                    const hoy = new Date();
                     const fechaFormateada = hoy.toISOString().split('T')[0];
                     switch (selectedValue) {
                         case 'all':
@@ -349,11 +398,81 @@ $(document).ready(function() {
     $(document).on(clickHandler, '#genQR', function(e) {
         $('#listQR').toggleClass('none');
     });
+    $(document).on(clickHandler, '.closeLoadInd', function(e) {
+        $('.popLoadInd').remove();
+    });
 
+    
+
+    $(document).on('change', 'input[name="xlsxUpl"]', function () {
+        const file = $(this).prop('files')[0];
+        const $button = $('#uploadXLSX');
+
+        if ($button.length) {
+            if (file) {
+                $button.prop('disabled', false).removeClass('btn-disabled');
+            } else {
+                $button.prop('disabled', true).addClass('btn-disabled');
+            }
+        }
+    });
+
+
+
+     $(document).on(clickHandler, '#uploadXLSX', function(e) {
+        e.preventDefault();
+
+        var fileInput = $('input[name="xlsxUpl"]')[0];
+        if (!fileInput || !fileInput.files.length) {
+            alert('Selecciona un archivo antes de guardar.');
+            return;
+        }
+
+        var file = fileInput.files[0];
+        var fd = new FormData();
+        fd.append('xlsxUpl', file);
+        fd.append('uploadXLSX', 'true');
+
+        var $btn = $(this);
+        var originalText = $btn.text();
+        $btn.prop('disabled', true).text('Subiendo...');
+
+        $.ajax({
+            url: '/perfil_visitante/_includes/_php/querys.php',
+            type: 'POST',
+            data: fd,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(res) {
+                if (res && res.success) {
+                    alert('✅ Archivo guardado: ' + (res.saved_as || 'BD-SICHITUR.xlsx'));
+                    $(`.opcMenu[data-opc="4"]`).click();
+                } else {
+                    alert('❌ Error: ' + (res && res.message ? res.message : 'Error desconocido'));
+                    console.log('Respuesta server:', res);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('❌ Error en la petición: ' + textStatus);
+                console.error('AJAX error:', textStatus, errorThrown, jqXHR.responseText);
+            },
+            complete: function() {
+                $btn.prop('disabled', false).text(originalText);
+            }
+        });
+    });
+
+
+
+    
     $(document).on('change', '#abrir-cerrar', function(e) {
         $('#contMenu').toggleClass('none');
         $('#contMenu').toggleClass('flex');
         $('.header').toggleClass('width-30');
+    });
+    $(document).on(clickHandler, '#uplInfo', function(e) {
+        $('#section2').append(`<div class="popLoadInd"><div class="contLoadXlsl"><div class="contCloseLoad"><p class="closeLoadInd">X</p></div><label>Carga el archivo solo del mes a procesar <input type="file" name="xlsxUpl" accept=".xlsx"></label><button id="uploadXLSX" disabled>Guardar</button></div></div>`)
     });
 
     $(document).on(clickHandler, '.opcMenu', function(e) {
@@ -384,6 +503,15 @@ $(document).ready(function() {
                 } else {
                     $flecImg.css('transform', 'rotate(180deg)');
                 }
+            break;
+            case '4':
+                $('#section1').addClass('none');
+                $('#section2').removeClass('none');
+                $('#section2').html(html4);
+                indTuris();
+                // setTimeout(() => {
+                //     datos(opc);
+                // }, 500);
             break;
             default:
                 break;
@@ -1098,6 +1226,27 @@ $(document).ready(function() {
         // }
     });
 
+
+    $(document).on(clickHandler, '#btnScreenshot', function(e) {
+        let div = document.querySelector(".screenInfog");
+        
+        html2canvas(div).then(canvas => {
+            // Agregar canvas a la página
+            document.body.appendChild(canvas);
+
+            // O descargar la imagen
+            let link = document.createElement("a");
+            link.download = "infografia.png";
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        });
+    });
+
+    $(document).on(clickHandler, '#closeInfog', function(e) {
+        $('.contLoadRep2').remove();
+    });
+
+
     $(document).on(clickHandler, '.reportInfog', function(e) {
         let reg = $(this).attr('data-muni');
         let ini = document.getElementById('inicio').value;
@@ -1111,15 +1260,16 @@ $(document).ready(function() {
             data: {reg, infog2:true, ini, fin},
             success: function(data) {
                 console.log(data);
-                $('.contLoadRep2').html(`<div class="headerInfog">
-                    <img src="perfil_visitante/_images/sichitur.png" style="width: 150px;">
+                $('.contLoadRep2').html(`<button id="closeInfog">Cerrar</button><button id="btnScreenshot">Descargar</button><div class="screenInfog"><div class="headerInfog">
+                    <img src="perfil_visitante/_images/logo.png" style="width: 210px;">
                     <div class="tituloInfog">
-                        <h3>PERFIL DEL VISITANTE DE <span style="font-weight: 900;"> ${data[0]['name_loc'].toUpperCase()}</span></h3>
+                        <h3 style="text-align: center;">PERFIL DEL VISITANTE DE <span style="font-weight: 900;"> ${data[0]['name_loc'].toUpperCase().replace(/-/g, ' ')}</span></h3>
+                        <h4 style="height:30px;margin:0"></h4>
                     </div>
-                    <img src="perfil_visitante/_images/logo.png" style="width: 150px;">
+                    <img src="perfil_visitante/_images/sichitur.png" style="width: 150px;">
                 </div><div id="contenedor"></div><div class="footInfo">
-                    <h3 style="color: white;width: 100%;text-align: center;font-size: 1rem;">FUENTE:SECRETARÍA CON INFORMACIÓN RECOPILADA DE ENCUESTAS PERFIL DEL VISITANTE DE <span>${data[0]['name_loc'].toUpperCase()}</span></h3>
-                </div>`);
+                    <h3 style="color: white;width: 100%;text-align: center;font-size: 1rem;">FUENTE:SECRETARÍA CON INFORMACIÓN RECOPILADA DE ENCUESTAS PERFIL DEL VISITANTE DE <span>${data[0]['name_loc'].toUpperCase().replace(/-/g, ' ')}</span></h3>
+                </div></div>`);
 
 
                 const columnas = {
@@ -1134,24 +1284,110 @@ $(document).ready(function() {
                 for (const pregunta of data) {
                     const part = pregunta.preg_part_infog;
                     // console.log(pregunta.preg_part_infog);
-                    if (pregunta.preg_part_infog != 0) {
-                        console.log(pregunta.preg_part_infog);
+                    if (columnas[part] && pregunta.preg_part_infog != 0) {
+                        console.log(pregunta.preg_part_infog);  
+                         columnas[part].push(pregunta);  
+                    }else{
                         if (pregunta.preg_part_infog == 7 || pregunta.preg_part_infog == 6 || pregunta.preg_part_infog == 5) {
                             console.log('es 5,6,7: '+pregunta.preg_part_infog);
                             columnas[5].push(pregunta);   
                             console.log(columnas[5]);
-                        }else{
-                            console.log('no es 5,6,7 es : '+pregunta.preg_part_infog);
-                            columnas[part].push(pregunta);   
                         }
-                        
                     }
                 }
 
-                let flag = 1;
+
                 let color = '';
+
+                // ---- columna 5 (partes 5,6 y 7) -----
+                const partes5a7 = columnas['5'];
+                const div5a7 = $('<div class="itemNation item"><div class="itemEsp nation"></div><div class="itemEsp2"><div base="" class="itemEsp mex"></div><div base="" class="itemEsp int"></div></div></div>');
+                
+
+                console.log(partes5a7);
+                let contItem2 = Array();
+                //$(`<div class="itemEsp2"></div>`);
+                for (const pregunta of partes5a7) {
+                    
+                    let clase = "";
+                    let idDiv = "base";
+                    let opacity = "";
+                    let validate;
+                    switch (parseInt(pregunta.preg_part_infog)) {
+                        case 5:
+                            clase="nation";
+
+                            validate = false;
+                            break;
+                        case 6:
+                            clase="mex";
+                            opacity = "opacity: 0";
+                            validate = true;
+                            break;
+                        case 7:
+                            clase="int";
+                            opacity = "opacity: 0";
+                            validate = true;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    let contItem = $(`<div ${idDiv} class="itemEsp ${clase}"></div>`);
+                    
+                    let item = `<h3 style="${opacity}">${pregunta.preg_name}</h3>`;//
+                    console.log(item);
+                    const respuestas = pregunta.respuestas;
+                    respuestas.sort((a, b) => b.porcentaje - a.porcentaje);
+                    color = 'azul';
+                    let porTot = 0;
+                    let cont = 0; 
+
+                    for (const respuesta of respuestas) {
+                        cont++;
+                        if (respuesta.respuesta !== '' && respuesta.respuesta !== 'none' && (porTot < 75 || cont <= 2)) {
+                            porTot = porTot + respuesta.porcentaje;
+                            if (cont == 1) {
+                                
+                              item += `
+                                <div class="respPorcentaje">
+                                    <p style="font-weight:900">${respuesta.respuesta}</p>
+                                    <h4 class="${color}" style="font-weight:900">${respuesta.porcentaje}%</h4>
+                                </div>`;  
+                            }else{
+                                item += `
+                                <div class="respPorcentaje">
+                                    <p >${respuesta.respuesta}</p>
+                                    <h4 style="" class="${color}">${respuesta.porcentaje}%</h4>
+                                </div>`;  
+                            }
+                        }
+                    }
+                    console.log(validate);
+                    console.log(pregunta.preg_name);
+                    if (validate == true) {
+                        
+                        console.log(item);
+                        contItem2.push(item);
+                        // contItem.append(item);
+                        // contItem2.append(contItem);
+                    }else{
+                        // contItem.append(item);
+                        contItem2.push(item);
+                        // div5a7.append(contItem);  
+                    }
+                    
+                }
+
+                
+                // div5a7.append(contItem2);
+                
+
+                let flag = 1;
+                
                 for (const key in columnas) {
                     const preguntasEnColumna = columnas[key];
+                    // console.log(columnas[key]);
                     
                     if (key !== '5') {
                         for (const pregunta of preguntasEnColumna) {
@@ -1179,8 +1415,8 @@ $(document).ready(function() {
 
                             for (const respuesta of respuestas) {
                                 cont++;
-                                
                                 if (respuesta.respuesta !== '' && respuesta.respuesta !== 'none') {
+                                    // console.log(respuesta);
                                     if (porTot < 75 || cont <= 2) {
                                         
                                         const firstLetter = respuesta.respuesta.charAt(0);
@@ -1207,80 +1443,57 @@ $(document).ready(function() {
                             }
                             $('#contenedor').append(`<div class="item">${item}</div>`);
                         }
-                    }
-                }
-
-                const partes5a7 = columnas['5'];
-                const div5a7 = $('<div class="itemNation item"></div>');
-
-                console.log(partes5a7);
-                for (const pregunta of partes5a7) {
-                    let clase = "";
-                    
-                    switch (parseInt(pregunta.preg_part_infog)) {
-                        case 5:
-                            clase="nation";
-                            break;
-                        case 6:
-                            clase="mex";
-                            break;
-                        case 7:
-                            clase="int";
-                            break;
-                    
-                        default:
-                            break;
-                    }
-                    let contItem = $(`<div class="itemEsp ${clase}"></div>`)
-                    let item = ``;//<h3>${pregunta.preg_name}</h3>
-                    console.log(item);
-                    const respuestas = pregunta.respuestas;
-                    respuestas.sort((a, b) => b.porcentaje - a.porcentaje);
-                    switch (flag) {
-                        case 1:
-                            color = 'morado';
-                            flag = 2;
-                            break;
-                        case 2:
-                            color = 'azul';
-                            flag = 3;
-                            break;
-                        case 3:
-                            color = 'rosa';
-                            flag = 1;
-                            break; 
-                        default:
-                            break;
-                    }
-                    let porTot = 0;
-                    let cont = 0; 
-
-                    for (const respuesta of respuestas) {
-                        cont++;
-
-                        if (respuesta.respuesta !== '' && respuesta.respuesta !== 'none' && (porTot < 75 || cont <= 2)) {
-                            porTot = porTot + respuesta.porcentaje;
-                            if (cont == 1) {
-                              item += `
-                                <div class="respPorcentaje">
-                                    <p style="font-weight:900">${respuesta.respuesta}</p>
-                                    <h4 class="${color}" style="font-weight:900">${respuesta.porcentaje}%</h4>
-                                </div>`;  
-                            }else{
-                                item += `
-                                <div class="respPorcentaje">
-                                    <p>${respuesta.respuesta}</p>
-                                    <h4 style="color: ${color}">${respuesta.porcentaje}%</h4>
-                                </div>`;  
-                            }
-                            
+                        if (key == 1) {
+                            $('#contenedor').append(div5a7);
                         }
                     }
-                    contItem.append(item);
-                    div5a7.append(contItem);
                 }
-                console.log
-                $('#contenedor').append(div5a7);
+
+                console.log(contItem2);
+                // $('.itemNation').append('<div class="itemEsp2"></div>');
+                for (let i = 0; i < contItem2.length; i++) {
+                    let vali = contItem2[i].includes("Internacional");
+                    let vali2 = contItem2[i].includes("residencia");
+                    console.log(vali);
+                    console.log(contItem2[i]);
+                    if (vali) {
+                        $('.nation').append(contItem2[i]);
+                    } else if (vali2) {
+                         $('.int').append(contItem2[i]);
+                    }else{
+                         $('.mex').append(contItem2[i]);
+                    }
+                    // if (contItem2 == true) {
+                    //     $('.int').append(contItem2[i]);
+                    // }else{
+                    //     $('.mex').append(contItem2[i]);
+                    // }
+                    
+                    
+                }
+
+                const mexBlock = document.querySelector(".itemEsp.mex");
+                const intBlock = document.querySelector(".itemEsp.int");
+                const nationBlock = document.querySelector(".itemEsp.nation");
+
+                if (mexBlock && intBlock && nationBlock) {
+                    const nationDivs = nationBlock.querySelectorAll(".respPorcentaje");
+
+                    const mexicoDiv = nationDivs[0];     
+                    const internacionalDiv = nationDivs[1]; 
+
+                    const mexCenter = (mexBlock.offsetHeight / 2) - (mexBlock.offsetHeight / 4);
+                    const intCenter = (intBlock.offsetHeight / 2) + (mexBlock.offsetHeight / 4);
+                    const mexicoHeight = mexicoDiv.offsetHeight;
+                    const internacionalHeight = internacionalDiv.offsetHeight;
+
+                    mexicoDiv.style.marginTop = `${mexCenter - mexicoHeight / 2}px`;
+
+                    internacionalDiv.style.marginTop = `${intCenter - internacionalHeight / 2}px`;
+                }
+                
+                // console.log
+                // $('#contenedor').append(div5a7);
                 
             },
             error: function(xhr, status, error) {
@@ -2290,9 +2503,7 @@ $(document).ready(function() {
     $('#muniFilt').change(function (e) {
         var reg = parseInt(document.getElementById("muniFilt").value);
         let hotelsFilt = Array();
-        // Seleccionar todos los elementos <tr> con la clase 'addLine'
         const elementos = document.querySelectorAll('tr.lineHotels');
-        // Eliminar cada elemento seleccionado
         elementos.forEach(elemento => {
             elemento.remove();
         });
@@ -2308,10 +2519,342 @@ $(document).ready(function() {
             }
         }
     });
+
+
+
+
+
+
+
+
+if (typeof arrInd === 'undefined') {
+    window.arrInd = { indTuris: [], munis: [] };
+}
+
+(function ($) {
+    const nf = new Intl.NumberFormat('en-US');
+    const nf2 = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    function formatThousands(n) {
+        if (n === null || n === undefined || n === '') return '';
+        const num = Number(n);
+        if (Number.isNaN(num)) return n;
+        return nf.format(Math.round(num));
+    }
+    function formatCurrencyMillions(n) {
+        if (n === null || n === undefined || n === '') return '';
+        const num = Number(n);
+        if (Number.isNaN(num)) return n;
+        return '$ ' + nf2.format(num) + '<small>MDP</small>';
+    }
+
+    function parseDateSlash(slashDate) {
+        if (!slashDate) return null;
+        const parts = slashDate.split('/');
+        if (parts.length !== 3) return null;
+        const year = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1; 
+        const day = parseInt(parts[2], 10);
+        return new Date(year, month, day);
+    }
+    
+    function formatDateToSlash(dateObj) {
+        if (!dateObj || isNaN(dateObj)) return '';
+        const dd = String(dateObj.getDate()).padStart(2, '0');
+        const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+        const yyyy = dateObj.getFullYear();
+        return `${yyyy}/${mm}/${dd}`;
+    }
+    
+    function formatDateToISO(dateObj) {
+        if (!dateObj || isNaN(dateObj)) return '';
+        return dateObj.toISOString().slice(0, 10);
+    }
+
+    let currentPage = 1;
+    const rowsPerPage = 100;
+    let filteredData = [];
+    
+    function renderTable(page = 1) { 
+        console.log('renderiza la tabla');
+        const $tbody = $('#tabIndTuris tbody');
+        if (!$tbody.length || !arrInd.indTuris) return;
+        // console.log($('#selAnioInd'));
+        const selMuniVal = $('#selMunisInd').val();
+        const selYearVal = $('#selAnioInd').val();
+
+        
+        filteredData = arrInd.indTuris.filter(r => {
+            // FILTRO MUNICIPIO 
+            if (selMuniVal && String(r.id_muni) !== String(selMuniVal)) return false;
+            
+            // FILTRO AÑO
+            if (selYearVal) {
+                
+                const fechaString = r.fecha; 
+                // console.log(fechaString);
+                if (fechaString && fechaString.includes('-')) {
+                    // console.log(selYearVal);
+                    const dataYear = fechaString.split('-')[0];
+                    // console.log(dataYear);
+                    
+                    if (String(dataYear) !== selYearVal) {
+                        return false;
+                    }
+                } else {
+                    return false; 
+                }
+            }
+            return true;
+        });
+
+        const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+        currentPage = Math.min(page, totalPages) || 1;
+        const startIndex = (currentPage - 1) * rowsPerPage;
+        const endIndex = startIndex + rowsPerPage;
+        
+        const frag = document.createDocumentFragment();
+        filteredData.slice(startIndex, endIndex).forEach((r, i) => {
+            const origIndex = arrInd.indTuris.indexOf(r); 
+            const tr = document.createElement('tr');
+            tr.dataset.origIndex = origIndex;
+            
+            tr.innerHTML = `
+                <td>${r.name_muni || ''}</td>
+                <td>${r.loc || ''}</td>
+                <td class="col-fecha">${r.fecha || ''}</td>
+                <td class="col-tnoche">${formatThousands(r.tNoche)}</td>
+                <td class="col-derrama">${formatCurrencyMillions(r.derr)}</td>
+                <td class="col-llegT">${formatThousands(r.llegT)}</td>
+                <td class="col-est">${r.est !== undefined ? nf2.format(Number(r.est)) : ''}</td>
+                <td class="col-ocu">${r.ocu !== undefined ? nf2.format(Number(r.ocu) * 100) + '%' : ''}</td>
+                <td class="col-dens">${r.dens !== undefined ? nf2.format(Number(r.dens)) : ''}</td>
+                <td class="col-totHos">${formatThousands(r.totHos)}</td>
+                <td class="col-totHab">${formatThousands(r.totHab)}</td>
+                <td><p class="editIndTuris" data-orig-index="${origIndex}" style="cursor:pointer;color:var(--link-color,blue)">Editar</p></td>
+            `;
+            frag.appendChild(tr);
+        });
+        $tbody.empty().append(frag);
+
+        let paginationHTML = '';
+        if (totalPages > 1) {
+            for (let i = 1; i <= totalPages; i++) {
+                paginationHTML += `<button class="pageBtn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+            }
+        }
+        $('#pagination').html(paginationHTML);
+    }
+    
+    // ------------------------------------------
+    // EVENTOS
+    // ------------------------------------------
+    
+    $(document).on('change', '#selMunisInd, #selAnioInd', function () {
+        renderTable(1);
+    });
+
+    // Paginación
+    $(document).on('click', '#pagination .pageBtn', function () {
+        const page = parseInt($(this).data('page'));
+        renderTable(page);
+    });
+
+    $(document).on('click', '.editIndTuris', function (e) {
+        e.preventDefault();
+        const $btn = $(this);
+        const origIndex = parseInt($btn.attr('data-orig-index'), 10);
+        if (Number.isNaN(origIndex)) return;
+
+        const $tr = $btn.closest('tr');
+        if (!$tr.length || $tr.data('editing')) return;
+        $tr.data('editing', true);
+
+        const r = arrInd.indTuris[origIndex];
+        if (!r) return;
+
+        const dateObj = parseDateSlash(r.fecha); 
+        const isoDate = dateObj ? formatDateToISO(dateObj) : '';
+        console.log(r);
+        // const $tdFecha = $tr.find('.col-fecha');
+        // $tdFecha.data('orig', $tdFecha.html()); 
+        // $tdFecha.html(`<input type="date" class="edit-fecha" value="${isoDate}" />`);
+
+        const $tdTN = $tr.find('.col-tnoche'); $tdTN.data('orig', $tdTN.html());
+        $tdTN.html(`<input type="number" class="edit-tnoche" step="1" min="0" value="${r.tNoche || ''}" />`);
+
+        const $tdDerr = $tr.find('.col-derrama'); $tdDerr.data('orig', $tdDerr.html());
+        $tdDerr.html(`<input type="number" class="edit-derr" step="0.01" value="${r.derr || ''}" />`);
+
+        const $tdLleg = $tr.find('.col-llegT'); $tdLleg.data('orig', $tdLleg.html());
+        $tdLleg.html(`<input type="number" class="edit-llegT" step="1" min="0" value="${r.llegT || ''}" />`);
+
+        const $tdEst = $tr.find('.col-est'); $tdEst.data('orig', $tdEst.html());
+        $tdEst.html(`<input type="number" class="edit-est" step="0.01" value="${r.est || ''}" />`);
+
+        const $tdTotOcu = $tr.find('.col-ocu'); $tdTotOcu.data('orig', $tdTotOcu.html());
+        $tdTotOcu.html(`<input type="number" class="edit-totOcu" step="1" min="0" value="${r.ocu || ''}" />`);
+
+        const $tdDens = $tr.find('.col-dens'); $tdDens.data('orig', $tdDens.html());
+        $tdDens.html(`<input type="number" class="edit-dens" step="0.01" value="${r.dens || ''}" />`);
+
+        const $tdTotHos = $tr.find('.col-totHos'); $tdTotHos.data('orig', $tdTotHos.html());
+        $tdTotHos.html(`<input type="number" class="edit-totHos" step="1" min="0" value="${r.totHos || ''}" />`);
+
+        const $tdTotHab = $tr.find('.col-totHab'); $tdTotHab.data('orig', $tdTotHab.html());
+        $tdTotHab.html(`<input type="number" class="edit-totHab" step="1" min="0" value="${r.totHab || ''}" />`);
+
+        
+
+        const $tdEdit = $btn.closest('td'); $tdEdit.data('orig', $tdEdit.html());
+        $tdEdit.html(`<button class="saveEdit" data-orig-index="${origIndex}">Guardar</button> <button class="cancelEdit" data-orig-index="${origIndex}">Cancelar</button>`);
+    });
+
+    $(document).on('click', '.cancelEdit', function (e) {
+        e.preventDefault();
+        const $tr = $(this).closest('tr');
+        $tr.find('td').each(function () {
+            const $td = $(this);
+            const orig = $td.data('orig');
+            if (orig !== undefined) $td.html(orig).removeData('orig');
+        });
+        $tr.removeData('editing');
+    });
+
+    $(document).on('click', '.saveEdit', function (e) {
+        e.preventDefault();
+        const $btn = $(this);
+        const origIndex = parseInt($btn.attr('data-orig-index'), 10);
+        if (Number.isNaN(origIndex)) return;
+
+        const $tr = $btn.closest('tr');
+        const r = arrInd.indTuris[origIndex];
+
+        const inputDateVal = $tr.find('.edit-fecha').val(); 
+        if (inputDateVal) {
+            const dateObj = new Date(inputDateVal + 'T00:00:00'); 
+            r.fecha = formatDateToSlash(dateObj); 
+        }
+        
+        r.tNoche = parseFloat($tr.find('.edit-tnoche').val()) || 0;
+        r.derr = parseFloat($tr.find('.edit-derr').val()) || 0;
+        r.llegT = parseFloat($tr.find('.edit-llegT').val()) || 0;
+        r.est = parseFloat($tr.find('.edit-est').val()) || 0;
+        r.ocu = parseFloat($tr.find('.edit-ocu').val()) || 0;
+        r.dens = parseFloat($tr.find('.edit-dens').val()) || 0;
+        r.totHos = parseFloat($tr.find('.edit-totHos').val()) || 0;
+        r.totHab = parseFloat($tr.find('.edit-totHab').val()) || 0;
+        r.ocu = parseFloat($tr.find('.edit-totOcu').val()) || 0;
+
+
+        $.ajax({
+        url: '/perfil_visitante/_includes/_php/querysSich.php', 
+        type: 'POST',
+        dataType: 'text',
+        data: {
+            updIndTuris: true,
+            id: r.ind_id,
+            fecha: r.fecha,
+            tNoche: r.tNoche,
+            derr: r.derr,
+            llegT: r.llegT,
+            est: r.est,
+            dens: r.dens,
+            totHos: r.totHos,
+            totHab: r.totHab,
+            ocu: r.ocu
+        },
+        success: function(response) {
+            console.log(response);
+            if (response.replace(/\s/g, '') === 'successful') {
+                $tr.removeData('editing');
+                renderTable(currentPage);
+                alert('Datos actualizados correctamente.');
+            } else {
+                alert('Error al guardar en la base de datos: ' + (response.message || 'Error desconocido.'));
+                $tr.find('.cancelEdit').click(); 
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert('Error de comunicación con el servidor. Intenta de nuevo.');
+            console.error('AJAX error:', textStatus, errorThrown, jqXHR.responseText);
+            $tr.find('.cancelEdit').click();
+        }
+    });
+
+        $tr.removeData('editing');
+        renderTable(currentPage);
+    });
+    
+    $(document).on('dataLoaded', function(e, page) {
+        renderTable(page);
+    });
+    
+})(jQuery);
+
+// ------------------------------------------
+// FUNCIÓN indTuris (Llamada desde fuera)
+// ------------------------------------------
+
+function indTuris(page = 1) {
+    $('#section2').append('<div id="loader">Cargando datos...</div><div id="pagination"></div>');
+
+    $.ajax({
+        url: '/perfil_visitante/_includes/_php/querysSich.php',
+        dataType: 'json',
+        type: 'POST',
+        data: {indTuris: true},
+        success: function(res) {
+            arrInd = res; 
+            
+            $('#selMunisInd').empty().append('<option value="" hidden>Municipio</option>');
+            $('#selAnioInd').empty().append('<option value="" hidden>Año</option>');
+            
+            if (arrInd['indTuris'] && arrInd['indTuris'].length > 0) {
+                arrInd['munis'].forEach(opt => {
+                    $('#selMunisInd').append(`<option value="${opt['id']}">${opt['name']}</option>`);
+                });
+                
+                const availableYears = new Set();
+                arrInd['indTuris'].forEach(r => {
+                    const fechaString = r.fecha;
+                    
+                    if (fechaString && fechaString.length >= 4 && fechaString.includes('-')) {
+                        const year = fechaString.substring(0, 4); 
+                        availableYears.add(year);
+                    }
+                });
+                
+                Array.from(availableYears).sort((a, b) => b - a).forEach(year => {
+                    $('#selAnioInd').append(`<option value="${year}">${year}</option>`);
+                });
+
+                $(document).trigger('dataLoaded', [page]); 
+
+            } else {
+                alert('SIN REGISTROS EN LA BASE DE DATOS');
+                $('#tabIndTuris tbody').empty();
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert('❌ Error en la petición: ' + textStatus);
+            console.error('AJAX error:', textStatus, errorThrown, jqXHR.responseText);
+        },
+        complete: function() {
+            $('#loader').remove();
+        }
+    });
+}
+
+
+
+
+
+
+
 });
 
 function toggleDropdown(event) {
-    // Prevent the dropdown from closing when clicking inside the dropdown
     event.stopPropagation();
     document.querySelector('.select-box .dropdown').classList.toggle('show');
 }
@@ -2336,7 +2879,6 @@ document.querySelectorAll('.select-box .dropdown input[type="checkbox"]').forEac
         updateSelected();
     });
 
-    // Prevent the dropdown from closing when clicking on checkboxes
     checkbox.addEventListener('click', function(event) {
         event.stopPropagation();
     });
@@ -2355,7 +2897,6 @@ let hoteles = Array();
 function datos(opc) {
     const elementos = document.querySelectorAll('tr.lineHotels');
     if (elementos) {
-       // Eliminar cada elemento seleccionado
     elementos.forEach(elemento => {
         elemento.remove();
     }); 
@@ -2394,14 +2935,10 @@ function datosIncC(id) {
         success: function(data) {
             datosInc = data;
             if (data.length > 0) {
-                // console.log('se actualizo');
                 $('#section2').removeClass('none');
                 $('#section2').html(controlInc);
-                // $('#contCanvaInc').html('<canvas id="canvasInc" width="300" height="300"></canvas>');
-                // console.log(data);
                 for (let i = 0; i < data.length; i++) {
                     let statusText = data[i]['stat'] === '1' ? 'gray' : 'green';
-                    // console.log(statusText);
                     $('.contListEst').append('<div class="listEst" data-id="'+data[i]['id']+'">'+
                                 '<div class="listEst2">'+
                                     '<p>'+data[i]['name']+'</p>'+
@@ -2434,7 +2971,6 @@ function datosIncC(id) {
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
-            // $('#containCanvaInc').html('<div id="containCanvaInc"><p>NO HAY CONTENIDO DE ESTA LOCALIDAD</p></div>');
             $('#section2').html('<div class="error">NO HAY DATOS PARA MOSTRAR</div>>');
             setTimeout(() => {
                 let id = '';
@@ -2456,13 +2992,10 @@ function datosIncE(id) {
         type: 'POST',
         data: { estadistica : estadistica, id:id },
         success: function(data) {
-            // console.log(data);
             datosInc = data;
             if (data.length > 0) {
-                // console.log('se actualizo');
                 $('#section2').removeClass('none');
                 $('#section2').html(estadis);
-                // $('#contCanvaInc').html('<canvas id="canvasInc" width="300" height="300"></canvas>');
                 for (let i = 0; i < data.length; i++) {
                     let statusText = data[i]['status'] === '0' ? 'Activo' : 'Inactivo';
                     $('#tabInc').append('<tr>'+
@@ -2481,7 +3014,6 @@ function datosIncE(id) {
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
-            // $('#containCanvaInc').html('<div id="containCanvaInc"><p>NO HAY CONTENIDO DE ESTA LOCALIDAD</p></div>');
             $('#section2').html('<div class="error">NO HAY DATOS PARA MOSTRAR</div>>');
             setTimeout(() => {
                 let id = '';
@@ -2537,8 +3069,107 @@ function filtersIncE(id) {
 
 
 
+let currentPage = 1;
+const rowsPerPage = 100; 
+let totalPages = 1;
+
+function safeNum(val, dec = 2) {
+    const n = parseFloat(val);
+    return isNaN(n) ? '0.00' : n.toFixed(dec);
+}
+
+// function indTuris(page = 1) {
+//     $('#section2').append('<div id="loader">Cargando datos...</div><div id="pagination"></div>');
+
+//     // return;
+//     $.ajax({
+//         url: '/perfil_visitante/_includes/_php/querysSich.php',
+//         dataType: 'json',
+//         type: 'POST',
+//         data: {indTuris: true},
+//         success: function(res) {
+//             arrInd = res;
+
+//             $('#selMunisInd').empty().append('<option value="" hidden>Municipio</option>');
+//             $('#tabIndTuris tbody').empty();
+
+//             if (arrInd['indTuris'].length > 0) {
+//                 arrInd['munis'].forEach(opt => {
+//                     $('#selMunisInd').append(`<option value="${opt['id']}">${opt['name']}</option>`);
+//                 });
+
+//                 totalPages = Math.ceil(arrInd['indTuris'].length / rowsPerPage);
+//                 currentPage = page;
+
+//                 const start = (currentPage - 1) * rowsPerPage;
+//                 const end = start + rowsPerPage;
+//                 const fragment = $(document.createDocumentFragment());
+
+//                 arrInd['indTuris'].slice(start, end).forEach(opt => {
+//                     const tr = `<tr>
+//                         <td>${opt['name_muni']}</td>
+//                         <td>${opt['loc']}</td>
+//                         <td>${opt['fecha']}</td>
+//                         <td>${opt['tNoche'].toLocaleString('en-US')}</td>
+//                         <td>$${safeNum(opt.derr, 2)}<small>MDP</small></td>
+//                         <td>${opt['llegT'].toLocaleString('en-US')}</td>
+//                         <td>${safeNum(opt.est, 2)}</td>
+//                         <td>${safeNum(opt.dens, 2)}</td>
+//                         <td>${opt['totHos'].toLocaleString('en-US')}</td>
+//                         <td>${opt['totHab'].toLocaleString('en-US')}</td>
+//                         <td><p class="editIndTuris" data-id="${opt['ind_id']}">Editar</p></td>
+//                     </tr>`;
+//                     fragment.append(tr);
+//                 });
+
+//                 $('#tabIndTuris tbody').append(fragment);
+
+//                 let paginationHTML = '';
+//                 for (let i = 1; i <= totalPages; i++) {
+//                     paginationHTML += `<button class="pageBtn" data-page="${i}">${i}</button>`;
+//                 }
+//                 $('#pagination').html(paginationHTML);
+//             } else {
+//                 alert('SIN REGISTROS EN LA BASE DE DATOS');
+//             }
+//         },
+//         error: function(jqXHR, textStatus, errorThrown) {
+//             alert('Error en la petición: ' + textStatus);
+//             console.error('AJAX error:', textStatus, errorThrown, jqXHR.responseText);
+//         },
+//         complete: function() {
+//             $('#loader').remove();
+//         }
+//     });
+// }
+
+// $(document).on('click', '.pageBtn', function() {
+//     const page = parseInt($(this).data('page'));
+//     indTuris(page);
+// });
+
+// $(document).on('click', '.editIndTuris', function() {
+//     const row = $(this).closest('tr');
+//     row.find('td').slice(2, 10).each(function() { 
+//         const val = $(this).text().replace(/\s*MDP/, '');
+//         $(this).html(`<input type="text" value="${val}">`);
+//     });
+// });
+
+
 let myChart;
 let myChart2;
+
+function safeNum(val, dec = 2, defaultText = '0.00') {
+  if (val === null || val === undefined || val === '') return defaultText;
+
+  const cleaned = String(val).trim().replace(/\s+/g, '').replace(/,/g, '');
+
+  const normalized = cleaned.replace(/,(\d{1,})$/, '.$1');
+
+  const n = Number(normalized);
+  return Number.isFinite(n) ? n.toFixed(dec) : defaultText;
+}
 
 function nameL(loc) {
     let name = '';
@@ -2593,7 +3224,7 @@ function grapDouble(hotelsF, months) {
         let g = parseInt(baseColor.slice(3, 5), 16);
         let b = parseInt(baseColor.slice(5, 7), 16);
     
-        let variation = 30; // Ajusta este valor para mayor o menor variación
+        let variation = 30; 
          r = Math.min(255, Math.max(0, r + Math.floor(Math.random() * (2 * variation + 1)) - variation));
         g = Math.min(255, Math.max(0, g + Math.floor(Math.random() * (2 * variation + 1)) - variation));
         b = Math.min(255, Math.max(0, b + Math.floor(Math.random() * (2 * variation + 1)) - variation));

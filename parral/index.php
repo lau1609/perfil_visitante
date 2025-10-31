@@ -217,7 +217,7 @@
 
                             <div class="qs-general checkbox" data-id-pregunta="84">
                                     <h3><span class="number">5</span> ¿Qué actividades le hubiese gustado encontrar?   <span style="color:red;">*  </span> <span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;">Se puede marcar mas de una opción </span>  <br>(What activities would you have liked to find?<span style="color:red;">*  </span><span style="font-family: 'PublicSans Italic Extra Light'; color: #545859;"> Check all that apply </span>)</h3>
-                                    <label><input type="checkbox" name="actividades-quisiese-encontrar" value="actividades-quisiese-encontrar" id="">Experiencias temáticas (Thematical experiences)</label>
+                                    <label><input type="checkbox" name="actividades-quisiese-encontrar" value="Experiencias-temáticas" id="">Experiencias temáticas (Thematical experiences)</label>
                                     <label><input type="checkbox" name="actividades-quisiese-encontrar" value="Muestras-o-talleres-gastronómico" id="">Muestras o talleres gastronómicos (Workshops or gastronomic tasting )</label>
                                     <label><input type="checkbox" name="actividades-quisiese-encontrar" value="Conciertos-y-festivales-de-música" id="">Conciertos y festivales de música (Concerts & musical festivals)</label>
                                     <label><input type="checkbox" name="actividades-quisiese-encontrar" value="Atracciones-para-niños" id="">Atracciones para niños (Children's attractions)</label>

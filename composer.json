@@ -1,0 +1,16 @@
+{
+    "name": "vendor/json",
+    "description": "json del ejecutable de vendor",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Json\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "lau1609",
+            "email": "m16laural000@gmail.com"
+        }
+    ],
+    "require": {}
+}

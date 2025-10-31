@@ -45,6 +45,12 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ */
 
 
 
+    @font-face {
+      font-family: 'Gotham';
+      src: url('../../_fonts/Gotham/Gotham-Book.woff') format('woff');
+      font-style: normal;
+    }
+
 /* ====== F O N T S (end) ====== */
 
 
@@ -1094,3 +1100,6 @@ button#genInfog {
     transform: translate(0, 0);
   }
 }
+
+
+

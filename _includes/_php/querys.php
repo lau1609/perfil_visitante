@@ -645,5 +645,200 @@ if ($_POST['actInc'] === 'true') {
     }else{echo 'unsuccessful';};
 }
 
+// ini_set("display_errors",1);
+//     error_reporting(E_ALL);
+if ($_POST['valiUsSes'] === 'true') {
+
+    if (!isset($_POST['id'])) {
+        echo json_encode(['error' => 'Falta id']);
+        exit;
+    }
+
+    $id = intval($_POST['id']);
+    // echo $id;
+
+    $sqlUser = "
+        SELECT u.*, l.name_loc, l.url_loc
+        FROM users_enc_tab u
+        LEFT JOIN loc_register l ON u.muni_usenc = l.id_loc
+        WHERE u.id_usenc = ? AND l.status_loc = 0
+        LIMIT 1
+    ";
+
+    if ($stmt = $GLOBALS['connectMySql']->prepare($sqlUser)) {
+        $stmt->bind_param("i", $id);
+        if (!$stmt->execute()) {
+            echo json_encode(['error' => 'Error al ejecutar consulta usuario: ' . $stmt->error]);
+            $stmt->close();
+            exit;
+        }
+        $result = $stmt->get_result();
+        if (!$result) {
+            echo json_encode(['error' => 'No se pudo obtener resultado de usuario.']);
+            $stmt->close();
+            exit;
+        }
+        $userRow = $result->fetch_assoc();
+        $stmt->close();
+        if (!$userRow) {
+            echo json_encode(['found' => false]);
+            exit;
+        }
+        if (isset($userRow['contra_usenc'])) {
+            unset($userRow['contra_usenc']);
+        }
+        $loc = [
+            'name_loc' => $userRow['name_loc'] ?? null,
+            'url_loc'  => $userRow['url_loc']  ?? null
+        ];
+        $hoteles = [];
+        $sqlHoteles = "SELECT hotel_id, hotel_clave, hotel_name FROM hoteles_tb WHERE hotel_muni_id = ?";
+        if ($stmt2 = $GLOBALS['connectMySql']->prepare($sqlHoteles)) {
+            $muni_usec = isset($userRow['muni_usenc']) ? intval($userRow['muni_usenc']) : 0;
+            // echo $muni_usec;
+            $stmt2->bind_param("i", $muni_usec);
+            if ($stmt2->execute()) {
+                $res2 = $stmt2->get_result();
+                if ($res2) {
+                    while ($h = $res2->fetch_assoc()) {
+                        $hoteles[] = $h; 
+                    }
+                }
+            }
+            $stmt2->close();
+        }
+
+        $response = [
+            'found' => true,
+            'user'  => $userRow,
+            'loc'   => $loc,
+            'hoteles' => $hoteles
+        ];
+
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+    } else {
+        http_response_code(500);
+        echo json_encode(['error' => 'Error al preparar consulta usuario: ' . $GLOBALS['connectMySql']->error]);
+        exit;
+    }
+
+}
+
+// ini_set("display_errors",1);
+//     error_reporting(E_ALL);
+
+if ($_POST['empView'] === 'true') {
+    $id = $_POST['user'];
+    $sql = "SELECT id_usenc FROM users_enc_tab WHERE name_usenc = ? LIMIT 1";
+    $stmt = $GLOBALS['connectMySql']->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row_rsEstab = $result->fetch_assoc();
+    $stmt->close();
+    echo ($row_rsEstab['id_usenc']);
+}
+
+
+
+
+
+if (isset($_POST['uploadXLSX']) && $_POST['uploadXLSX'] == true) {
+
+    header('Content-Type: application/json; charset=utf-8');
+
+    $inputName = 'xlsxUpl';
+
+    if (!isset($_FILES[$inputName])) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => "No se encontró el archivo en \$_FILES con key '$inputName'"]);
+        exit;
+    }
+
+    $file = $_FILES[$inputName];
+
+    if (!isset($file['error']) || $file['error'] !== UPLOAD_ERR_OK) {
+        $msg = 'Error al subir el archivo.';
+        if (isset($file['error'])) {
+            switch ($file['error']) {
+                case UPLOAD_ERR_INI_SIZE:
+                case UPLOAD_ERR_FORM_SIZE:
+                    $msg = 'El archivo es demasiado grande.';
+                    break;
+                case UPLOAD_ERR_PARTIAL:
+                    $msg = 'La subida fue parcial.';
+                    break;
+                case UPLOAD_ERR_NO_FILE:
+                    $msg = 'No se subió ningún archivo.';
+                    break;
+                default:
+                    $msg = 'Error en la subida (código: ' . intval($file['error']) . ').';
+            }
+        }
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => $msg]);
+        exit;
+    }
+
+    $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+    if ($ext !== 'xlsx') {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Solo archivos con extensión .xlsx permitidos']);
+        exit;
+    }
+
+    if (function_exists('dirname') && version_compare(PHP_VERSION, '7.0.0', '>=')) {
+        $rootDir = dirname(__DIR__, 3);
+    } else {
+        $rootDir = dirname(dirname(dirname(__DIR__)));
+    }
+
+    $destDir = $rootDir . DIRECTORY_SEPARATOR . 'data_processing';
+    $destFilename = 'BD-SICHITUR.xlsx';
+    $destPath = $destDir . DIRECTORY_SEPARATOR . $destFilename;
+
+    if (!is_dir($destDir)) {
+        if (!mkdir($destDir, 0775, true)) {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => 'No se pudo crear el directorio destino']);
+            exit;
+        }
+    }
+
+    if (!is_uploaded_file($file['tmp_name'])) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Archivo tmp no es un archivo subido vía HTTP POST']);
+        exit;
+    }
+    $mime = null;
+    if (function_exists('finfo_open')) {
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        if ($finfo !== false) {
+            $mime = finfo_file($finfo, $file['tmp_name']);
+            finfo_close($finfo);
+        }
+    }
+
+    if (!move_uploaded_file($file['tmp_name'], $destPath)) {
+        http_response_code(500);
+        echo json_encode(['success' => false, 'message' => 'No se pudo mover el archivo al destino. Verifica permisos.']);
+        exit;
+    }
+
+    echo json_encode([
+        'success' => true,
+        'message' => 'Archivo guardado correctamente',
+        'saved_as' => 'data_processing/' . $destFilename,
+        'mime_detected' => $mime
+    ]);
+    exit;
+}
+
+
+
+
+
 
 ?>

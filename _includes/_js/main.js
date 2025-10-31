@@ -42,7 +42,9 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 
 $(document).ready(function() {
     "use strict";
+	// session_check();
 
+	 
 // 	function mostrarPregunta(index, valid) {
 //         $('.pregunta-activa').slideUp(300, function () {
 //           $(this).removeClass('pregunta-activa');
@@ -98,6 +100,8 @@ $(document).ready(function() {
 		
 	  
 			
+			
+
 	/* --------------------------------------------------- */
 
 	// click de nueva encuesta (recarga la pagina)

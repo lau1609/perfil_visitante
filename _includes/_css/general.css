@@ -657,30 +657,34 @@ div#contBetween {
   font-size: 16px;
 }
 .itemEsp.mex {
-    max-height: 250px;
+    /* max-height: 250px; */
     break-inside: avoid-column;
     box-sizing: border-box;
     overflow: hidden;
+    /* min-height: 200px; */
 }
 .itemEsp.int {
-    height: 100px;
+    /* height: 100px; */
     box-sizing: border-box;
     break-inside: avoid-column;
-    break-inside: avoid-column;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .itemEsp.nation {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    height: 350px;
+    justify-content: flex-start;
+    /* height: 350px; */
     break-inside: avoid-column;
     box-sizing: border-box;
     break-inside: avoid-column;
 }
 .itemNation {
-    height: 370px;
+    /* height: 370px;
     columns: 2;
-    column-fill: balance;
+    column-fill: balance; */
+    display: flex;
 }
 .footInfo {
     width: 1300px;
@@ -688,7 +692,7 @@ div#contBetween {
     padding: 20px 0;
 }
 .item h3 {
-    color: rgb(0, 0, 0, .8) !important;
+    color: rgb(0, 0, 0) !important;
     font-size: .9rem !important;
     font-weight: 900;
     margin-bottom: 6px;
@@ -706,13 +710,31 @@ div#contBetween {
     margin: 0;
     font-size: .85rem;
 }
+.itemEsp .respPorcentaje {
+    margin-left: 0;
+    width: 90%;
+}
+.mex .respPorcentaje,.int .respPorcentaje {
+    
+    border-bottom: 1px solid rgb(0, 0, 0, .2);
+}
+.respPorcentaje p {
+    color: rgb(0, 0, 0, .8);
+}
 .itemEsp .respPorcentaje h4, .itemEsp .respPorcentaje p{
     font-size: .75rem;
+    margin-left: 5px;
     
+}
+.itemEsp .respPorcentaje {
+    margin-left: 0 !important;
+        width: 90% !important;
 }
 .tituloInfog {
     display: flex;
-    width: 400px;
+    width: 550px;
+    FLEX-DIRECTION: column;
+    ALIGN-ITEMS: center;
 }
 .morado{
    color: #8968c2;
@@ -728,7 +750,7 @@ div#contBetween {
     justify-content: space-between;
     width: 60%;
     margin-left: 50px;
-    margin-bottom: 2px;
+    margin-bottom: 9px;
 }
 .item {
   /* border: 1px solid #ccc; */
@@ -738,7 +760,10 @@ div#contBetween {
   border-bottom: 1px solid rgb(0, 0, 0, .4);
   margin-bottom: 15px;
 }
-
+.itemEsp2{
+    width: 60%;
+    margin-left: 11px;
+}
   .contOptFilt {
     width: 100%;
     display: flex;
@@ -1071,7 +1096,186 @@ li a:hover > li{
     align-items: center;
     height: 100vh;
 }
+/* ------------- Sección de indicadores turisticos ----------------- */
+.contIndTuris {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contButLoadInf {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin: 30px 0;
+}
+.contButLoadInf button {
+    border-style: none;
+    padding: 10px 20px;
+    background: rgb(115, 77, 183);
+    color: white;
+    border-radius: 5px;
+}
+.contFiltInd {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+.contFiltInd select {
+    margin-right: 10px;
+    padding: 8px 5px;
+    border: 1px solid rgb(115, 77, 183, .5);
+    border-radius: 5px;
+    width: 180px;
+    color: rgb(115, 77, 183);
+}
+.contLoadXlsl label {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #26448E;
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+.contCloseLoad p:hover {
+    box-shadow: 2px 2px 4px rgb(0, 0, 0, .3);
+    transition: .3s;
+}
+.contCloseLoad p {
+    margin: 5px 0;
+    background: rgb(255, 0, 0, .9);
+    padding: 5px 12px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+}
+#tabIndTuris tr input {
+    width: 100px;
+}
+.contCloseLoad {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    font-weight: 900;
+    font-size: 1.3rem;
+}
+button.pageBtn {
+    border-style: none;
+    margin-right: 5px;
+    font-size: .7rem;
+    background: rgb(115, 77, 183);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+.popLoadInd{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255,.5);
+}
+.editIndTuris{
+    font-weight: 600;
+    color: #26448E;
+    cursor: pointer;
+}
+div#pagination {
+    width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 25px;
+}
+button.pageBtn {
+    border-style: none;
+    margin: 3px;
+    font-size: .7rem;
+    background: rgb(115, 77, 183);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+button#uploadXLSX {
+    border-style: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    color: rgb(115, 77, 183);
+    cursor: pointer;
+}
+button#uploadXLSX:hover {
+    color: white;
+    background: rgb(115, 77, 183);
+    transition: .3s;
+    
+}
+#uploadXLSX.btn-disabled,
+#uploadXLSX:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #ccc;
+  color: #666;
+  border: 1px solid #aaa;
+}
 
+.contLoadXlsl input[type="file"] {
+    margin-top: 20px;
+    color: rgb(0, 0, 0, .5);
+    font-style: italic;
+}
+.contLoadXlsl{
+    width: 400px;
+    background-color: white;
+    padding: 20px 0;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0, .3);
+    border-radius: 8px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+#uplInfo:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 6px rgb(0,0,0,.8);
+    transition: .3s;
+}
+.contDate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contDate input[type="date"] {
+    padding: 8px 5px;
+    background: rgb(0, 0, 0, .03);
+    border-radius: 5px;
+    margin-right: 5px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-left: 1px solid rgb(115, 77, 183);
+}
+.contDate input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 1 !important;
+  background: auto !important;
+  filter: invert(1); 
+}
+.contTabIndTuris{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* #tabIndTuris caption {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: left;
+} */
+table#tabIndTuris {
+    margin-top: 30px;
+}
 /* ------------------------ RESPONSIVO -------------------------- */
 
 @media (max-width: 1100px) {
